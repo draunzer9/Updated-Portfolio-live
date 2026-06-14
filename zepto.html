@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zepto AOV Optimization | Anish Shankar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+      /* Base styles inherited from style.css */
+      :root {
+        --accent-primary: #521292;
+        --accent-secondary: #D4B2FF;
+        --accent-tertiary: #7411C6;
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="case-study-page">
+    <div class="background-glow blur-1"></div>
+    <div class="background-glow blur-2" style="background: var(--accent-secondary)"></div>
+
+    <nav class="navbar">
+      <a href="/index.html" class="logo">AS.</a>
+      <a href="/index.html" class="nav-btn">&larr; Back to Portfolio</a>
+    </nav>
+
+    <main class="case-study-container">
+      <header class="cs-hero reveal">
+        <div class="cs-tags">
+          <span class="tag">AOV</span>
+          <span class="tag">E-commerce</span>
+          <span class="tag">Behavioral Psychology</span>
+        </div>
+        <h1 class="hero-title">Zepto AOV Optimization</h1>
+        <p class="hero-subtitle">From Urgency Orders to Basket Expansion</p>
+      </header>
+
+      <section class="cs-content">
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>The Problem Context</h2>
+            <p>Zepto was experiencing strong order growth, but low Average Order Value (AOV). Users were driven by small, urgency-driven orders and typically stopped once they hit the free delivery threshold. This limited category exploration and capped revenue.</p>
+            
+            <div class="problem-statement-box">
+              <h3>Detailed Problem Statements</h3>
+              <p><strong>The Zepto Paradox:</strong> Users currently place small, urgency-driven orders <em>because</em> the product is optimized for speed, not discovery, <em>which results in</em> low AOV.</p>
+              <p><strong>Multiple Delivery Slots:</strong> Users currently hesitate to add multiple items to their orders <em>because</em> they expect a single 10-minute delivery and fear that adding more items may lead to split or delayed deliveries, <em>which results in</em> smaller basket sizes and lower AOV.</p>
+            </div>
+          </div>
+          <img src="/assets/zepto_page_2.png" alt="Problem Context" class="cs-image" />
+        </div>
+
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>Behavioral Assumptions & Blockers</h2>
+            <p>Research indicated users had a "mission-complete" mindset. They weren't looking to browse; they just wanted their immediate needs met. The primary blockers preventing basket expansion were structural, psychological, and experiential.</p>
+          </div>
+          <img src="/assets/zepto_page_6.png" alt="Behavioral Assumptions" class="cs-image" />
+          <img src="/assets/zepto_page_14.png" alt="Core Blockers" class="cs-image" />
+        </div>
+
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>The UX Break Point: The Cart</h2>
+            <p>The cart page was heavily optimized for quick checkout rather than basket building. Once users hit the threshold, they abandoned exploration. The "Zepto Paradox" was that the platform's optimization for speed was actively hurting AOV.</p>
+          </div>
+          <img src="/assets/zepto_page_17.png" alt="Where Expansion Breaks" class="cs-image" />
+          <img src="/assets/zepto_page_20.png" alt="Problem Statements" class="cs-image" />
+        </div>
+
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>The Solution: Mission-Based Cart Expansion</h2>
+            <p>To fix this, the product framing needed to shift from "Buy Item" to "Complete Basket". We proposed creating dedicated category bundles and "Add without delay" badges in the cart to reassure users that adding items wouldn't break their 10-minute SLA.</p>
+          </div>
+          <img src="/assets/zepto_page_22.png" alt="Mission-Based Expansion" class="cs-image" />
+          <img src="/assets/zepto_page_23.png" alt="Solution 2" class="cs-image" />
+        </div>
+
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>Prioritization & KPIs</h2>
+            <p>Using the RICE framework, Mission-based cart expansion scored the highest priority due to its massive reach and direct targeting of the cart break point. We established primary KPIs like AOV increase and attach rate, while setting guardrails to protect checkout conversion.</p>
+          </div>
+          <img src="/assets/zepto_page_24.png" alt="RICE Prioritization" class="cs-image" />
+          <img src="/assets/zepto_page_26.png" alt="KPIs" class="cs-image" />
+        </div>
+      </section>
+
+      <div class="next-case reveal">
+        <p>Next Case Study</p>
+        <a href="/spot-ride.html" class="btn primary-btn">SPOT Ride: Problem Discovery &rarr;</a>
+      </div>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

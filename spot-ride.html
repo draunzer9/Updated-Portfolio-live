@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPOT Ride | Anish Shankar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+      /* Base styles inherited from style.css */
+      :root {
+        --accent-primary: #8B5CF6;
+        --accent-secondary: #A78BFA;
+        --accent-tertiary: #6D28D9;
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="case-study-page">
+    <div class="background-glow blur-1"></div>
+    <div class="background-glow blur-2" style="background: #eab308"></div>
+
+    <nav class="navbar">
+      <a href="/index.html" class="logo">AS.</a>
+      <a href="/index.html" class="nav-btn">&larr; Back to Portfolio</a>
+    </nav>
+
+    <main class="case-study-container">
+      <header class="cs-hero reveal">
+        <div class="cs-tags">
+          <span class="tag">Product Discovery</span>
+          <span class="tag">UX Research</span>
+          <span class="tag">Prototyping</span>
+        </div>
+        <h1 class="hero-title">SPOT Ride</h1>
+        <p class="hero-subtitle">Solving Pickup Confusion</p>
+      </header>
+
+      <section class="cs-content">
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>The Widespread Confusion</h2>
+            <p>Users and drivers face widespread confusion over pin placement and multi-entrance locations. Internal studies confirmed ~4% of ride requests have large GPS drift, and a staggering 42% of those rides are cancelled.</p>
+
+            <div class="problem-statement-box">
+              <h3>Detailed Problem Statement</h3>
+              <p><strong>Location Ambiguity:</strong> GPS provides ±50-100m accuracy. Pickup pins map to the wrong gate or nearby road instead of the exact point. "Arrived" does not equal visually findable.</p>
+              <p><strong>Communication Gaps:</strong> High reliance on calls and manual instructions creates language barriers, time delays, and misinterpretation of landmarks.</p>
+              <p><strong>Coordination Issues:</strong> Rider and driver operate with different location views and constraints (e.g. one-way roads, no-stopping zones), leading to inevitable confusion.</p>
+            </div>
+          </div>
+          <img src="/assets/spot_ride_page_1.png" alt="Spot Ride Intro" class="cs-image" />
+        </div>
+
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>Target Market & Constraints</h2>
+            <p>This problem severely impacts 5-8M core daily commuters in dense urban areas, airports, and gated communities. External constraints like traffic rules, no-stopping zones, and one-way roads compound the difficulty of accurate pickups.</p>
+          </div>
+          <img src="/assets/spot_ride_page_3.png" alt="Market Size" class="cs-image" />
+          <img src="/assets/spot_ride_page_6.png" alt="External Constraints" class="cs-image" />
+        </div>
+
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>Key Findings & Workarounds</h2>
+            <p>We discovered that GPS accuracy (±50-100m) is completely insufficient for the final "last-meter" rendezvous. Users resort to unstructured phone calls ("Come near the gate"), manual pin adjustments, or simply walking to easier points—none of which are optimal UX.</p>
+          </div>
+          <img src="/assets/spot_ride_page_7.png" alt="Key Findings" class="cs-image" />
+          <img src="/assets/spot_ride_page_8.png" alt="Problem Breakdown" class="cs-image" />
+        </div>
+
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>The Solution: Pinpoint Meet Buddy</h2>
+            <p>I conceptualized and designed a prototype to deliver better pickup guidance. It replaces unstructured calls with visual, contextual cues, offering step-by-step last-meter guidance and auto-selecting optimal pickup points based on real-world feasibility rather than raw GPS data.</p>
+          </div>
+          <img src="/assets/spot_ride_page_9.png" alt="Opportunity Areas" class="cs-image" />
+          <img src="/assets/spot_ride_page_10.png" alt="Prototype Solution" class="cs-image" />
+        </div>
+      </section>
+
+      <div class="next-case reveal">
+        <p>Next Case Study</p>
+        <a href="/x-growth.html" class="btn primary-btn">X (Twitter) Growth Strategy &rarr;</a>
+      </div>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

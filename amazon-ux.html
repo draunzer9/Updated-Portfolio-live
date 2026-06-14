@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon UX Redesign | Case Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Base styles inherited from style.css */
+      :root {
+        --accent-primary: #FF9900;
+        --accent-secondary: #FFB84D;
+        --accent-tertiary: #232F3E;
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="case-study-page">
+    <div class="background-glow blur-1"></div>
+    <div class="background-glow blur-2" style="background: var(--accent-secondary);"></div>
+    <nav class="navbar">
+      <a href="/index.html" class="logo">AS.</a>
+      <a href="/index.html" class="nav-btn">&larr; Back to Portfolio</a>
+    </nav>
+
+    <main class="case-study-container">
+      <header class="cs-hero reveal">
+        <div class="cs-tags">
+          <span class="tag">UX Design</span>
+          <span class="tag">Heuristics</span>
+          <span class="tag">E-commerce</span>
+        </div>
+        <h1 class="hero-title">Amazon Checkout Flow: UX Evaluation & Redesign</h1>
+        <p class="hero-subtitle">Applying UX laws and heuristics to streamline the world's largest e-commerce checkout.</p>
+      </header>
+
+      <section class="cs-content">
+        <div class="cs-block reveal">
+          <img src="/assets/amazonux_page_1.png" alt="Amazon UX Title" class="cs-image" />
+          <img src="/assets/amazonux_page_2.png" alt="Selected Product & Flow" class="cs-image" />
+        </div>
+
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>Heuristic Evaluation</h2>
+            <p>Identifying violations in system status visibility and efficiency of use.</p>
+          </div>
+          <img src="/assets/amazonux_page_3.png" alt="Visibility Issues" class="cs-image" />
+          <img src="/assets/amazonux_page_4.png" alt="Recognition & Efficiency" class="cs-image" />
+        </div>
+
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>Applying UX Laws</h2>
+            <p>How Hick's Law, Tesler's Law, and Fitts's Law explain current friction points in the Amazon UI.</p>
+          </div>
+          <img src="/assets/amazonux_page_5.png" alt="UX Laws: Decision & Expectation" class="cs-image" />
+          <img src="/assets/amazonux_page_6.png" alt="UX Laws: Complexity & Hierarchy" class="cs-image" />
+          <img src="/assets/amazonux_page_7.png" alt="UX Laws: Progress & Target Size" class="cs-image" />
+        </div>
+
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>Redesign Strategy</h2>
+            <p>Targeted solutions for clarity, friction reduction, and robust error recovery.</p>
+          </div>
+          <img src="/assets/amazonux_page_8.png" alt="Redesign: Clarity & Hierarchy" class="cs-image" />
+          <img src="/assets/amazonux_page_9.png" alt="Redesign: Reduce Friction" class="cs-image" />
+          <img src="/assets/amazonux_page_10.png" alt="Redesign: Error Recovery" class="cs-image" />
+        </div>
+      </section>
+
+      <div class="next-case reveal">
+        <p>Next Case Study</p>
+        <a href="/index.html" class="btn primary-btn">Return to Portfolio &rarr;</a>
+      </div>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
