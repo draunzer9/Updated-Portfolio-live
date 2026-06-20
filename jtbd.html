@@ -32,42 +32,96 @@
           <span class="tag">User Psychology</span>
           <span class="tag">Strategy</span>
         </div>
-        <h1 class="hero-title">Jobs to Be Done: Food Scheduling Analysis</h1>
-        <p class="hero-subtitle">Understanding why users schedule food orders—and why they often don't.</p>
+        <h1 class="hero-title">Food Scheduling Analysis: From Friction to "On-Demand Plus"</h1>
+        <p class="hero-subtitle">Understanding why users schedule food orders—and why they actively avoid it.</p>
       </header>
 
       <section class="cs-content">
+        <!-- Executive Summary -->
         <div class="cs-block reveal">
-          <img src="/assets/jtbd_page_1.png" alt="JTBD Title Slide" class="cs-image" />
-          
-          <div class="cs-text" style="margin-top: 2rem;">
-            <h2>The 9 Core Jobs</h2>
-            <p>I mapped out the underlying needs driving the desire to schedule. These are the functional and emotional jobs users are actually trying to hire a scheduling feature to do.</p>
+          <img src="/assets/jtbd_page_1.png" alt="JTBD Title Slide" class="cs-image" style="border-bottom: 1px solid var(--border-color);"/>
+          <div class="cs-text">
+            <h2>Executive Summary</h2>
+            <p><strong>The Problem:</strong> Food delivery apps offer scheduling features, yet adoption remains surprisingly low. Most product teams assume this is a "feature problem"—users forget to schedule, or they don't know the feature exists. My analysis reveals it is a <strong>behavioral problem</strong>. Users choose not to use Scheduled Orders because scheduling feels like losing control—even though technically they can modify orders.</p>
+            <p><strong>The Solution ("On-Demand Plus"):</strong> Restructure the interaction model so that users always order <em>now</em> (preserving the instant-order psychology), choose <em>when</em> delivery arrives (preserving control), and can adjust the window <em>anytime</em> penalty-free (removing commitment anxiety).</p>
           </div>
-          <img src="/assets/jtbd_page_2.png" alt="What Users Want: 9 Core Jobs" class="cs-image" />
         </div>
 
+        <!-- JTBD Analysis -->
+        <div class="cs-block reveal">
+          <div class="cs-text">
+            <h2>The Deep JTBD Framework</h2>
+            <p>To understand the disconnect, I mapped the underlying needs driving the desire to schedule. While functional jobs are easily satisfied by current apps, the emotional and social jobs reveal deep, unaddressed anxieties.</p>
+            
+            <div class="problem-statement-box">
+              <h3>Functional Jobs (Outcome-Focused)</h3>
+              <p>• <strong>When</strong> I'm planning a group event, <strong>I want to</strong> ensure food arrives exactly when we gather, <strong>so that</strong> no one is waiting.</p>
+              <p>• <strong>When</strong> popular items sell out, <strong>I want to</strong> reserve my order in advance, <strong>so that</strong> I secure availability.</p>
+            </div>
+
+            <div class="problem-statement-box">
+              <h3>Emotional Jobs (The Critical Gap)</h3>
+              <p>• <strong>When</strong> I've scheduled an order, <strong>I want to</strong> retain the feeling that I'm still in control and flexible, <strong>so that</strong> I don't feel locked into a decision that might become wrong (Commitment Anxiety).</p>
+              <p>• <strong>When</strong> I modify a scheduled order, <strong>I want to</strong> feel the modification is frictionless, <strong>so that</strong> I don't feel like I failed at planning (Accountability Anxiety).</p>
+            </div>
+
+            <div class="problem-statement-box">
+              <h3>Social Jobs (Identity Preservation)</h3>
+              <p>• <strong>When</strong> I choose between instant and scheduled ordering, <strong>I want to</strong> choose the one that makes me feel more confident and capable, <strong>so that</strong> I reinforce my self-image as someone who's responsive and adaptable, not rigid.</p>
+            </div>
+          </div>
+          <img src="/assets/jtbd_page_2.png" alt="What Users Want: 9 Core Jobs" class="cs-image" style="border-top: 1px solid var(--border-color);" />
+        </div>
+
+        <!-- First Principles Breakdown -->
         <div class="cs-block reveal">
           <div class="cs-text">
             <h2>First Principles: Why Scheduling Fails</h2>
-            <p>Food delivery apps offer scheduling features, yet adoption remains surprisingly low. I analyzed the psychological friction points preventing adoption.</p>
+            <p>By deconstructing the problem from first principles, it becomes clear that <strong>loss of control is the primary barrier</strong> preventing adoption.</p>
+            <p>When a user schedules an order, they lose control over four dimensions:</p>
+            <ul style="color: var(--text-secondary); margin-left: 20px; margin-bottom: 20px; line-height: 1.6;">
+              <li><strong>Temporal Control:</strong> Locked into a fixed delivery window, unable to respond to shifting plans.</li>
+              <li><strong>Preference Control:</strong> Forced to guess today what they will crave on Friday.</li>
+              <li><strong>Social Control:</strong> Taking total responsibility for a group's decision before the event happens.</li>
+              <li><strong>Psychological Control:</strong> The inability to make an "irrevocable decision" at the last possible moment.</li>
+            </ul>
+            <p><strong>The Insight:</strong> Users actively avoid scheduling because it <em>feels</em> like losing control. Instant ordering allows users to change their mind right up to the moment of consumption. They prefer "Present-me" making decisions over "Past-me" making decisions.</p>
           </div>
-          <img src="/assets/jtbd_page_3.png" alt="First Principles" class="cs-image" />
+          <img src="/assets/jtbd_page_3.png" alt="First Principles" class="cs-image" style="border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);"/>
           <img src="/assets/jtbd_page_4.png" alt="More Barriers to Adoption" class="cs-image" />
         </div>
 
+        <!-- The Solution: On-Demand Plus -->
         <div class="cs-block reveal">
           <div class="cs-text">
-            <h2>The Solution: Calendar Integration</h2>
-            <p>To overcome the "effort" and "uncertainty" barriers, I proposed native Calendar Integration to suggest food delivery at optimal times.</p>
+            <h2>The Solution: "On-Demand Plus"</h2>
+            <p>Instead of trying to convince users to use a broken feature through "Confidence Booking" or "Calendar Integration," we must <strong>restructure the behavior itself</strong>.</p>
+            <p>Enter <strong>On-Demand Plus</strong>. Instead of asking users to "schedule," we ask them to "extend their ordering window."</p>
+
+            <div class="problem-statement-box">
+              <h3>Step 1: Reframe the Mental Model</h3>
+              <p>Remove the word "schedule" entirely. The new messaging is: <strong>"Order now, deliver when you want."</strong> The user places the order <em>now</em>, preserving the emotional satisfaction of instant-ordering.</p>
+            </div>
+
+            <div class="problem-statement-box">
+              <h3>Step 2: Reservation Windows</h3>
+              <p>Instead of a strict "Deliver at 1:00 PM," we offer a slider: <strong>"Deliver within 30 mins / 1 hour / 2 hours"</strong>. Users control a fluid window, not a rigid calendar slot.</p>
+            </div>
+
+            <div class="problem-statement-box">
+              <h3>Step 3: Continuous Adjustment</h3>
+              <p>Post-order, the confirmation screen features a 3-window slider. The user can swipe left or right to shift the delivery window by 15-minute increments seamlessly. The user remains in control until 2 hours before the earliest delivery time.</p>
+            </div>
+            
+            <p style="margin-top: 24px;"><strong>The Result:</strong> On-Demand Plus delivers the functional scheduling benefit (food at the right time) without requiring users to sacrifice control or identity. The expected outcome is a <strong>3-5x adoption increase</strong> over traditional scheduling features.</p>
           </div>
-          <img src="/assets/jtbd_page_5.png" alt="Solution: Calendar Integration" class="cs-image" />
         </div>
+
       </section>
 
       <div class="next-case reveal">
         <p>Next Case Study</p>
-        <a href="/vita-fit.html" class="btn primary-btn">Vita Fit Community Challenges &rarr;</a>
+        <a href="/vita-fit.html" class="btn primary-btn" style="border: 1px solid var(--accent-primary);">Vita Fit Community Challenges &rarr;</a>
       </div>
     </main>
 
