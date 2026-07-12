@@ -11,7 +11,7 @@ export const caseStudies = [
     url: "/x-growth.html",
     themeColor: "#1D9BF0",
     themeSecondary: "#71C9F8",
-    image: "https://logo.clearbit.com/x.com"
+    image: "/assets/x.svg"
   },
   {
     id: "spot-ride",
@@ -25,7 +25,7 @@ export const caseStudies = [
     url: "/spot-ride.html",
     themeColor: "#8B5CF6",
     themeSecondary: "#A78BFA",
-    image: "https://ui-avatars.com/api/?name=SPOT+Ride&background=8B5CF6&color=fff&size=400"
+    image: "/assets/uber.svg"
   },
   {
     id: "zepto",
@@ -39,7 +39,7 @@ export const caseStudies = [
     url: "/zepto.html",
     themeColor: "#521292",
     themeSecondary: "#D4B2FF",
-    image: "https://logo.clearbit.com/zeptonow.com"
+    image: "/assets/zepto.svg"
   },
   {
     id: "zomato",
@@ -53,7 +53,7 @@ export const caseStudies = [
     url: "/zomato.html",
     themeColor: "#E23744",
     themeSecondary: "#F07B83",
-    image: "https://logo.clearbit.com/zomato.com"
+    image: "/assets/zomato.svg"
   },
   {
     id: "jtbd",
@@ -67,7 +67,7 @@ export const caseStudies = [
     url: "/jtbd.html",
     themeColor: "#F59E0B",
     themeSecondary: "#FBBF24",
-    image: "https://ui-avatars.com/api/?name=Food+Sched&background=F59E0B&color=fff&size=400"
+    image: "/assets/swiggy.svg"
   },
   {
     id: "vita-fit",
@@ -109,6 +109,6 @@ export const caseStudies = [
     url: "/amazon-ux.html",
     themeColor: "#FF9900",
     themeSecondary: "#FFB84D",
-    image: "https://logo.clearbit.com/amazon.com"
+    image: "/assets/amazon.svg"
   }
 ];
