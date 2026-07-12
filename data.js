@@ -11,7 +11,7 @@ export const caseStudies = [
     url: "/x-growth.html",
     themeColor: "#1D9BF0",
     themeSecondary: "#71C9F8",
-    image: "/assets/x_growth_cover_1780947862783.png"
+    image: "https://logo.clearbit.com/x.com"
   },
   {
     id: "spot-ride",
@@ -25,7 +25,7 @@ export const caseStudies = [
     url: "/spot-ride.html",
     themeColor: "#8B5CF6",
     themeSecondary: "#A78BFA",
-    image: "/assets/spot_ride_cover_1780947874077.png"
+    image: "https://ui-avatars.com/api/?name=SPOT+Ride&background=8B5CF6&color=fff&size=400"
   },
   {
     id: "zepto",
@@ -39,7 +39,7 @@ export const caseStudies = [
     url: "/zepto.html",
     themeColor: "#521292",
     themeSecondary: "#D4B2FF",
-    image: "/assets/zepto_cover_1780947885298.png"
+    image: "https://logo.clearbit.com/zeptonow.com"
   },
   {
     id: "zomato",
@@ -53,7 +53,7 @@ export const caseStudies = [
     url: "/zomato.html",
     themeColor: "#E23744",
     themeSecondary: "#F07B83",
-    image: "/assets/zomato_cover_1780947897617.png"
+    image: "https://logo.clearbit.com/zomato.com"
   },
   {
     id: "jtbd",
@@ -67,7 +67,7 @@ export const caseStudies = [
     url: "/jtbd.html",
     themeColor: "#F59E0B",
     themeSecondary: "#FBBF24",
-    image: "/assets/jtbd_cover_1780947909705.png"
+    image: "https://ui-avatars.com/api/?name=Food+Sched&background=F59E0B&color=fff&size=400"
   },
   {
     id: "vita-fit",
@@ -81,7 +81,7 @@ export const caseStudies = [
     url: "/vita-fit.html",
     themeColor: "#D92525",
     themeSecondary: "#F87171",
-    image: "/assets/vita_fit_cover_1780947921685.png"
+    image: "https://ui-avatars.com/api/?name=Vita+Fit&background=D92525&color=fff&size=400"
   },
   {
     id: "growgrid",
@@ -95,7 +95,7 @@ export const caseStudies = [
     url: "/growgrid.html",
     themeColor: "#148F77",
     themeSecondary: "#45B39D",
-    image: "/assets/growgrid_cover_1780947934587.png"
+    image: "https://ui-avatars.com/api/?name=Grow+Grid&background=148F77&color=fff&size=400"
   },
   {
     id: "amazon-ux",
@@ -109,6 +109,6 @@ export const caseStudies = [
     url: "/amazon-ux.html",
     themeColor: "#FF9900",
     themeSecondary: "#FFB84D",
-    image: "/assets/amazon_ux_cover_1780947947474.png"
+    image: "https://logo.clearbit.com/amazon.com"
   }
 ];
