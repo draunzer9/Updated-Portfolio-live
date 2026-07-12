@@ -11,13 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
       card.href = filename;
       card.className = 'portfolio-card reveal';
       
-      // Determine filter category based on tags
-      let category = 'All';
-      const tagsString = study.tags ? study.tags.join(' ').toLowerCase() : '';
-      if (tagsString.includes('growth') || tagsString.includes('aarrr') || tagsString.includes('retention') || tagsString.includes('monetization')) category = 'Growth';
-      else if (tagsString.includes('ux') || tagsString.includes('jtbd') || tagsString.includes('heuristics')) category = 'UX';
-      else if (tagsString.includes('0 to 1')) category = '0-to-1';
-      else if (tagsString.includes('ai') || tagsString.includes('tech') || tagsString.includes('architecture')) category = 'Tech';
+      // Determine filter category
+      let category = study.filterCategory || 'All';
       
       card.setAttribute('data-category', category);
 
