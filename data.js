@@ -81,7 +81,7 @@ export const caseStudies = [
     url: "/vita-fit.html",
     themeColor: "#D92525",
     themeSecondary: "#F87171",
-    image: "https://ui-avatars.com/api/?name=Vita+Fit&background=D92525&color=fff&size=400"
+    image: "/assets/vitafit.svg"
   },
   {
     id: "growgrid",
@@ -95,7 +95,7 @@ export const caseStudies = [
     url: "/growgrid.html",
     themeColor: "#148F77",
     themeSecondary: "#45B39D",
-    image: "https://ui-avatars.com/api/?name=Grow+Grid&background=148F77&color=fff&size=400"
+    image: "/assets/growgrid.svg"
   },
   {
     id: "amazon-ux",
