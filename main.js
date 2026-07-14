@@ -26,29 +26,44 @@ document.addEventListener('DOMContentLoaded', () => {
       const roleHtml = `<span class="card-role">${study.category || 'PRODUCT'}</span>`;
       const dateHtml = `<span class="card-date">${study.year || '2023'}</span>`;
 
-      // Live URL badge — shown on cards that have a deployed prototype/app
+      // Live URL badge and button — shown on cards that have a deployed prototype/app
       const liveBadgeHtml = study.liveUrl ? `
-        <a href="${study.liveUrl}" target="_blank" rel="noopener" class="card-live-btn"
-           onclick="event.stopPropagation();"
-           style="
-             display:inline-flex;align-items:center;gap:6px;
-             margin-top:12px;padding:6px 14px;
-             background:rgba(${study.themeColor ? hexToRgb(study.themeColor) : '29,155,240'},0.12);
-             border:1px solid rgba(${study.themeColor ? hexToRgb(study.themeColor) : '29,155,240'},0.35);
-             border-radius:100px;
-             font-family:'JetBrains Mono',monospace;font-size:0.62rem;
-             color:${study.themeSecondary || '#71C9F8'};
-             text-transform:uppercase;letter-spacing:0.08em;
-             text-decoration:none;
-             transition:all 0.2s ease;
-             width:fit-content;
-           "
-           onmouseover="this.style.background='rgba(${study.themeColor ? hexToRgb(study.themeColor) : '29,155,240'},0.25)';this.style.transform='translateY(-1px)';"
-           onmouseout="this.style.background='rgba(${study.themeColor ? hexToRgb(study.themeColor) : '29,155,240'},0.12)';this.style.transform='translateY(0)';"
-        >
-          <span style="width:5px;height:5px;border-radius:50%;background:${study.themeSecondary || '#71C9F8'};box-shadow:0 0 6px ${study.themeSecondary || '#71C9F8'};animation:liveDot 2s ease-in-out infinite;"></span>
-          ${study.liveLabel || 'Live App'} ↗
-        </a>
+        <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
+          <div style="
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(${study.themeColor ? hexToRgb(study.themeColor) : '59,130,246'}, 0.12);
+            border: 1px solid rgba(${study.themeColor ? hexToRgb(study.themeColor) : '59,130,246'}, 0.3);
+            border-radius: 100px; padding: 6px 14px;
+            font-family: var(--font-mono); font-size: 0.68rem;
+            color: ${study.themeSecondary || '#60A5FA'};
+          ">
+            <span style="
+              width: 6px; height: 6px; border-radius: 50%;
+              background: ${study.themeSecondary || '#60A5FA'};
+              box-shadow: 0 0 8px ${study.themeSecondary || '#60A5FA'};
+              animation: liveDot 2s ease-in-out infinite;
+            "></span>
+            Live on Vercel
+          </div>
+          <a href="${study.liveUrl}" target="_blank" rel="noopener" class="btn"
+             onclick="event.stopPropagation();"
+             style="
+               display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+               background: linear-gradient(135deg, ${study.themeColor || '#3B82F6'} 0%, ${study.themeSecondary || '#60A5FA'} 100%);
+               color: #fff;
+               box-shadow: 0 6px 20px rgba(${study.themeColor ? hexToRgb(study.themeColor) : '59,130,246'}, 0.4);
+               font-family: var(--font-display); font-weight: 700;
+               padding: 12px 24px; border-radius: 8px; text-decoration: none;
+               transition: all 0.3s ease;
+               width: 100%;
+             "
+             onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 10px 25px rgba(${study.themeColor ? hexToRgb(study.themeColor) : '59,130,246'}, 0.6)';"
+             onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 6px 20px rgba(${study.themeColor ? hexToRgb(study.themeColor) : '59,130,246'}, 0.4)';"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
+            View Live App
+          </a>
+        </div>
       ` : '';
 
       card.innerHTML = `
