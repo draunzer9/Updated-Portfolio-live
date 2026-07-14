@@ -1,145 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Amazon Checkout Flow: UX Redesign | Anish Shankar</title>
-    <meta name="description" content="Applying UX laws and heuristics to identify and eliminate friction in the world's largest e-commerce checkout experience." />
-    <style>
-      :root {
-        --accent-primary: #FF9900;
-        --accent-secondary: #FFB84D;
-        --accent-primary-glow: #FF990044;
-      }
-      .insight-callout {
-        display: flex;
-        gap: 14px;
-        align-items: flex-start;
-        background: #FF990012;
-        border: 1px solid #FF990040;
-        border-left: 3px solid #FF9900;
-        border-radius: 0 10px 10px 0;
-        padding: 16px 20px;
-        margin-top: 24px;
-      }
-      .insight-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
-      .insight-callout p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; margin: 0; }
-      .cs-hero-banner {
-        background: linear-gradient(135deg, #FF990015 0%, transparent 60%);
-        border: 1px solid #FF990030;
-        border-radius: 20px;
-        padding: 3rem 2.5rem;
-        text-align: center;
-        margin-bottom: 3rem;
-        position: relative;
-        overflow: hidden;
-      }
-      .cs-hero-banner::before {
-        content: '';
-        position: absolute;
-        top: -60px; right: -60px;
-        width: 250px; height: 250px;
-        background: radial-gradient(circle, #FF990025 0%, transparent 70%);
-        pointer-events: none;
-      }
-      .cs-hero-banner::after {
-        content: '';
-        position: absolute;
-        bottom: -40px; left: -40px;
-        width: 180px; height: 180px;
-        background: radial-gradient(circle, #FFB84D18 0%, transparent 70%);
-        pointer-events: none;
-      }
-      .cs-hero-banner h1 {
-        font-family: 'Outfit', sans-serif;
-        font-size: clamp(1.8rem, 5vw, 3rem);
-        font-weight: 900;
-        letter-spacing: -0.04em;
-        line-height: 1.1;
-        margin-bottom: 1rem;
-        color: #f0eeff;
-        position: relative;
-        z-index: 1;
-      }
-      .cs-hero-banner p {
-        color: var(--text-secondary, #9489b4);
-        font-size: 1rem;
-        line-height: 1.7;
-        max-width: 560px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-      }
-      .cs-tags { margin-bottom: 1.2rem; position: relative; z-index: 1; }
-      
-    </style>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body class="case-study-page">
-    <div class="mesh-bg" aria-hidden="true">
-      <div class="mesh-orb mesh-orb-1" style="background:radial-gradient(circle,#FF990030 0%,transparent 70%);"></div>
-      <div class="mesh-orb mesh-orb-2" style="background:radial-gradient(circle,#FFB84D18 0%,transparent 70%);"></div>
-      <div class="mesh-orb mesh-orb-3" style="background:radial-gradient(circle,#FF990012 0%,transparent 70%);"></div>
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amazon Checkout UX Redesign | Anish Shankar</title>
+  <meta name="description" content="Applying UX laws and heuristics to identify and eliminate friction in Amazon's checkout flow."/>
+  <style>
+    :root{--accent-primary:#FF9900;--accent-secondary:#FFB84D;--accent-primary-glow:rgba(255,153,0,0.3);}
+    .amz-hero{background:linear-gradient(145deg,rgba(17,16,32,0.97),rgba(10,9,20,0.99));border:1px solid rgba(255,153,0,0.22);border-radius:28px;overflow:hidden;padding:3rem;margin-bottom:3rem;position:relative;}
+    .amz-hero::after{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(255,153,0,0.18) 0%,transparent 70%);pointer-events:none;}
+    .amz-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,153,0,0.1);border:1px solid rgba(255,153,0,0.3);border-radius:100px;padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:#FFB84D;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.4rem;width:fit-content;}
+    .amz-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4.5vw,3rem);font-weight:900;letter-spacing:-0.04em;line-height:1.05;margin-bottom:1rem;background:linear-gradient(135deg,#fff 30%,rgba(255,184,77,0.8) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .amz-sub{font-size:0.93rem;color:#9489b4;line-height:1.7;margin-bottom:2rem;max-width:560px;}
+    /* Before/After Comparison */
+    .ba-section{margin:2.5rem 0;}
+    .ba-label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:#FF9900;margin-bottom:1.2rem;display:flex;align-items:center;gap:8px;}
+    .ba-toggle-row{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;flex-wrap:wrap;}
+    .ba-btn{padding:8px 20px;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;border:1px solid;transition:all 0.2s;}
+    .ba-btn.before{background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3);color:#fca5a5;}
+    .ba-btn.before.active{background:rgba(239,68,68,0.25);border-color:#ef4444;}
+    .ba-btn.after{background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.3);color:#86efac;}
+    .ba-btn.after.active{background:rgba(34,197,94,0.25);border-color:#22c55e;}
+    .ba-panel{display:none;}
+    .ba-panel.active{display:block;}
+    .ba-card{background:rgba(255,153,0,0.04);border:1px solid rgba(255,153,0,0.15);border-radius:14px;overflow:hidden;}
+    .ba-card-header{padding:14px 20px;border-bottom:1px solid rgba(255,153,0,0.12);display:flex;align-items:center;gap:10px;}
+    .ba-dot{width:8px;height:8px;border-radius:50%;}
+    .ba-items{padding:1rem;}
+    .ba-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+    .ba-item:last-child{border-bottom:none;}
+    .ba-item-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
+    .ba-item-text{font-size:0.85rem;line-height:1.6;}
+    .ba-item-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.88rem;margin-bottom:4px;}
+    /* Heuristic violations */
+    .heuristic-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:2rem 0;}
+    @media(min-width:640px){.heuristic-grid{grid-template-columns:1fr 1fr;}}
+    .heuristic-card{background:rgba(255,153,0,0.05);border:1px solid rgba(255,153,0,0.16);border-radius:14px;padding:1.4rem;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);cursor:default;}
+    .heuristic-card:hover{transform:translateY(-4px);border-color:rgba(255,153,0,0.4);box-shadow:0 10px 30px rgba(255,153,0,0.12);}
+    .h-law{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:#FFB84D;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;}
+    .h-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.92rem;color:#f0eeff;margin-bottom:6px;}
+    .h-desc{font-size:0.8rem;color:#9489b4;line-height:1.6;}
+    /* gallery */
+    .gallery-lbl{font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:#5c5478;display:flex;align-items:center;gap:10px;margin:3rem 0 1.5rem;}
+    .gallery-lbl::before,.gallery-lbl::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.06);}
+    .cs-slides{display:flex;flex-direction:column;gap:1rem;}
+    .cs-slides img{width:100%;border-radius:12px;border:1px solid rgba(255,153,0,0.12);box-shadow:0 4px 24px rgba(0,0,0,0.35);transition:transform 0.3s ease;cursor:zoom-in;}
+    .cs-slides img:hover{transform:scale(1.012);}
+    .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;align-items:center;justify-content:center;}
+    .lightbox.open{display:flex;}
+    .lightbox img{max-width:90vw;max-height:90vh;border-radius:12px;}
+    .lb-close{position:absolute;top:20px;right:24px;color:#fff;font-size:2rem;cursor:pointer;background:none;border:none;}
+    .lb-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.5rem;cursor:pointer;background:rgba(255,255,255,0.08);border:none;border-radius:8px;padding:8px 16px;}
+    .lb-prev{left:16px;}.lb-next{right:16px;}
+  </style>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body class="case-study-page">
+  <div class="mesh-bg" aria-hidden="true">
+    <div class="mesh-orb mesh-orb-1" style="background:radial-gradient(circle,rgba(255,153,0,0.22) 0%,transparent 70%);"></div>
+    <div class="mesh-orb mesh-orb-2" style="background:radial-gradient(circle,rgba(255,184,77,0.12) 0%,transparent 70%);"></div>
+  </div>
+  <nav class="navbar"><a href="/index.html" class="logo">AS.</a><a href="/index.html" class="nav-btn">&larr; Portfolio</a></nav>
+  <main class="case-study-container">
+
+    <section class="amz-hero reveal">
+      <div class="amz-badge">🛍️ UX Design · Heuristics · E-commerce</div>
+      <h1 class="amz-title">Amazon Checkout:<br>UX Evaluation &amp; Redesign</h1>
+      <p class="amz-sub">Applying Hick's Law, Fitts's Law, and Nielsen's 10 Heuristics to identify and eliminate friction in the world's largest e-commerce checkout — reducing cognitive load and cart abandonment.</p>
+    </section>
+
+    <!-- UX Laws cards -->
+    <section class="reveal" style="margin-bottom:2.5rem;">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#FF9900;margin-bottom:1.2rem;">📐 UX Laws Applied</p>
+      <div class="heuristic-grid">
+        <div class="heuristic-card">
+          <div class="h-law">Hick's Law</div>
+          <div class="h-title">Too Many Decisions at Once</div>
+          <div class="h-desc">Amazon's checkout presents 14+ decision points in a single viewport. Hick's Law predicts decision time increases logarithmically — current design far exceeds the optimal threshold.</div>
+        </div>
+        <div class="heuristic-card">
+          <div class="h-law">Fitts's Law</div>
+          <div class="h-title">Small Targets, High Risk</div>
+          <div class="h-desc">Critical CTAs like "Place Order" are surrounded by equally prominent elements. Fitts's Law demands high-value actions have larger hit areas and minimal competing targets.</div>
+        </div>
+        <div class="heuristic-card">
+          <div class="h-law">Tesler's Law</div>
+          <div class="h-title">Complexity Can't Disappear</div>
+          <div class="h-desc">Every step removed from the user must be absorbed somewhere. The redesign shifts complexity to the system — auto-filling address, payment, and delivery selections from history.</div>
+        </div>
+        <div class="heuristic-card">
+          <div class="h-law">Visibility of Status</div>
+          <div class="h-title">Where Am I in Checkout?</div>
+          <div class="h-desc">Nielsen Heuristic #1 is violated: users cannot see their progress through checkout without scrolling. A persistent progress indicator reduces anxiety and increases completion rate.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before/After Toggle -->
+    <section class="ba-section reveal">
+      <div class="ba-label">⚡ Interactive · Before &amp; After</div>
+      <div class="ba-toggle-row">
+        <button class="ba-btn before active" onclick="showBA('before')">❌ Before (Current)</button>
+        <span style="color:#5c5478;font-size:0.8rem;">→</span>
+        <button class="ba-btn after" onclick="showBA('after')">✅ After (Redesign)</button>
+      </div>
+      <div class="ba-panel active" id="ba-before">
+        <div class="ba-card">
+          <div class="ba-card-header"><div class="ba-dot" style="background:#ef4444;"></div><span style="font-family:'Outfit',sans-serif;font-weight:700;color:#fca5a5;">Current Amazon Checkout — Pain Points</span></div>
+          <div class="ba-items">
+            <div class="ba-item"><div class="ba-item-icon">😵</div><div class="ba-item-text"><div class="ba-item-title" style="color:#fca5a5;">14+ Decisions Visible</div>Address, payment, delivery speed, gift wrapping, and upsells all compete for attention simultaneously.</div></div>
+            <div class="ba-item"><div class="ba-item-icon">🔍</div><div class="ba-item-text"><div class="ba-item-title" style="color:#fca5a5;">No Progress Indicator</div>Users don't know how many steps remain, increasing abandonment at any friction point.</div></div>
+            <div class="ba-item"><div class="ba-item-icon">⚠️</div><div class="ba-item-text"><div class="ba-item-title" style="color:#fca5a5;">Error Recovery Is Punishing</div>Fixing an incorrect address resets delivery options and loses selected payment method.</div></div>
+            <div class="ba-item"><div class="ba-item-icon">📦</div><div class="ba-item-text"><div class="ba-item-title" style="color:#fca5a5;">Delivery Date Buried</div>The most important piece of information (when does this arrive?) is not the most prominent element.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-panel" id="ba-after">
+        <div class="ba-card" style="border-color:rgba(34,197,94,0.25);">
+          <div class="ba-card-header" style="border-color:rgba(34,197,94,0.12);"><div class="ba-dot" style="background:#22c55e;"></div><span style="font-family:'Outfit',sans-serif;font-weight:700;color:#86efac;">Redesigned Checkout — Solutions</span></div>
+          <div class="ba-items">
+            <div class="ba-item"><div class="ba-item-icon">🎯</div><div class="ba-item-text"><div class="ba-item-title" style="color:#86efac;">Progressive Disclosure</div>Show only 3 decisions per step. Each step is validated before revealing the next — reducing cognitive load by 60%.</div></div>
+            <div class="ba-item"><div class="ba-item-icon">📍</div><div class="ba-item-text"><div class="ba-item-title" style="color:#86efac;">Persistent Step Indicator</div>A sticky 3-step progress bar (Address → Payment → Review) gives users full context at all times.</div></div>
+            <div class="ba-item"><div class="ba-item-icon">✏️</div><div class="ba-item-text"><div class="ba-item-title" style="color:#86efac;">Graceful Error Recovery</div>Inline validation with smart state persistence — fixing any field doesn't reset others.</div></div>
+            <div class="ba-item"><div class="ba-item-icon">🚀</div><div class="ba-item-text"><div class="ba-item-title" style="color:#86efac;">Delivery Date as Hero</div>Largest text on the confirmation page. Arrival date is the primary CTA anchor — not the price.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gallery-lbl">Full Case Study Deck</div>
+    <div class="cs-slides">
+      <img src="/assets/amazonux_page_1.png" alt="Slide 1" loading="eager" onclick="openLB(0)"/>
+      <img src="/assets/amazonux_page_2.png" alt="Slide 2" loading="lazy" onclick="openLB(1)"/>
+      <img src="/assets/amazonux_page_3.png" alt="Slide 3" loading="lazy" onclick="openLB(2)"/>
+      <img src="/assets/amazonux_page_4.png" alt="Slide 4" loading="lazy" onclick="openLB(3)"/>
+      <img src="/assets/amazonux_page_5.png" alt="Slide 5" loading="lazy" onclick="openLB(4)"/>
+      <img src="/assets/amazonux_page_6.png" alt="Slide 6" loading="lazy" onclick="openLB(5)"/>
+      <img src="/assets/amazonux_page_7.png" alt="Slide 7" loading="lazy" onclick="openLB(6)"/>
+      <img src="/assets/amazonux_page_8.png" alt="Slide 8" loading="lazy" onclick="openLB(7)"/>
+      <img src="/assets/amazonux_page_9.png" alt="Slide 9" loading="lazy" onclick="openLB(8)"/>
+      <img src="/assets/amazonux_page_10.png" alt="Slide 10" loading="lazy" onclick="openLB(9)"/>
     </div>
 
-    <nav class="navbar">
-      <a href="/index.html" class="logo">AS.</a>
-      <a href="/index.html" class="nav-btn">&larr; Back to Portfolio</a>
-    </nav>
-
-    <main class="case-study-container">
-      <header class="cs-hero-banner reveal">
-        <div class="cs-tags"><span class="tag">UX Design</span><span class="tag">Heuristics</span><span class="tag">E-commerce</span><span class="tag">Redesign</span></div>
-        <h1>Amazon Checkout Flow: UX Redesign</h1>
-        <p>Applying UX laws and heuristics to identify and eliminate friction in the world's largest e-commerce checkout experience.</p>
-      </header>
-
-      <section class="cs-content">
-        <div class="cs-block reveal">
-          <img src="/assets/amazonux_page_1.png" alt="Amazon UX Title" class="cs-image" loading="lazy" />
-          <img src="/assets/amazonux_page_2.png" alt="Flow" class="cs-image" loading="lazy" />
-          
-        </div>
-        <div class="cs-block reveal">
-          <div class="cs-text">
-            <h2>Heuristic Evaluation</h2>
-            <p>Identifying violations in system status visibility and efficiency of use across the checkout journey.</p>
-            
-          </div>
-          <img src="/assets/amazonux_page_3.png" alt="Visibility Issues" class="cs-image" loading="lazy" />
-          <img src="/assets/amazonux_page_4.png" alt="Recognition & Efficiency" class="cs-image" loading="lazy" />
-          
-        </div>
-        <div class="cs-block reveal">
-          <div class="cs-text">
-            <h2>Applying UX Laws</h2>
-            <p>How Hick's Law, Tesler's Law, and Fitts's Law explain current friction points in the Amazon UI.</p>
-            <div class="insight-callout"><span class="insight-icon">💡</span><p>Hick's Law shows that the current checkout presents 14+ decisions in a single scroll — well above the cognitive threshold for efficient decision-making.</p></div>
-          </div>
-          <img src="/assets/amazonux_page_5.png" alt="UX Laws: Decision" class="cs-image" loading="lazy" />
-          <img src="/assets/amazonux_page_6.png" alt="UX Laws: Complexity" class="cs-image" loading="lazy" />
-          <img src="/assets/amazonux_page_7.png" alt="UX Laws: Target Size" class="cs-image" loading="lazy" />
-          
-        </div>
-        <div class="cs-block reveal">
-          <div class="cs-text">
-            <h2>Redesign Strategy</h2>
-            <p>Targeted solutions for clarity, friction reduction, and robust error recovery across the entire checkout funnel.</p>
-            
-          </div>
-          <img src="/assets/amazonux_page_8.png" alt="Redesign: Clarity" class="cs-image" loading="lazy" />
-          <img src="/assets/amazonux_page_9.png" alt="Redesign: Reduce Friction" class="cs-image" loading="lazy" />
-          <img src="/assets/amazonux_page_10.png" alt="Redesign: Error Recovery" class="cs-image" loading="lazy" />
-          
-        </div>
-      </section>
-
-      <div class="next-case reveal">
-        <p>Next Case Study</p>
-        <a href="/index.html" class="btn primary-btn" style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;">Back to Portfolio &rarr;</a>
-      </div>
-    </main>
-
-    <script type="module" src="./main.js"></script>
-  </body>
+    <div class="next-case reveal" style="margin-top:4rem;">
+      <p>Next Case Study</p>
+      <a href="/index.html" class="btn primary-btn" style="font-family:'Outfit',sans-serif;font-weight:700;">Back to Portfolio &rarr;</a>
+    </div>
+  </main>
+  <div class="lightbox" id="lb"><button class="lb-close" onclick="closeLB()">×</button><button class="lb-nav lb-prev" onclick="navLB(-1)">‹</button><img id="lb-img" src="" alt=""/><button class="lb-nav lb-next" onclick="navLB(1)">›</button></div>
+  <script type="module" src="./main.js"></script>
+  <script>
+    function showBA(mode){document.querySelectorAll('.ba-btn').forEach(b=>b.classList.toggle('active',b.classList.contains(mode)));document.querySelectorAll('.ba-panel').forEach(p=>p.classList.toggle('active',p.id==='ba-'+mode));}
+    const imgs=['/assets/amazonux_page_1.png','/assets/amazonux_page_2.png','/assets/amazonux_page_3.png','/assets/amazonux_page_4.png','/assets/amazonux_page_5.png','/assets/amazonux_page_6.png','/assets/amazonux_page_7.png','/assets/amazonux_page_8.png','/assets/amazonux_page_9.png','/assets/amazonux_page_10.png'];
+    let cur=0;
+    function openLB(i){cur=i;document.getElementById('lb-img').src=imgs[i];document.getElementById('lb').classList.add('open');}
+    function closeLB(){document.getElementById('lb').classList.remove('open');}
+    function navLB(d){cur=(cur+d+imgs.length)%imgs.length;document.getElementById('lb-img').src=imgs[cur];}
+    document.getElementById('lb').addEventListener('click',e=>{if(e.target===document.getElementById('lb'))closeLB();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')navLB(1);if(e.key==='ArrowLeft')navLB(-1);});
+  </script>
+</body>
 </html>

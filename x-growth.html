@@ -1,174 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>X (Twitter) Growth Strategy | Anish Shankar</title>
-    <meta name="description" content="AARRR funnel analysis and product strategy for converting X's massive public attention into trusted, long-term engagement." />
-    <style>
-      :root {
-        --accent-primary: #1D9BF0;
-        --accent-secondary: #71C9F8;
-        --accent-primary-glow: #1D9BF044;
-      }
-      .insight-callout {
-        display: flex;
-        gap: 14px;
-        align-items: flex-start;
-        background: #1D9BF012;
-        border: 1px solid #1D9BF040;
-        border-left: 3px solid #1D9BF0;
-        border-radius: 0 10px 10px 0;
-        padding: 16px 20px;
-        margin-top: 24px;
-      }
-      .insight-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
-      .insight-callout p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; margin: 0; }
-      .cs-hero-banner {
-        background: linear-gradient(135deg, #1D9BF015 0%, transparent 60%);
-        border: 1px solid #1D9BF030;
-        border-radius: 20px;
-        padding: 3rem 2.5rem;
-        text-align: center;
-        margin-bottom: 3rem;
-        position: relative;
-        overflow: hidden;
-      }
-      .cs-hero-banner::before {
-        content: '';
-        position: absolute;
-        top: -60px; right: -60px;
-        width: 250px; height: 250px;
-        background: radial-gradient(circle, #1D9BF025 0%, transparent 70%);
-        pointer-events: none;
-      }
-      .cs-hero-banner::after {
-        content: '';
-        position: absolute;
-        bottom: -40px; left: -40px;
-        width: 180px; height: 180px;
-        background: radial-gradient(circle, #71C9F818 0%, transparent 70%);
-        pointer-events: none;
-      }
-      .cs-hero-banner h1 {
-        font-family: 'Outfit', sans-serif;
-        font-size: clamp(1.8rem, 5vw, 3rem);
-        font-weight: 900;
-        letter-spacing: -0.04em;
-        line-height: 1.1;
-        margin-bottom: 1rem;
-        color: #f0eeff;
-        position: relative;
-        z-index: 1;
-      }
-      .cs-hero-banner p {
-        color: var(--text-secondary, #9489b4);
-        font-size: 1rem;
-        line-height: 1.7;
-        max-width: 560px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-      }
-      .cs-tags { margin-bottom: 1.2rem; position: relative; z-index: 1; }
-      
-  .x-prototype-cta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 3rem 2rem;
-    background: linear-gradient(135deg, #1D9BF015 0%, transparent 60%);
-    border: 1px solid #1D9BF040;
-    border-radius: 16px;
-    text-align: center;
-  }
-  .x-prototype-cta h2 { font-family: 'Outfit', sans-serif; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem; color: #71C9F8; }
-  .x-prototype-cta p { color: var(--text-secondary, #9489b4); font-size: 0.95rem; max-width: 480px; line-height: 1.7; margin-bottom: 1rem; }
-  .btn-x-live { display: inline-flex; align-items: center; gap: 10px; padding: 14px 36px; background: linear-gradient(135deg, #1D9BF0, #71C9F8); color: #fff; border-radius: 8px; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1rem; text-decoration: none; box-shadow: 0 8px 30px #1D9BF050; transition: all 0.25s ease; }
-  .btn-x-live:hover { transform: translateY(-3px); box-shadow: 0 14px 40px #1D9BF080; }
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>X (Twitter) Growth Strategy | Anish Shankar</title>
+  <meta name="description" content="AARRR funnel analysis and product growth strategy for X (Twitter). Includes a live deployed interactive prototype."/>
+  <style>
+    :root {
+      --accent-primary: #1D9BF0;
+      --accent-secondary: #71C9F8;
+      --accent-primary-glow: rgba(29,155,240,0.3);
+    }
+    /* ── FEATURED HERO (like GymBuddy) ── */
+    .x-featured-card {
+      position: relative;
+      background: linear-gradient(145deg, rgba(17,16,32,0.97), rgba(10,9,20,0.99));
+      border: 1px solid rgba(29,155,240,0.28);
+      border-radius: 28px;
+      overflow: hidden;
+      padding: 2.8rem 2.8rem 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 0 0 1px rgba(29,155,240,0.1), 0 30px 70px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.05);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease;
+    }
+    .x-featured-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 0 1px rgba(29,155,240,0.3), 0 50px 90px rgba(0,0,0,0.65), 0 0 60px rgba(29,155,240,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+    @media (min-width: 768px) {
+      .x-featured-card { grid-template-columns: 1fr 1fr; padding: 3rem 3.5rem 0; }
+    }
+    .x-card-glow-top {
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(29,155,240,0.18) 0%, transparent 70%);
+      pointer-events: none;
+      animation: orbFloat2 14s ease-in-out infinite;
+    }
+    @keyframes orbFloat2 {
+      0%,100%{transform:translate(0,0) scale(1);}
+      50%{transform:translate(-30px,30px) scale(1.08);}
+    }
+    .x-live-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(29,155,240,0.12);
+      border: 1px solid rgba(29,155,240,0.35);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem; color: #71C9F8;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 1.5rem; width: fit-content;
+    }
+    .x-live-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #1D9BF0;
+      box-shadow: 0 0 8px #1D9BF0;
+      animation: livePulse 2s ease-in-out infinite;
+    }
+    @keyframes livePulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(0.8);} }
+    .x-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 5.5vw, 3.5rem);
+      font-weight: 900; letter-spacing: -0.05em; line-height: 1;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 30%, rgba(29,155,240,0.7) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .x-sub { font-size: 0.95rem; color: var(--text-secondary, #9489b4); line-height: 1.7; margin-bottom: 2rem; max-width: 420px; }
+    .x-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.8rem; }
+    .x-tag {
+      background: rgba(29,155,240,0.08); border: 1px solid rgba(29,155,240,0.22);
+      color: #71C9F8; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem; padding: 4px 10px; border-radius: 4px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .x-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 2.8rem; }
+    .btn-x-prototype {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 28px;
+      background: linear-gradient(135deg, #1D9BF0, #71C9F8);
+      color: #fff; border-radius: 8px;
+      font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; box-shadow: 0 6px 28px rgba(29,155,240,0.5);
+      transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .btn-x-prototype:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 40px rgba(29,155,240,0.7); }
+    .btn-x-scroll {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 22px;
+      background: rgba(29,155,240,0.06);
+      border: 1px solid rgba(29,155,240,0.28);
+      color: #93c5fd; border-radius: 8px;
+      font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; transition: all 0.25s ease;
+    }
+    .btn-x-scroll:hover { background: rgba(29,155,240,0.15); color: #fff; border-color: rgba(29,155,240,0.5); transform: translateY(-2px); }
 
-    </style>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body class="case-study-page">
-    <div class="mesh-bg" aria-hidden="true">
-      <div class="mesh-orb mesh-orb-1" style="background:radial-gradient(circle,#1D9BF030 0%,transparent 70%);"></div>
-      <div class="mesh-orb mesh-orb-2" style="background:radial-gradient(circle,#71C9F818 0%,transparent 70%);"></div>
-      <div class="mesh-orb mesh-orb-3" style="background:radial-gradient(circle,#1D9BF012 0%,transparent 70%);"></div>
+    /* X logo visual panel */
+    .x-visual-panel {
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-top: 2rem;
+    }
+    .x-mockup {
+      width: 100%; max-width: 320px;
+      background: #000;
+      border-radius: 16px 16px 0 0;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-bottom: none;
+      padding: 1.5rem;
+      box-shadow: 0 -20px 60px rgba(29,155,240,0.15), inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+    .x-mockup-header {
+      display: flex; align-items: center; gap: 12px;
+      border-bottom: 1px solid #2f3336; padding-bottom: 14px; margin-bottom: 14px;
+    }
+    .x-logo-circle {
+      width: 32px; height: 32px; background: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .x-mockup-tabs { display: flex; gap: 4px; }
+    .x-tab {
+      flex: 1; text-align: center; padding: 8px 0;
+      font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #71767b;
+      border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.2s;
+    }
+    .x-tab.active { color: #fff; border-bottom-color: #1D9BF0; }
+    .x-feed-item {
+      display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #2f3336;
+    }
+    .x-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg,#1D9BF0,#71C9F8); flex-shrink: 0; }
+    .x-feed-lines { flex: 1; }
+    .x-feed-line { height: 8px; border-radius: 4px; background: #2f3336; margin-bottom: 6px; }
+    .x-feed-line.w80 { width: 80%; }
+    .x-feed-line.w60 { width: 60%; }
+    .x-feed-line.w90 { width: 90%; }
+
+    /* ── AARRR FUNNEL TABS ── */
+    .aarrr-section { margin: 3rem 0; }
+    .aarrr-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.12em; color: #1D9BF0;
+      display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;
+    }
+    .aarrr-label::before { content:''; width:20px; height:1px; background:#1D9BF0; }
+    .aarrr-tabs { display: flex; gap: 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(29,155,240,0.2); margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .aarrr-tab {
+      flex: 1; min-width: 80px; padding: 12px 8px; text-align: center;
+      font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.78rem;
+      cursor: pointer; transition: all 0.2s; border: none; outline: none;
+      background: rgba(29,155,240,0.04); color: #71767b; border-right: 1px solid rgba(29,155,240,0.15);
+    }
+    .aarrr-tab:last-child { border-right: none; }
+    .aarrr-tab.active { background: rgba(29,155,240,0.18); color: #fff; }
+    .aarrr-tab .tab-pct {
+      display: block; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; margin-top: 2px; opacity: 0.6;
+    }
+    .aarrr-panel { display: none; }
+    .aarrr-panel.active { display: block; }
+    .aarrr-panel-inner {
+      background: rgba(29,155,240,0.06); border: 1px solid rgba(29,155,240,0.2);
+      border-radius: 14px; padding: 1.8rem;
+    }
+    .aarrr-stage-name {
+      font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800;
+      letter-spacing: -0.02em; color: #1D9BF0; margin-bottom: 0.5rem;
+    }
+    .aarrr-stage-desc { color: var(--text-secondary, #9489b4); line-height: 1.7; font-size: 0.9rem; margin-bottom: 1rem; }
+    .aarrr-finding {
+      background: rgba(29,155,240,0.08); border-left: 3px solid #1D9BF0;
+      border-radius: 0 8px 8px 0; padding: 12px 16px;
+      font-size: 0.85rem; color: #bfdbfe; line-height: 1.6;
+    }
+    .aarrr-bar-wrap { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+    .aarrr-bar-bg { flex: 1; height: 6px; background: rgba(29,155,240,0.1); border-radius: 3px; overflow: hidden; }
+    .aarrr-bar-fill { height: 100%; background: linear-gradient(90deg,#1D9BF0,#71C9F8); border-radius: 3px; transition: width 0.6s ease; }
+    .aarrr-bar-pct { font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#71C9F8; width:36px; }
+
+    /* ── GALLERY ── */
+    .gallery-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-secondary,#9489b4);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; margin-top: 3rem;
+    }
+    .gallery-label::before { content:''; flex:1; height:1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08)); }
+    .gallery-label::after { content:''; flex:1; height:1px; background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent); }
+    .slide-gallery { display: flex; flex-direction: column; gap: 1rem; }
+    .slide-gallery img {
+      width: 100%; border-radius: 12px;
+      border: 1px solid rgba(29,155,240,0.15);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: zoom-in;
+    }
+    .slide-gallery img:hover { transform: scale(1.015); box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(29,155,240,0.15); }
+
+    /* Lightbox */
+    .lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center; }
+    .lightbox.open { display:flex; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 12px; }
+    .lightbox-close { position:absolute; top:20px; right:24px; color:#fff; font-size:2rem; cursor:pointer; background:none; border:none; line-height:1; }
+    .lightbox-nav { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:2.5rem; cursor:pointer; background:rgba(255,255,255,0.08); border:none; border-radius:8px; padding:8px 16px; transition:background 0.2s; }
+    .lightbox-nav:hover { background:rgba(255,255,255,0.16); }
+    .lightbox-prev { left:16px; }
+    .lightbox-next { right:16px; }
+  </style>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body class="case-study-page">
+  <div class="mesh-bg" aria-hidden="true">
+    <div class="mesh-orb mesh-orb-1" style="background:radial-gradient(circle,rgba(29,155,240,0.28) 0%,transparent 70%);"></div>
+    <div class="mesh-orb mesh-orb-2" style="background:radial-gradient(circle,rgba(113,201,248,0.15) 0%,transparent 70%);"></div>
+    <div class="mesh-orb mesh-orb-3" style="background:radial-gradient(circle,rgba(29,155,240,0.1) 0%,transparent 70%);"></div>
+  </div>
+
+  <nav class="navbar"><a href="/index.html" class="logo">AS.</a><a href="/index.html" class="nav-btn">&larr; Portfolio</a></nav>
+
+  <main class="case-study-container">
+
+    <!-- ── FEATURED HERO ── -->
+    <section class="x-featured-card reveal" style="margin-bottom:3rem;">
+      <div class="x-card-glow-top"></div>
+
+      <div style="position:relative;z-index:1;">
+        <div class="x-live-badge"><span class="x-live-dot"></span>Live Prototype on Vercel</div>
+        <h1 class="x-title">X Growth<br>Strategy</h1>
+        <p class="x-sub">AARRR funnel analysis and product strategy for converting X's massive public attention into trusted, long-term engagement — with a deployed interactive prototype.</p>
+        <div class="x-tags">
+          <span class="x-tag">Growth</span><span class="x-tag">AARRR</span>
+          <span class="x-tag">Strategy</span><span class="x-tag">Social Media</span>
+        </div>
+        <div class="x-actions">
+          <a href="https://x-reimagined-c02fzlf9g-anish-shankar-s-projects.vercel.app/" target="_blank" rel="noopener" class="btn-x-prototype">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
+            Launch Live Prototype
+          </a>
+          <a href="#analysis" class="btn-x-scroll">Read Analysis ↓</a>
+        </div>
+      </div>
+
+      <!-- X Mockup Visual -->
+      <div class="x-visual-panel">
+        <div class="x-mockup">
+          <div class="x-mockup-header">
+            <div class="x-logo-circle">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622z"/></svg>
+            </div>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:#71767b;">@X Reimagined</span>
+          </div>
+          <div class="x-mockup-tabs">
+            <div class="x-tab active">For You</div>
+            <div class="x-tab">Following</div>
+            <div class="x-tab">Trending</div>
+          </div>
+          <div style="margin-top:12px;">
+            <div class="x-feed-item"><div class="x-avatar"></div><div class="x-feed-lines"><div class="x-feed-line w80"></div><div class="x-feed-line w90"></div><div class="x-feed-line w60"></div></div></div>
+            <div class="x-feed-item"><div class="x-avatar" style="background:linear-gradient(135deg,#9b51e0,#00d2ff);"></div><div class="x-feed-lines"><div class="x-feed-line w60"></div><div class="x-feed-line w80"></div></div></div>
+            <div class="x-feed-item"><div class="x-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444);"></div><div class="x-feed-lines"><div class="x-feed-line w90"></div><div class="x-feed-line w60"></div><div class="x-feed-line w80"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── INTERACTIVE AARRR FUNNEL ── -->
+    <section id="analysis" class="reveal" style="margin-bottom:3rem;">
+      <div class="aarrr-label">Interactive · AARRR Funnel</div>
+      <div class="aarrr-tabs" role="tablist">
+        <button class="aarrr-tab active" onclick="showTab(0)" role="tab">Acquisition<span class="tab-pct">100%</span></button>
+        <button class="aarrr-tab" onclick="showTab(1)" role="tab">Activation<span class="tab-pct">42%</span></button>
+        <button class="aarrr-tab" onclick="showTab(2)" role="tab">Retention<span class="tab-pct">28%</span></button>
+        <button class="aarrr-tab" onclick="showTab(3)" role="tab">Revenue<span class="tab-pct">11%</span></button>
+        <button class="aarrr-tab" onclick="showTab(4)" role="tab">Referral<span class="tab-pct">9%</span></button>
+      </div>
+      <div id="aarrr-panels">
+        <div class="aarrr-panel active">
+          <div class="aarrr-panel-inner">
+            <div class="aarrr-stage-name">Acquisition — Where X Wins</div>
+            <div class="aarrr-stage-desc">X dominates public discourse. Viral screenshots, quoted tweets, and embedded posts generate massive inbound traffic from outside the platform. This is the engine's fuel — but it's leaking badly at the next stage.</div>
+            <div class="aarrr-finding">🔑 Key Finding: External traffic via viral screenshots is NOT converting to signups. Users view content through embeds and never hit the registration wall.</div>
+            <div class="aarrr-bar-wrap"><span style="font-size:0.75rem;color:#9489b4;width:90px;">Traffic Capture</span><div class="aarrr-bar-bg"><div class="aarrr-bar-fill" style="width:95%;"></div></div><span class="aarrr-bar-pct">95%</span></div>
+            <div class="aarrr-bar-wrap"><span style="font-size:0.75rem;color:#9489b4;width:90px;">Signup Conversion</span><div class="aarrr-bar-bg"><div class="aarrr-bar-fill" style="width:42%;"></div></div><span class="aarrr-bar-pct">42%</span></div>
+          </div>
+        </div>
+        <div class="aarrr-panel">
+          <div class="aarrr-panel-inner">
+            <div class="aarrr-stage-name">Activation — The Broken Moment</div>
+            <div class="aarrr-stage-desc">New users land on an unfiltered, chaotic feed full of strangers. The "aha moment" — finding exactly the content you care about — is delayed by days. Most users churn before they ever feel the platform's value.</div>
+            <div class="aarrr-finding">🔑 Key Finding: Immediate feed confusion and information overload delays the user's "aha moment," causing over 58% early churn within the first session.</div>
+            <div class="aarrr-bar-wrap"><span style="font-size:0.75rem;color:#9489b4;width:90px;">Aha Moment &lt;5 min</span><div class="aarrr-bar-bg"><div class="aarrr-bar-fill" style="width:18%;"></div></div><span class="aarrr-bar-pct">18%</span></div>
+            <div class="aarrr-bar-wrap"><span style="font-size:0.75rem;color:#9489b4;width:90px;">Day 1 Retention</span><div class="aarrr-bar-bg"><div class="aarrr-bar-fill" style="width:42%;"></div></div><span class="aarrr-bar-pct">42%</span></div>
+          </div>
+        </div>
+        <div class="aarrr-panel">
+          <div class="aarrr-panel-inner">
+            <div class="aarrr-stage-name">Retention — Trust & Toxicity</div>
+            <div class="aarrr-stage-desc">Both creators and power users report algorithmic distrust — they cannot predict what content gets amplified. Toxicity in replies compounds this, making sharing feel risky. Premium subscribers churn at disproportionate rates.</div>
+            <div class="aarrr-finding">🔑 Key Finding: Algorithm opacity is a top churn driver. Users don't understand WHY specific content appears, destroying the feedback loop needed to make the platform feel "like mine."</div>
+            <div class="aarrr-bar-wrap"><span style="font-size:0.75rem;color:#9489b4;width:90px;">Day 30 Retention</span><div class="aarrr-bar-bg"><div class="aarrr-bar-fill" style="width:28%;"></div></div><span class="aarrr-bar-pct">28%</span></div>
+            <div class="aarrr-bar-wrap"><span style="font-size:0.75rem;color:#9489b4;width:90px;">Creator Satisfaction</span><div class="aarrr-bar-bg"><div class="aarrr-bar-fill" style="width:31%;"></div></div><span class="aarrr-bar-pct">31%</span></div>
+          </div>
+        </div>
+        <div class="aarrr-panel">
+          <div class="aarrr-panel-inner">
+            <div class="aarrr-stage-name">Revenue — The Monetization Gap</div>
+            <div class="aarrr-stage-desc">X Premium adoption remains low. Users cannot clearly articulate the value of the subscription relative to the free tier. The paywall on features feels arbitrary rather than earned through platform value.</div>
+            <div class="aarrr-finding">🔑 Key Finding: RICE analysis scores "Smart Onboarding" at 129.6 — the single highest-impact initiative to unlock the entire revenue funnel downstream.</div>
+            <div class="aarrr-bar-wrap"><span style="font-size:0.75rem;color:#9489b4;width:90px;">Premium Conversion</span><div class="aarrr-bar-bg"><div class="aarrr-bar-fill" style="width:11%;"></div></div><span class="aarrr-bar-pct">11%</span></div>
+          </div>
+        </div>
+        <div class="aarrr-panel">
+          <div class="aarrr-panel-inner">
+            <div class="aarrr-stage-name">Referral — Viral Loops Untapped</div>
+            <div class="aarrr-stage-desc">X has viral sharing DNA, but lacks structured referral mechanics. Users share content externally but the platform doesn't capitalize on these moments to drive friend invitations or cohort building.</div>
+            <div class="aarrr-finding">🔑 Opportunity: Live Event Hubs — building shared-context viewing rooms around real-time events — can transform passive external sharing into active platform referrals.</div>
+            <div class="aarrr-bar-wrap"><span style="font-size:0.75rem;color:#9489b4;width:90px;">Structured Referrals</span><div class="aarrr-bar-bg"><div class="aarrr-bar-fill" style="width:9%;"></div></div><span class="aarrr-bar-pct">9%</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SLIDE GALLERY ── -->
+    <div class="gallery-label">Full Analysis Deck</div>
+    <div class="slide-gallery" id="gallery">
+      <img src="/assets/x_growth_page_3.png" alt="Slide 3" loading="eager" onclick="openLightbox(0)"/>
+      <img src="/assets/x_growth_page_4.png" alt="Slide 4" loading="lazy" onclick="openLightbox(1)"/>
+      <img src="/assets/x_growth_page_6.png" alt="Slide 6" loading="lazy" onclick="openLightbox(2)"/>
+      <img src="/assets/x_growth_page_7.png" alt="Slide 7" loading="lazy" onclick="openLightbox(3)"/>
+      <img src="/assets/x_growth_page_10.png" alt="Slide 10" loading="lazy" onclick="openLightbox(4)"/>
+      <img src="/assets/x_growth_page_14.png" alt="Slide 14" loading="lazy" onclick="openLightbox(5)"/>
+      <img src="/assets/x_growth_page_15.png" alt="Slide 15" loading="lazy" onclick="openLightbox(6)"/>
+      <img src="/assets/x_growth_page_16.png" alt="Slide 16" loading="lazy" onclick="openLightbox(7)"/>
+      <img src="/assets/x_growth_page_17.png" alt="Slide 17" loading="lazy" onclick="openLightbox(8)"/>
     </div>
 
-    <nav class="navbar">
-      <a href="/index.html" class="logo">AS.</a>
-      <a href="/index.html" class="nav-btn">&larr; Back to Portfolio</a>
-    </nav>
+    <div class="next-case reveal" style="margin-top:4rem;">
+      <p>Next Case Study</p>
+      <a href="/zepto.html" class="btn primary-btn" style="font-family:'Outfit',sans-serif;font-weight:700;">Zepto AOV Optimization &rarr;</a>
+    </div>
+  </main>
 
-    <main class="case-study-container">
-      <header class="cs-hero-banner reveal">
-        <div class="cs-tags"><span class="tag">Growth</span><span class="tag">AARRR</span><span class="tag">Strategy</span><span class="tag">Social Media</span></div>
-        <h1>X (Twitter) Growth Strategy</h1>
-        <p>AARRR funnel analysis and product strategy for converting X's massive public attention into trusted, long-term engagement.</p>
-      </header>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
+    <img id="lightbox-img" src="" alt=""/>
+    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">›</button>
+  </div>
 
-      <section class="cs-content">
-        <div class="cs-block reveal">
-          <div class="cs-text">
-            <h2>AARRR Funnel Mapping</h2>
-            <p>I mapped out the end-to-end flow from discovery to referral. The platform has enormous attention, but significant friction points exist across Activation and Retention.</p>
-            <div class="insight-callout"><span class="insight-icon">💡</span><p>The Core Challenge: X's growth opportunity is not about attracting more attention—it already dominates public discourse. The real problem is an inability to convert massive public attention into trusted, personalized, and long-term engagement.</p></div>
-          </div>
-          <img src="/assets/x_growth_page_3.png" alt="User Journey Mapping" class="cs-image" loading="lazy" />
-          <img src="/assets/x_growth_page_4.png" alt="AARRR Funnel Overview" class="cs-image" loading="lazy" />
-          
-        </div>
-        <div class="cs-block reveal">
-          <div class="cs-text">
-            <h2>Activation & Retention Blockers</h2>
-            <p>During Activation, new users face severe information overload and low recommendation transparency. In Retention, both toxicity and an algorithm trust deficit cause creators and premium users to churn.</p>
-            
-          </div>
-          <img src="/assets/x_growth_page_6.png" alt="Activation" class="cs-image" loading="lazy" />
-          <img src="/assets/x_growth_page_7.png" alt="Retention" class="cs-image" loading="lazy" />
-          
-        </div>
-        <div class="cs-block reveal">
-          <div class="cs-text">
-            <h2>Strategic Epics to Drive Growth</h2>
-            <p>To convert massive public attention into trusted engagement, I formulated three core product initiatives mapped to the most critical AARRR bottleneck stages.</p>
-            
-          </div>
-          <img src="/assets/x_growth_page_10.png" alt="Epics to Drive Growth" class="cs-image" loading="lazy" />
-          
-        </div>
-        <div class="cs-block reveal">
-          <div class="cs-text">
-            <h2>RICE Prioritization</h2>
-            <p>Using the RICE framework, I scored and ranked the epics. "Smart Onboarding & Personalized Feed" ranked #1 with a score of 129.6 because it touches the widest cohort and directly solves the largest early-retention leakage.</p>
-            <div class="insight-callout"><span class="insight-icon">💡</span><p>The platform already has the attention. The real challenge is converting it into trust.</p></div>
-          </div>
-          <img src="/assets/x_growth_page_14.png" alt="RICE Prioritization" class="cs-image" loading="lazy" />
-          <img src="/assets/x_growth_page_15.png" alt="RICE Score Rationale" class="cs-image" loading="lazy" />
-          <img src="/assets/x_growth_page_16.png" alt="Strategic Recommendation" class="cs-image" loading="lazy" />
-          <img src="/assets/x_growth_page_17.png" alt="The Platform Has The Attention" class="cs-image" loading="lazy" />
-          
-        </div>
-      
-        <div class="x-prototype-cta reveal">
-          <h2>⚡ Interactive Prototype</h2>
-          <p>I built a fully functional prototype of the improved X experience — demonstrating Smart Onboarding and Live Event Hubs in action.</p>
-          <a href="https://x-reimagined-c02fzlf9g-anish-shankar-s-projects.vercel.app/" target="_blank" rel="noopener" class="btn-x-live">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
-            Launch Live X Prototype
-          </a>
-        </div>
-      </section>
-
-      <div class="next-case reveal">
-        <p>Next Case Study</p>
-        <a href="/zepto.html" class="btn primary-btn" style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;">Zepto AOV Optimization &rarr;</a>
-      </div>
-    </main>
-
-    <script type="module" src="./main.js"></script>
-  </body>
+  <script type="module" src="./main.js"></script>
+  <script>
+    // AARRR tabs
+    function showTab(i) {
+      document.querySelectorAll('.aarrr-tab').forEach((t,j)=>t.classList.toggle('active',i===j));
+      document.querySelectorAll('.aarrr-panel').forEach((p,j)=>p.classList.toggle('active',i===j));
+    }
+    // Lightbox
+    const imgs = [
+      '/assets/x_growth_page_3.png','/assets/x_growth_page_4.png',
+      '/assets/x_growth_page_6.png','/assets/x_growth_page_7.png',
+      '/assets/x_growth_page_10.png','/assets/x_growth_page_14.png',
+      '/assets/x_growth_page_15.png','/assets/x_growth_page_16.png',
+      '/assets/x_growth_page_17.png'
+    ];
+    let cur = 0;
+    function openLightbox(i){cur=i;document.getElementById('lightbox-img').src=imgs[i];document.getElementById('lightbox').classList.add('open');}
+    function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
+    function navLightbox(d){cur=(cur+d+imgs.length)%imgs.length;document.getElementById('lightbox-img').src=imgs[cur];}
+    document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();if(e.key==='ArrowRight')navLightbox(1);if(e.key==='ArrowLeft')navLightbox(-1);});
+  </script>
+</body>
 </html>
