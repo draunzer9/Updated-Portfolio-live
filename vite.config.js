@@ -13,7 +13,8 @@ export default defineConfig({
         vitaFit: resolve(__dirname, 'vita-fit.html'),
         xGrowth: resolve(__dirname, 'x-growth.html'),
         zepto: resolve(__dirname, 'zepto.html'),
-        zomato: resolve(__dirname, 'zomato.html')
+        zomato: resolve(__dirname, 'zomato.html'),
+        gymbuddy: resolve(__dirname, 'gymbuddy.html')
       }
     }
   }
