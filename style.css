@@ -1162,96 +1162,102 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* ── CTA GRID & 3D RESUME CARD ── */
-.cta-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-  align-items: stretch;
-}
-@media (max-width: 768px) {
-  .cta-grid {
-    grid-template-columns: 1fr;
-  }
-}
-.cta-content-left {
-  margin: 0;
-  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
-  text-align: left; height: 100%;
-}
-.cta-content-right {
-  margin: 0; padding: 0; background: none; border: none;
-  display: flex; align-items: stretch;
-}
-
-.resume-3d-card {
+/* ── RESUME PORTAL ── */
+.resume-portal {
+  padding: 6rem 0;
   width: 100%;
-  background: transparent; border: none; cursor: pointer; padding: 0;
-  perspective: 1000px;
 }
-.resume-3d-inner {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  padding: 3rem 2rem;
-  height: 100%;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-  transform-style: preserve-3d;
+.resume-portal-inner {
   position: relative;
+  width: 100%;
+  border-radius: 40px;
   overflow: hidden;
+  padding: 8rem 2rem;
+  display: flex; justify-content: center; align-items: center; text-align: center;
+  background: #000;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 40px 100px -20px rgba(124, 58, 237, 0.3);
 }
-.resume-3d-inner::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.15), transparent 70%);
-  opacity: 0; transition: opacity 0.4s ease;
+.rp-bg {
+  position: absolute; inset: -50%;
+  background: conic-gradient(from 0deg at 50% 50%, #7c3aed 0deg, #1d9bf0 90deg, #10b981 180deg, #f59e0b 270deg, #7c3aed 360deg);
+  opacity: 0.15; filter: blur(80px);
+  animation: spinBg 20s linear infinite;
+  z-index: 0;
 }
-.resume-3d-card:hover .resume-3d-inner {
-  border-color: rgba(124, 58, 237, 0.4);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(124, 58, 237, 0.2);
-  /* The JS will handle the actual rotation */
+@keyframes spinBg {
+  100% { transform: rotate(360deg); }
 }
-.resume-3d-card:hover .resume-3d-inner::before { opacity: 1; }
+.rp-content {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+}
+.rp-badge {
+  font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.2em;
+  color: #10b981; text-transform: uppercase;
+  padding: 8px 16px; border-radius: 100px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.1);
+}
+.rp-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 900; line-height: 1; letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+}
+.resume-portal-inner:hover .rp-title {
+  -webkit-text-stroke: 0px transparent;
+  color: #fff;
+  text-shadow: 0 0 40px rgba(255,255,255,0.5), 0 0 100px rgba(124, 58, 237, 0.6);
+}
+.rp-subtitle {
+  font-size: 1.1rem; color: var(--text-secondary); max-width: 500px;
+  margin-bottom: 2rem;
+}
 
-.resume-icon-wrapper {
-  width: 70px; height: 70px;
-  background: rgba(124, 58, 237, 0.1);
-  border: 1px solid rgba(124, 58, 237, 0.3);
-  border-radius: 20px;
+/* Magnetic Button */
+.magnetic-wrap {
+  position: relative;
+  display: inline-block;
+  padding: 40px; /* Magnetic catch area */
+  margin: -40px;
+}
+.magnetic-btn {
+  position: relative;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 100px;
+  padding: 20px 40px;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; letter-spacing: 0.05em;
+  color: #fff; cursor: pointer;
+  overflow: hidden;
   display: flex; align-items: center; justify-content: center;
-  color: #c4b5fd;
-  transform: translateZ(30px);
-  transition: transform 0.4s ease;
+  box-shadow: 0 10px 40px -10px rgba(124, 58, 237, 0.5);
+  transition: transform 0.1s linear, background 0.4s ease;
+  z-index: 2;
 }
-.resume-3d-card:hover .resume-icon-wrapper {
-  transform: translateZ(50px) scale(1.1);
-  color: #ddd6fe;
-  background: rgba(124, 58, 237, 0.2);
+.magnetic-text {
+  position: relative; z-index: 2;
+  pointer-events: none;
 }
-
-.resume-card-info {
-  text-align: center;
-  transform: translateZ(20px);
+.magnetic-glare {
+  position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  transition: 0.5s;
+  pointer-events: none;
 }
-.resume-card-info h3 {
-  font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem;
-  color: var(--text-primary);
+.magnetic-btn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.5);
 }
-.resume-card-info p {
-  font-size: 0.9rem; color: var(--text-secondary); margin: 0;
-}
-
-.resume-card-arrow {
-  position: absolute; bottom: 1.5rem; right: 1.5rem;
-  color: var(--text-secondary);
-  opacity: 0; transform: translate(-10px, 10px);
-  transition: all 0.3s ease;
-}
-.resume-3d-card:hover .resume-card-arrow {
-  opacity: 1; transform: translate(0, 0);
-  color: var(--accent-primary);
+.magnetic-btn:hover .magnetic-glare {
+  left: 150%;
 }
 
 /* ── RESUME MODAL ── */

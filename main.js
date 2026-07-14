@@ -231,26 +231,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3D Card Tilt Effect
-  const resumeCard = document.getElementById('resume-card-trigger');
-  const resumeInner = document.querySelector('.resume-3d-inner');
-  if (resumeCard && resumeInner) {
-    resumeCard.addEventListener('mousemove', (e) => {
-      const rect = resumeCard.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+  // Magnetic Button Physics
+  const magneticWrap = document.getElementById('magnetic-wrap');
+  const magneticBtn = document.getElementById('resume-card-trigger');
+  
+  if (magneticWrap && magneticBtn) {
+    magneticWrap.addEventListener('mousemove', (e) => {
+      const rect = magneticWrap.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
       
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = ((y - centerY) / centerY) * -10; // Max 10 deg rotation
-      const rotateY = ((x - centerX) / centerX) * 10;
-      
-      resumeInner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      magneticBtn.style.transform = `translate(${x * 0.4}px, ${y * 0.4}px)`;
     });
     
-    resumeCard.addEventListener('mouseleave', () => {
-      resumeInner.style.transform = `rotateX(0) rotateY(0)`;
+    magneticWrap.addEventListener('mouseleave', () => {
+      magneticBtn.style.transform = `translate(0px, 0px)`;
+      magneticBtn.style.transition = 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.4s ease';
+    });
+    
+    magneticWrap.addEventListener('mouseenter', () => {
+      magneticBtn.style.transition = 'transform 0.1s linear, background 0.4s ease';
     });
   }
 });
