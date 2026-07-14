@@ -3,33 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anish Shankar | Product Architect</title>
-    
-    <!-- SEO and Meta Tags -->
-    <meta name="description" content="Product-Focused Software Engineer | Building scalable systems at Volvo | Transitioning to PM | Building user-centric products through data, strategy, and execution" />
-    <meta property="og:title" content="Anish Shankar | Product-Focused Software Engineer" />
-    <meta property="og:description" content="Product-Focused Software Engineer | Building scalable systems at Volvo | Transitioning to PM | Building user-centric products through data, strategy, and execution" />
+    <title>Anish Shankar | Product Manager & Engineer</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Software Engineer at Volvo Group India transitioning to Product Management. Creator of GymBuddy — an AI-powered adaptive fitness coach. Passionate about building user-centric products at scale." />
+    <meta property="og:title" content="Anish Shankar | Product Manager" />
+    <meta property="og:description" content="Software Engineer → Product Manager. Building GymBuddy and other user-centric products." />
     <meta property="og:image" content="/assets/og-image.png" />
-    <meta property="og:url" content="https://anishshankar.com" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Anish Shankar | Product-Focused Software Engineer" />
-    <meta name="twitter:description" content="Product-Focused Software Engineer | Building scalable systems at Volvo | Transitioning to PM | Building user-centric products through data, strategy, and execution" />
-    
+
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
+    <!-- Animated Mesh Background -->
+    <div class="mesh-bg" aria-hidden="true">
+      <div class="mesh-orb mesh-orb-1"></div>
+      <div class="mesh-orb mesh-orb-2"></div>
+      <div class="mesh-orb mesh-orb-3"></div>
+    </div>
+
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
     <div class="custom-cursor-follower"></div>
 
-    <!-- Top Header -->
+    <!-- Header -->
     <header class="top-header">
-      <div class="logo">
+      <a href="/" class="logo">
         <span class="logo-icon"></span>
         Anish Shankar
-      </div>
-      <div class="menu-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      </a>
+      <div class="menu-icon" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -38,77 +42,128 @@
     </header>
 
     <main class="container">
-      <!-- Hero Section -->
+
+      <!-- ── HERO ─────────────────────────────────────────── -->
       <section class="hero reveal">
-        <div class="hero-subtitle">PRODUCT-FOCUSED SOFTWARE ENGINEER | BUILDING SCALABLE SYSTEMS AT VOLVO | TRANSITIONING TO PM</div>
-        <h1 class="hero-title">Engineer by experience. <br><span>Product thinker by passion.</span></h1>
-        <p class="hero-desc">I currently work as a Software Engineer at Volvo Group India, where I build enterprise software for internal engineering teams. One of my key contributions has been analyzing end-to-end user journeys across engineering workflows used by over 1,000 global users, identifying process bottlenecks, and partnering with business and engineering teams to implement improvements that increased operational efficiency by 20%+. I enjoy understanding user pain points, defining success metrics, and ensuring that every feature delivers measurable outcomes. This experience led me to pursue Product Management, where I've further developed my skills through user research, product strategy, PRDs, growth analyses, and AI product case studies. I'm now looking to leverage my engineering foundation and product thinking to build user-centric products at scale.</p>
-        
+        <div class="hero-subtitle">Product-Focused Software Engineer &nbsp;·&nbsp; Transitioning to PM</div>
+        <h1 class="hero-title">
+          Engineer by experience.<br>
+          <span>Product thinker by passion.</span>
+        </h1>
+        <p class="hero-desc">
+          I currently work as a Software Engineer at Volvo Group India, where I build enterprise software for internal engineering teams. One of my key contributions has been analyzing end-to-end user journeys across engineering workflows used by over 1,000 global users, identifying process bottlenecks, and partnering with business and engineering teams to implement improvements that increased operational efficiency by 20%+. I enjoy understanding user pain points, defining success metrics, and ensuring that every feature delivers measurable outcomes. This experience led me to pursue Product Management, where I've further developed my skills through user research, product strategy, PRDs, growth analyses, and AI product case studies.
+        </p>
         <div class="hero-buttons">
-          <a href="#work" class="btn btn-primary">Case studies</a>
-          <a href="https://www.linkedin.com/in/anish-shankar-931900183/" target="_blank" class="btn btn-connect-special">Connect on LinkedIn</a>
+          <a href="#work" class="btn btn-primary">View Case Studies</a>
+          <a href="https://www.linkedin.com/in/anish-shankar-931900183/" target="_blank" rel="noopener" class="btn btn-connect-special">Connect on LinkedIn</a>
         </div>
       </section>
 
+      <!-- ── ★ GYMBUDDY CAPSTONE STAR ────────────────────── -->
+      <section class="capstone-section reveal" aria-label="Featured Capstone Project">
+        <div class="capstone-label">Featured Capstone · AI Product</div>
 
-      <!-- Portfolio Section -->
+        <div class="capstone-card">
+          <!-- Left: Copy & CTAs -->
+          <div class="capstone-left">
+            <div class="capstone-badge">
+              <span class="capstone-badge-dot"></span>
+              Live on Vercel
+            </div>
+
+            <h2 class="capstone-title">GymBuddy</h2>
+            <p class="capstone-subtitle">
+              An adaptive AI coaching system for budget gym beginners — delivering real-time personalized workout plans, mid-week adaptations, and contextual guidance based on a user's available equipment, schedule, and fitness level.
+            </p>
+
+            <div class="capstone-tags">
+              <span class="capstone-tag">AI Product</span>
+              <span class="capstone-tag">PRD</span>
+              <span class="capstone-tag">User Research</span>
+              <span class="capstone-tag">Fitness Tech</span>
+              <span class="capstone-tag">Capstone</span>
+            </div>
+
+            <div class="capstone-actions">
+              <a href="https://gym-buddy-adaptive-coach.vercel.app/" target="_blank" rel="noopener" class="btn btn-gym-live" id="gymbuddy-live-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10A15 15 0 0 1 12 2z"/></svg>
+                View Live App
+              </a>
+              <a href="./gymbuddy.html" class="btn btn-gym-case" id="gymbuddy-case-btn">
+                Read Case Study →
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Visual -->
+          <div class="capstone-right">
+            <div class="capstone-visual">
+              <div class="capstone-ring"></div>
+              <div class="capstone-ring capstone-ring-2"></div>
+              <div class="capstone-logo-wrapper">
+                <img src="/assets/gymbuddy.svg" alt="GymBuddy Logo" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CASE STUDIES GRID ────────────────────────────── -->
       <section id="work" class="portfolio reveal">
         <div class="section-title">
           <div>
-            <div class="text-mono" style="font-size: 0.65rem; color: var(--text-secondary); margin-bottom: 4px;">SELECTED_CASE_STUDIES</div>
-            <div>Precision Engineered Products</div>
+            <div class="text-mono" style="font-size: 0.62rem; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.1em;">Selected_Work</div>
+            <div style="font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em;">Case Studies</div>
           </div>
         </div>
 
         <!-- Filter Bar -->
-        <div class="filter-bar">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="PRD">PRD</button>
-          <button class="filter-btn" data-filter="Growth">Growth</button>
-          <button class="filter-btn" data-filter="Product teardown">Product teardown</button>
-          <button class="filter-btn" data-filter="User acquisition">User acquisition</button>
-          <button class="filter-btn" data-filter="Engagement and retention">Engagement and retention</button>
+        <div class="filter-bar" role="group" aria-label="Filter case studies">
+          <button class="filter-btn active" data-filter="all" id="filter-all">All</button>
+          <button class="filter-btn" data-filter="PRD" id="filter-prd">PRD</button>
+          <button class="filter-btn" data-filter="Growth" id="filter-growth">Growth</button>
+          <button class="filter-btn" data-filter="Product teardown" id="filter-teardown">Product Teardown</button>
+          <button class="filter-btn" data-filter="User acquisition" id="filter-ua">User Acquisition</button>
+          <button class="filter-btn" data-filter="Engagement and retention" id="filter-er">Engagement & Retention</button>
         </div>
-        
-        <!-- Grid container populated by main.js -->
+
+        <!-- Grid populated by main.js -->
         <div id="portfolio-grid" class="portfolio-list"></div>
       </section>
 
-      <!-- CTA Section -->
+      <!-- ── CTA ──────────────────────────────────────────── -->
       <section class="cta-section reveal">
         <div class="cta-content">
           <h2>Ready to build the future?</h2>
           <p>I am currently open for Product Management roles. Let's build scalable systems and incredible user experiences together.</p>
-          <a href="https://www.linkedin.com/in/anish-shankar-931900183/" target="_blank" class="btn btn-primary cta-btn">Connect on LinkedIn &rarr;</a>
+          <a href="https://www.linkedin.com/in/anish-shankar-931900183/" target="_blank" rel="noopener" class="btn btn-primary cta-btn">Connect on LinkedIn &rarr;</a>
         </div>
       </section>
 
-      <!-- Footer -->
+      <!-- ── FOOTER ────────────────────────────────────────── -->
       <footer id="about" class="footer reveal">
-        <div class="footer-text">© 2024 Built with Precision</div>
+        <div class="footer-text">© 2025 Anish Shankar &nbsp;·&nbsp; Built with precision</div>
         <div class="social-links">
-          <a href="https://www.linkedin.com/in/anish-shankar-931900183/" target="_blank">LinkedIn</a>
-          <a href="#">GitHub</a>
-          <a href="#">Read.cv</a>
-          <a href="mailto:hello@example.com">Email</a>
+          <a href="https://www.linkedin.com/in/anish-shankar-931900183/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://gym-buddy-adaptive-coach.vercel.app/" target="_blank" rel="noopener">GymBuddy App</a>
+          <a href="mailto:anishshankar110@gmail.com">Email</a>
         </div>
       </footer>
     </main>
 
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-      <a href="#work" class="nav-item active">
+    <!-- Bottom Nav -->
+    <nav class="bottom-nav" aria-label="Site navigation">
+      <a href="#work" class="nav-item active" id="nav-work">
         <svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 6V4h8v2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-        <span>Strategy</span>
+        <span>Work</span>
       </a>
-      <a href="#impact" class="nav-item">
-        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 3v18h18" fill="none" stroke="currentColor" stroke-width="2"/><path d="M18 9l-5 5-4-4-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-        <span>Execution</span>
+      <a href="https://gym-buddy-adaptive-coach.vercel.app/" target="_blank" class="nav-item" id="nav-gymbuddy">
+        <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 12h14M12 5a7 7 0 0 1 0 14" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <span>GymBuddy</span>
       </a>
-
-      <a href="#about" class="nav-item">
+      <a href="#about" class="nav-item" id="nav-about">
         <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-        <span>Vision</span>
+        <span>About</span>
       </a>
     </nav>
 
