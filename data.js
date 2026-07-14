@@ -117,7 +117,7 @@ export const caseStudies = [
     description: "An adaptive AI coaching system for budget gym beginners that provides real-time personalized workout plans and mid-week adaptations.",
     tags: ["Product teardown", "PRD"],
     filterCategory: "prd",
-    url: "/assets/GymBuddy-Final.pptx",
+    url: "/gymbuddy.html",
     themeColor: "#3B82F6",
     themeSecondary: "#60A5FA",
     image: "/assets/gymbuddy.svg"
