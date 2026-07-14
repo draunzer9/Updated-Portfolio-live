@@ -1143,3 +1143,184 @@ body {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(0.7); }
 }
+
+/* ── HEADER RESUME BTN ── */
+.header-resume-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-radius: 100px;
+  font-family: var(--font-display); font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+.header-resume-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ── CTA GRID & 3D RESUME CARD ── */
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+@media (max-width: 768px) {
+  .cta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.cta-content-left {
+  margin: 0;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  text-align: left; height: 100%;
+}
+.cta-content-right {
+  margin: 0; padding: 0; background: none; border: none;
+  display: flex; align-items: stretch;
+}
+
+.resume-3d-card {
+  width: 100%;
+  background: transparent; border: none; cursor: pointer; padding: 0;
+  perspective: 1000px;
+}
+.resume-3d-inner {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+}
+.resume-3d-inner::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.15), transparent 70%);
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.resume-3d-card:hover .resume-3d-inner {
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(124, 58, 237, 0.2);
+  /* The JS will handle the actual rotation */
+}
+.resume-3d-card:hover .resume-3d-inner::before { opacity: 1; }
+
+.resume-icon-wrapper {
+  width: 70px; height: 70px;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  color: #c4b5fd;
+  transform: translateZ(30px);
+  transition: transform 0.4s ease;
+}
+.resume-3d-card:hover .resume-icon-wrapper {
+  transform: translateZ(50px) scale(1.1);
+  color: #ddd6fe;
+  background: rgba(124, 58, 237, 0.2);
+}
+
+.resume-card-info {
+  text-align: center;
+  transform: translateZ(20px);
+}
+.resume-card-info h3 {
+  font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+.resume-card-info p {
+  font-size: 0.9rem; color: var(--text-secondary); margin: 0;
+}
+
+.resume-card-arrow {
+  position: absolute; bottom: 1.5rem; right: 1.5rem;
+  color: var(--text-secondary);
+  opacity: 0; transform: translate(-10px, 10px);
+  transition: all 0.3s ease;
+}
+.resume-3d-card:hover .resume-card-arrow {
+  opacity: 1; transform: translate(0, 0);
+  color: var(--accent-primary);
+}
+
+/* ── RESUME MODAL ── */
+.resume-modal {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none; opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.resume-modal.active {
+  pointer-events: auto; opacity: 1;
+}
+.resume-modal-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+}
+.resume-modal-container {
+  position: relative; z-index: 1;
+  width: 90vw; max-width: 1000px; height: 85vh;
+  background: rgba(15, 15, 20, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  display: flex; flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+}
+.resume-modal.active .resume-modal-container {
+  transform: translateY(0) scale(1);
+}
+
+.resume-modal-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+}
+.resume-modal-title {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary);
+}
+.resume-status-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #10B981; box-shadow: 0 0 8px #10B981;
+}
+.resume-modal-actions {
+  display: flex; align-items: center; gap: 1rem;
+}
+.resume-download-btn {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 14px; border-radius: 8px; color: var(--text-primary);
+  font-size: 0.8rem; font-family: var(--font-display); font-weight: 600;
+  text-decoration: none; transition: all 0.2s ease;
+}
+.resume-download-btn:hover {
+  background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.3);
+}
+.resume-close-btn {
+  background: none; border: none; color: var(--text-secondary);
+  cursor: pointer; padding: 4px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+}
+.resume-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1); color: #fff;
+}
+.resume-modal-body {
+  flex: 1; background: #000;
+}

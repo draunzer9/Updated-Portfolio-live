@@ -32,12 +32,24 @@
         <span class="logo-icon"></span>
         Anish Shankar
       </a>
-      <div class="menu-icon" aria-label="Menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <button id="header-resume-btn" class="header-resume-btn" aria-label="View Resume">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span class="header-resume-text">Resume</span>
+        </button>
+        <div class="menu-icon" aria-label="Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </div>
       </div>
     </header>
 
@@ -131,12 +143,42 @@
         <div id="portfolio-grid" class="portfolio-list"></div>
       </section>
 
-      <!-- ── CTA ──────────────────────────────────────────── -->
+      <!-- ── CTA & RESUME ──────────────────────────────────────────── -->
       <section class="cta-section reveal">
-        <div class="cta-content">
-          <h2>Ready to build the future?</h2>
-          <p>I am currently open for Product Management roles. Let's build scalable systems and incredible user experiences together.</p>
-          <a href="https://www.linkedin.com/in/anish-shankar-931900183/" target="_blank" rel="noopener" class="btn btn-primary cta-btn">Connect on LinkedIn &rarr;</a>
+        <div class="cta-grid">
+          <div class="cta-content cta-content-left">
+            <h2>Ready to build the future?</h2>
+            <p>I am currently open for Product Management roles. Let's build scalable systems and incredible user experiences together.</p>
+            <div style="margin-top: 2rem;">
+              <a href="https://www.linkedin.com/in/anish-shankar-931900183/" target="_blank" rel="noopener" class="btn btn-primary cta-btn">Connect on LinkedIn &rarr;</a>
+            </div>
+          </div>
+          
+          <div class="cta-content cta-content-right">
+            <button id="resume-card-trigger" class="resume-3d-card" aria-label="Open interactive resume">
+              <div class="resume-3d-inner">
+                <div class="resume-icon-wrapper">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </div>
+                <div class="resume-card-info">
+                  <h3>View Interactive Resume</h3>
+                  <p>Experience, Skills, and Education</p>
+                </div>
+                <div class="resume-card-arrow">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -166,6 +208,38 @@
         <span>About</span>
       </a>
     </nav>
+
+    <!-- ── INTERACTIVE RESUME MODAL ─────────────────────── -->
+    <div class="resume-modal" id="resume-modal" aria-hidden="true">
+      <div class="resume-modal-overlay" id="resume-close-overlay"></div>
+      <div class="resume-modal-container">
+        <div class="resume-modal-header">
+          <div class="resume-modal-title">
+            <div class="resume-status-dot"></div>
+            Anish_Shankar_PM_Resume.pdf
+          </div>
+          <div class="resume-modal-actions">
+            <a href="/assets/Anish_Shankar_PM_Resume.pdf" download class="btn resume-download-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download PDF
+            </a>
+            <button class="resume-close-btn" id="resume-close-btn" aria-label="Close modal">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="resume-modal-body">
+          <iframe src="/assets/Anish_Shankar_PM_Resume.pdf" width="100%" height="100%" frameborder="0" title="Anish Shankar Resume PDF"></iframe>
+        </div>
+      </div>
+    </div>
 
     <script type="module" src="./main.js"></script>
   </body>

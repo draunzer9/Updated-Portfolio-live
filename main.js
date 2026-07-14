@@ -198,4 +198,59 @@ document.addEventListener('DOMContentLoaded', () => {
     hero.addEventListener('mouseenter', () => { glow.style.opacity = '1'; });
     hero.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
   }
+
+  // --- Resume Modal & 3D Card Logic ---
+  const resumeModal = document.getElementById('resume-modal');
+  const openResumeBtns = [document.getElementById('header-resume-btn'), document.getElementById('resume-card-trigger')];
+  const closeResumeBtn = document.getElementById('resume-close-btn');
+  const closeResumeOverlay = document.getElementById('resume-close-overlay');
+
+  if (resumeModal) {
+    const openModal = () => {
+      resumeModal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    };
+    const closeModal = () => {
+      resumeModal.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    openResumeBtns.forEach(btn => {
+      if(btn) btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+    
+    if (closeResumeBtn) closeResumeBtn.addEventListener('click', closeModal);
+    if (closeResumeOverlay) closeResumeOverlay.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && resumeModal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  }
+
+  // 3D Card Tilt Effect
+  const resumeCard = document.getElementById('resume-card-trigger');
+  const resumeInner = document.querySelector('.resume-3d-inner');
+  if (resumeCard && resumeInner) {
+    resumeCard.addEventListener('mousemove', (e) => {
+      const rect = resumeCard.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = ((y - centerY) / centerY) * -10; // Max 10 deg rotation
+      const rotateY = ((x - centerX) / centerX) * 10;
+      
+      resumeInner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    
+    resumeCard.addEventListener('mouseleave', () => {
+      resumeInner.style.transform = `rotateX(0) rotateY(0)`;
+    });
+  }
 });
