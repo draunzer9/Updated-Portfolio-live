@@ -110,5 +110,16 @@ export const caseStudies = [
     themeColor: "#FF9900",
     themeSecondary: "#FFB84D",
     image: "/assets/amazon.svg"
+  },
+  {
+    id: "gymbuddy",
+    title: "GymBuddy: AI-Powered Fitness Coach",
+    description: "An adaptive AI coaching system for budget gym beginners that provides real-time personalized workout plans and mid-week adaptations.",
+    tags: ["Product teardown", "PRD"],
+    filterCategory: "prd",
+    url: "/assets/GymBuddy-PPT.pdf",
+    themeColor: "#3B82F6",
+    themeSecondary: "#60A5FA",
+    image: "/assets/gymbuddy.svg"
   }
 ];
