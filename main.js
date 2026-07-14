@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (grid) {
     caseStudies.forEach((study) => {
       const card = document.createElement('a');
-      const filename = study.url.startsWith('./') ? study.url : `./${study.url.split('/').pop()}`;
+      const filename = study.url.startsWith('/') ? '.' + study.url : study.url;
       card.href = filename;
       card.className = 'portfolio-card reveal';
       
