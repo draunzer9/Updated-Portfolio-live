@@ -1138,3 +1138,8 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 8px 30px rgba(155, 81, 224, 0.6);
 }
+
+@keyframes liveDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}

@@ -10,10 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const filename = study.url.startsWith('/') ? '.' + study.url : study.url;
       card.href = filename;
       card.className = 'portfolio-card reveal';
-      
+
       // Determine filter category
       let category = study.filterCategory || 'All';
-      
       card.setAttribute('data-category', category);
 
       // Image HTML (if available)
@@ -27,6 +26,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const roleHtml = `<span class="card-role">${study.category || 'PRODUCT'}</span>`;
       const dateHtml = `<span class="card-date">${study.year || '2023'}</span>`;
 
+      // Live URL badge — shown on cards that have a deployed prototype/app
+      const liveBadgeHtml = study.liveUrl ? `
+        <a href="${study.liveUrl}" target="_blank" rel="noopener" class="card-live-btn"
+           onclick="event.stopPropagation();"
+           style="
+             display:inline-flex;align-items:center;gap:6px;
+             margin-top:12px;padding:6px 14px;
+             background:rgba(${study.themeColor ? hexToRgb(study.themeColor) : '29,155,240'},0.12);
+             border:1px solid rgba(${study.themeColor ? hexToRgb(study.themeColor) : '29,155,240'},0.35);
+             border-radius:100px;
+             font-family:'JetBrains Mono',monospace;font-size:0.62rem;
+             color:${study.themeSecondary || '#71C9F8'};
+             text-transform:uppercase;letter-spacing:0.08em;
+             text-decoration:none;
+             transition:all 0.2s ease;
+             width:fit-content;
+           "
+           onmouseover="this.style.background='rgba(${study.themeColor ? hexToRgb(study.themeColor) : '29,155,240'},0.25)';this.style.transform='translateY(-1px)';"
+           onmouseout="this.style.background='rgba(${study.themeColor ? hexToRgb(study.themeColor) : '29,155,240'},0.12)';this.style.transform='translateY(0)';"
+        >
+          <span style="width:5px;height:5px;border-radius:50%;background:${study.themeSecondary || '#71C9F8'};box-shadow:0 0 6px ${study.themeSecondary || '#71C9F8'};animation:liveDot 2s ease-in-out infinite;"></span>
+          ${study.liveLabel || 'Live App'} ↗
+        </a>
+      ` : '';
+
       card.innerHTML = `
         ${imageHtml}
         <div class="card-content">
@@ -36,12 +60,21 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <h3 class="card-title">${study.title}</h3>
           <p class="card-desc">${study.summary || study.description || ''}</p>
+          ${liveBadgeHtml}
         </div>
       `;
 
       grid.appendChild(card);
       cards.push(card);
     });
+
+    // Helper: convert hex color to rgb triplet string for rgba()
+    function hexToRgb(hex) {
+      const r = parseInt(hex.slice(1,3),16);
+      const g = parseInt(hex.slice(3,5),16);
+      const b = parseInt(hex.slice(5,7),16);
+      return `${r},${g},${b}`;
+    }
   }
 
   // --- Filter Logic ---

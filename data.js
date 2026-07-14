@@ -9,6 +9,8 @@ export const caseStudies = [
     metricLabel: "Top RICE Score",
     summary: "A comprehensive end-to-end product strategy dissecting X's acquisition, activation, and retention bottlenecks to unlock scalable growth.",
     url: "/x-growth.html",
+    liveUrl: "https://x-reimagined-c02fzlf9g-anish-shankar-s-projects.vercel.app/",
+    liveLabel: "Live Prototype",
     themeColor: "#1D9BF0",
     themeSecondary: "#71C9F8",
     image: "/assets/x.svg"
