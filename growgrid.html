@@ -472,9 +472,40 @@
     @media (max-width: 500px) {
       .flip-grid { grid-template-columns: 1fr; }
     }
-  </style>
+  
+    /* ── BRAND LOADER ── */
+    .brand-loader {
+      position: fixed; inset: 0; background: #08070f; z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.85, 0, 0.15, 1);
+    }
+    .brand-loader.fade-out { opacity: 0; transform: scale(1.05); pointer-events: none; }
+    .loader-content { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+    .loader-icon-grow {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; width: 30px; height: 30px;
+    }
+    .grow-node { width: 12px; height: 12px; background: rgba(20,143,119,0.2); border: 1px solid rgba(20,143,119,0.6); border-radius: 3px; animation: nodePulse 1s infinite alternate; }
+    .grow-node:nth-child(1) { animation-delay: 0s; }
+    .grow-node:nth-child(2) { animation-delay: 0.25s; }
+    .grow-node:nth-child(3) { animation-delay: 0.5s; }
+    .grow-node:nth-child(4) { animation-delay: 0.75s; }
+    @keyframes nodePulse { 0% { background: rgba(20,143,119,0.2); border-color: rgba(20,143,119,0.6); box-shadow: none; } 100% { background: #148F77; border-color: #45B39D; box-shadow: 0 0 8px #148F77; } }
+    .loader-text { font-family: 'Outfit', sans-serif; color: #fff; font-size: 0.9rem; letter-spacing: 0.05em; opacity: 0.8; }
+        </style>
 </head>
 <body>
+  <div class="brand-loader" id="brand-loader">
+    <div class="loader-content">
+      <div class="loader-icon-grow">
+        <div class="grow-node"></div>
+        <div class="grow-node"></div>
+        <div class="grow-node"></div>
+        <div class="grow-node"></div>
+      </div>
+      <div class="loader-text">Mapping Career Grid...</div>
+    </div>
+  </div>
+        
 
   <!-- Mesh Background -->
   <div class="mesh-bg">
@@ -751,5 +782,19 @@
       if (e.key === 'Escape') closeLightbox();
     });
   </script>
-</body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const loader = document.getElementById("brand-loader");
+      document.body.style.overflow = "hidden";
+      setTimeout(() => {
+        if(loader) {
+          loader.classList.add("fade-out");
+          document.body.style.overflow = "";
+        }
+      }, 1000); // 1.0s wait
+      setTimeout(() => { if(loader) loader.remove(); }, 1600);
+    });
+  </script>
+    </body>
 </html>

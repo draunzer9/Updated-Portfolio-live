@@ -405,9 +405,36 @@
       .next-case { margin: 0 24px 60px; padding: 36px 28px; }
       .next-case-arrow { right: 24px; }
     }
-  </style>
+  
+    /* ── BRAND LOADER ── */
+    .brand-loader {
+      position: fixed; inset: 0; background: #08070f; z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.85, 0, 0.15, 1);
+    }
+    .brand-loader.fade-out { opacity: 0; transform: scale(1.05); pointer-events: none; }
+    .loader-content { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+    .loader-icon-vita {
+      width: 40px; height: 40px; position: relative;
+    }
+    .vita-heart { width: 24px; height: 24px; background: #D92525; position: absolute; top: 8px; left: 8px; transform: rotate(-45deg); animation: heartBeat 0.8s infinite cubic-bezier(0.215, 0.610, 0.355, 1); }
+    .vita-heart::before, .vita-heart::after { content: ''; width: 24px; height: 24px; background: #D92525; border-radius: 50%; position: absolute; }
+    .vita-heart::before { top: -12px; left: 0; }
+    .vita-heart::after { top: 0; left: 12px; }
+    @keyframes heartBeat { 0% { transform: rotate(-45deg) scale(0.8); } 20% { transform: rotate(-45deg) scale(1.1); } 40% { transform: rotate(-45deg) scale(0.9); } 60% { transform: rotate(-45deg) scale(1.15); } 80%, 100% { transform: rotate(-45deg) scale(0.8); } }
+    .loader-text { font-family: 'Outfit', sans-serif; color: #fff; font-size: 0.9rem; letter-spacing: 0.05em; opacity: 0.8; }
+        </style>
 </head>
 <body>
+  <div class="brand-loader" id="brand-loader">
+    <div class="loader-content">
+      <div class="loader-icon-vita">
+        <div class="vita-heart"></div>
+      </div>
+      <div class="loader-text">Loading Challenges...</div>
+    </div>
+  </div>
+        
 
   <!-- Mesh Background -->
   <div class="mesh-bg">
@@ -633,5 +660,19 @@
 
     chapterSections.forEach(c => scrollSpy.observe(c.el));
   </script>
-</body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const loader = document.getElementById("brand-loader");
+      document.body.style.overflow = "hidden";
+      setTimeout(() => {
+        if(loader) {
+          loader.classList.add("fade-out");
+          document.body.style.overflow = "";
+        }
+      }, 1000); // 1.0s wait
+      setTimeout(() => { if(loader) loader.remove(); }, 1600);
+    });
+  </script>
+    </body>
 </html>

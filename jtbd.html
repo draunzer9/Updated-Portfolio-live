@@ -51,7 +51,22 @@
     .lb-close{position:absolute;top:20px;right:24px;color:#fff;font-size:2rem;cursor:pointer;background:none;border:none;}
     .lb-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.5rem;cursor:pointer;background:rgba(255,255,255,0.08);border:none;border-radius:8px;padding:8px 16px;}
     .lb-prev{left:16px;}.lb-next{right:16px;}
-  </style>
+  
+    /* ── BRAND LOADER ── */
+    .brand-loader {
+      position: fixed; inset: 0; background: #08070f; z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.85, 0, 0.15, 1);
+    }
+    .brand-loader.fade-out { opacity: 0; transform: scale(1.05); pointer-events: none; }
+    .loader-content { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+    .loader-icon-jtbd {
+      width: 32px; height: 32px; border: 3px solid rgba(217,119,6,0.3); border-radius: 50%; position: relative;
+    }
+    .jtbd-hand { width: 2px; height: 12px; background: #D97706; position: absolute; bottom: 50%; left: calc(50% - 1px); transform-origin: bottom center; animation: spinHand 1s linear infinite; }
+    @keyframes spinHand { 100% { transform: rotate(360deg); } }
+    .loader-text { font-family: 'Outfit', sans-serif; color: #fff; font-size: 0.9rem; letter-spacing: 0.05em; opacity: 0.8; }
+        </style>
   <link rel="stylesheet" href="./style.css"/>
 </head>
 <body class="case-study-page">
@@ -153,5 +168,19 @@
     document.getElementById('lb').addEventListener('click',e=>{if(e.target===document.getElementById('lb'))closeLB();});
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')navLB(1);if(e.key==='ArrowLeft')navLB(-1);});
   </script>
-</body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const loader = document.getElementById("brand-loader");
+      document.body.style.overflow = "hidden";
+      setTimeout(() => {
+        if(loader) {
+          loader.classList.add("fade-out");
+          document.body.style.overflow = "";
+        }
+      }, 1000); // 1.0s wait
+      setTimeout(() => { if(loader) loader.remove(); }, 1600);
+    });
+  </script>
+    </body>
 </html>
