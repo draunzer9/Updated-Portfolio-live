@@ -32,9 +32,25 @@
         <span class="logo-icon"></span>
         Anish Shankar
       </a>
-      <div style="display: flex; align-items: center; gap: 1.5rem;">
+
+      <!-- Desktop Navigation Links (Figma sketch) -->
+      <nav class="desktop-nav" aria-label="Desktop navigation">
+        <a href="#about" class="nav-link active">About</a>
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Open to Roles Badge (Figma sketch) -->
+        <a href="#contact" class="open-roles-btn" aria-label="Open to Roles Status">
+          <span class="roles-dot"></span>
+          <span class="roles-text">Open to roles</span>
+        </a>
+
+        <!-- Resume button -->
         <button id="header-resume-btn" class="header-resume-btn" aria-label="View Resume">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
             <polyline points="14 2 14 8 20 8"></polyline>
             <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -43,20 +59,32 @@
           </svg>
           <span class="header-resume-text">Resume</span>
         </button>
-        <div class="menu-icon" aria-label="Menu">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </div>
+
+        <!-- Hamburger Icon (Mobile) -->
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <span class="hamburger-bar bar-1"></span>
+          <span class="hamburger-bar bar-2"></span>
+          <span class="hamburger-bar bar-3"></span>
+        </button>
       </div>
     </header>
+
+    <!-- Mobile Slide-out Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay" aria-hidden="true">
+      <div class="mobile-menu-overlay-bg" id="mobile-menu-overlay-bg"></div>
+      <nav class="mobile-nav">
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#work" class="mobile-nav-link">Work</a>
+        <a href="#skills" class="mobile-nav-link">Skills</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <a href="#" id="mobile-resume-trigger" class="mobile-nav-link">Resume</a>
+      </nav>
+    </div>
 
     <main class="container">
 
       <!-- ── HERO ─────────────────────────────────────────── -->
-      <section class="hero reveal">
+      <section id="about" class="hero reveal">
         <div class="hero-subtitle">Product-Focused Software Engineer &nbsp;·&nbsp; Transitioning to PM</div>
         <h1 class="hero-title">
           Engineer by experience.<br>
@@ -143,6 +171,160 @@
         <div id="portfolio-grid" class="portfolio-list"></div>
       </section>
 
+      <!-- ── SKILLS & TOOLKIT ────────────────────────────── -->
+      <section id="skills" class="skills-section reveal">
+        <div class="section-title">
+          <div>
+            <div class="text-mono" style="font-size: 0.62rem; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.1em;">Competencies_Matrix</div>
+            <h2 style="font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em;">Skills & Toolkit</h2>
+          </div>
+        </div>
+
+        <!-- Grid-ruled four-column toolkit matrix -->
+        <div class="skills-grid">
+          <!-- Column 1: Product Discovery -->
+          <div class="skills-column">
+            <div class="skills-column-header">
+              <span class="skills-column-num">01</span>
+              <h3>Product Discovery</h3>
+            </div>
+            <ul class="skills-list">
+              <li>
+                <strong>User Research & Interviews</strong>
+                <p>Synthesizing qualitative insights from 60+ user interviews to map target user personas.</p>
+              </li>
+              <li>
+                <strong>JTBD Framework</strong>
+                <p>Mapping cognitive friction and identifying core functional & emotional jobs-to-be-done.</p>
+              </li>
+              <li>
+                <strong>Competitor Analysis</strong>
+                <p>Deconstructing market landscapes, business models, and competitor feature matrices.</p>
+              </li>
+              <li>
+                <strong>Hypothesis Validation</strong>
+                <p>Designing lightweight experiments to validate user demand and mitigate critical product risk.</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Strategy & Growth -->
+          <div class="skills-column">
+            <div class="skills-column-header">
+              <span class="skills-column-num">02</span>
+              <h3>Strategy & Growth</h3>
+            </div>
+            <ul class="skills-list">
+              <li>
+                <strong>AARRR Funnel Optimization</strong>
+                <p>Diagnosing acquisition, activation, and retention bottlenecks to drive core growth metrics.</p>
+              </li>
+              <li>
+                <strong>RICE Prioritization</strong>
+                <p>Applying quantitative frameworks to align engineering effort with strategic business impact.</p>
+              </li>
+              <li>
+                <strong>Retention Modeling</strong>
+                <p>Designing cohort-based retention loops and engagement-driven gamification systems.</p>
+              </li>
+              <li>
+                <strong>Monetization Mechanics</strong>
+                <p>Structuring pricing experiments, checkout flows, and value-metric alignments.</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Product Execution -->
+          <div class="skills-column">
+            <div class="skills-column-header">
+              <span class="skills-column-num">03</span>
+              <h3>Product Execution</h3>
+            </div>
+            <ul class="skills-list">
+              <li>
+                <strong>PRD Writing</strong>
+                <p>Drafting comprehensive product requirements with clear scopes, edges, and success metrics.</p>
+              </li>
+              <li>
+                <strong>Wireframing & Prototyping</strong>
+                <p>Translating user requirements into interactive visual layouts and quick user flows.</p>
+              </li>
+              <li>
+                <strong>A/B Testing & Analytics</strong>
+                <p>Designing and running clean experiments, defining metrics, and tracking conversions.</p>
+              </li>
+              <li>
+                <strong>Agile & Scrum Delivery</strong>
+                <p>Partnering with engineering teams to run sprints, manage backlogs, and ship features.</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Tech & AI -->
+          <div class="skills-column">
+            <div class="skills-column-header">
+              <span class="skills-column-num">04</span>
+              <h3>Technical & AI</h3>
+            </div>
+            <ul class="skills-list">
+              <li>
+                <strong>AI & LLM Integration</strong>
+                <p>Architecting recommendation engines and context-aware agent systems using LLM APIs.</p>
+              </li>
+              <li>
+                <strong>Full-Stack Development</strong>
+                <p>Building high-performance responsive web applications using modern web stacks.</p>
+              </li>
+              <li>
+                <strong>System Design & APIs</strong>
+                <p>Designing scalable backend structures, databases, and RESTful API integrations.</p>
+              </li>
+              <li>
+                <strong>Prompt Engineering</strong>
+                <p>Developing robust, production-grade prompts and agentic workflows.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pill row of tools (Infinite Marquee) -->
+        <div class="tools-marquee-container">
+          <div class="tools-marquee-label">STACK & TOOLKIT</div>
+          <div class="tools-marquee">
+            <div class="tools-marquee-track">
+              <!-- Original Set -->
+              <span class="tool-pill">Figma</span>
+              <span class="tool-pill">Jira</span>
+              <span class="tool-pill">Notion</span>
+              <span class="tool-pill">Mixpanel</span>
+              <span class="tool-pill">Amplitude</span>
+              <span class="tool-pill">SQL</span>
+              <span class="tool-pill">Python</span>
+              <span class="tool-pill">JavaScript</span>
+              <span class="tool-pill">Git</span>
+              <span class="tool-pill">Vercel</span>
+              <span class="tool-pill">Vite</span>
+              <span class="tool-pill">Docker</span>
+              <span class="tool-pill">NodeJS</span>
+              <!-- Duplicate Set for Seamless Loop -->
+              <span class="tool-pill">Figma</span>
+              <span class="tool-pill">Jira</span>
+              <span class="tool-pill">Notion</span>
+              <span class="tool-pill">Mixpanel</span>
+              <span class="tool-pill">Amplitude</span>
+              <span class="tool-pill">SQL</span>
+              <span class="tool-pill">Python</span>
+              <span class="tool-pill">JavaScript</span>
+              <span class="tool-pill">Git</span>
+              <span class="tool-pill">Vercel</span>
+              <span class="tool-pill">Vite</span>
+              <span class="tool-pill">Docker</span>
+              <span class="tool-pill">NodeJS</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ── OUT OF THIS WORLD RESUME PORTAL ────────────────── -->
       <section class="resume-portal reveal">
         <div class="resume-portal-inner" id="resume-portal-area">
@@ -163,7 +345,7 @@
       </section>
 
       <!-- ── CTA ──────────────────────────────────────────── -->
-      <section class="cta-section reveal">
+      <section id="contact" class="cta-section reveal">
         <div class="cta-content">
           <h2>Ready to build the future?</h2>
           <p>I am currently open for Product Management roles. Let's build scalable systems and incredible user experiences together.</p>
@@ -172,7 +354,7 @@
       </section>
 
       <!-- ── FOOTER ────────────────────────────────────────── -->
-      <footer id="about" class="footer reveal">
+      <footer class="footer reveal">
         <div class="footer-text">© 2025 Anish Shankar &nbsp;·&nbsp; Built with precision</div>
         <div class="social-links">
           <a href="https://www.linkedin.com/in/anish-shankar-931900183/" target="_blank" rel="noopener">LinkedIn</a>

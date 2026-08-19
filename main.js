@@ -201,7 +201,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Resume Modal & 3D Card Logic ---
   const resumeModal = document.getElementById('resume-modal');
-  const openResumeBtns = [document.getElementById('header-resume-btn'), document.getElementById('resume-card-trigger')];
+  const openResumeBtns = [
+    document.getElementById('header-resume-btn'), 
+    document.getElementById('resume-card-trigger'),
+    document.getElementById('mobile-resume-trigger')
+  ];
   const closeResumeBtn = document.getElementById('resume-close-btn');
   const closeResumeOverlay = document.getElementById('resume-close-overlay');
 
@@ -251,6 +255,86 @@ document.addEventListener('DOMContentLoaded', () => {
     
     magneticWrap.addEventListener('mouseenter', () => {
       magneticBtn.style.transition = 'transform 0.1s linear, background 0.4s ease';
+    });
+  }
+
+  // --- Mobile Menu Toggle ---
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  const menuOverlay = document.getElementById('mobile-menu-overlay');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  
+  if (menuToggle && menuOverlay) {
+    const toggleMenu = () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      menuToggle.classList.toggle('active');
+      menuOverlay.classList.toggle('active');
+      menuOverlay.setAttribute('aria-hidden', isExpanded);
+      document.body.style.overflow = isExpanded ? '' : 'hidden';
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (link.id === 'mobile-resume-trigger') {
+          e.preventDefault();
+        }
+        // Close menu drawer
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        menuOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // --- Navigation ScrollSpy ---
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.desktop-nav .nav-link');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+  const updateActiveNavLink = () => {
+    let currentSectionId = '';
+    const scrollPosition = window.scrollY + 120; // offset for sticky header
+
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      if (scrollPosition >= top && scrollPosition < top + height) {
+        currentSectionId = section.getAttribute('id');
+      }
+    });
+
+    const setActiveClass = (links) => {
+      links.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSectionId}`) {
+          link.classList.add('active');
+        }
+      });
+    };
+
+    setActiveClass(navLinks);
+    setActiveClass(mobileNavLinks);
+  };
+
+  window.addEventListener('scroll', updateActiveNavLink);
+  updateActiveNavLink(); // Run on mount
+
+  // --- Smooth Scroll for Open to roles badge ---
+  const openRolesBtn = document.querySelector('.open-roles-btn');
+  if (openRolesBtn) {
+    openRolesBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetSection = document.querySelector(openRolesBtn.getAttribute('href'));
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - 80, // offset for nav header
+          behavior: 'smooth'
+        });
+      }
     });
   }
 });
