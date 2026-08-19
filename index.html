@@ -43,10 +43,23 @@
 
       <div class="header-actions">
         <!-- Open to Roles Badge (Figma sketch) -->
-        <a href="#contact" class="open-roles-btn" aria-label="Open to Roles Status">
-          <span class="roles-dot"></span>
-          <span class="roles-text">Open to roles</span>
-        </a>
+        <div class="open-roles-container">
+          <a href="#contact" class="open-roles-btn" aria-label="Open to Roles Status">
+            <span class="roles-dot"></span>
+            <span class="roles-text">Open to roles</span>
+          </a>
+          <div class="roles-dropdown" aria-label="Target Roles List">
+            <div class="roles-dropdown-header">Actively seeking roles:</div>
+            <ul class="roles-dropdown-list">
+              <li><span class="roles-list-dot"></span>Associate Product Manager (APM)</li>
+              <li><span class="roles-list-dot"></span>Product Manager (PM)</li>
+              <li><span class="roles-list-dot"></span>Technical Product Manager</li>
+              <li><span class="roles-list-dot"></span>Product Owner</li>
+              <li><span class="roles-list-dot"></span>Product Analyst</li>
+            </ul>
+            <div class="roles-dropdown-footer">Click to connect &rarr;</div>
+          </div>
+        </div>
 
         <!-- Resume button -->
         <button id="header-resume-btn" class="header-resume-btn" aria-label="View Resume">

@@ -323,17 +323,38 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', updateActiveNavLink);
   updateActiveNavLink(); // Run on mount
 
-  // --- Smooth Scroll for Open to roles badge ---
+  // --- Smooth Scroll & Dropdown Toggle for Open to roles badge ───
+  const rolesContainer = document.querySelector('.open-roles-container');
   const openRolesBtn = document.querySelector('.open-roles-btn');
-  if (openRolesBtn) {
+  
+  if (rolesContainer && openRolesBtn) {
     openRolesBtn.addEventListener('click', (e) => {
+      if (window.innerWidth < 1024) {
+        // Mobile behavior: first tap shows roles dropdown, second tap scrolls
+        if (!rolesContainer.classList.contains('active')) {
+          e.preventDefault();
+          e.stopPropagation();
+          rolesContainer.classList.add('active');
+          return;
+        }
+      }
+
+      // Smooth scroll execution
       e.preventDefault();
+      rolesContainer.classList.remove('active');
       const targetSection = document.querySelector(openRolesBtn.getAttribute('href'));
       if (targetSection) {
         window.scrollTo({
           top: targetSection.offsetTop - 80, // offset for nav header
           behavior: 'smooth'
         });
+      }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!rolesContainer.contains(e.target)) {
+        rolesContainer.classList.remove('active');
       }
     });
   }
