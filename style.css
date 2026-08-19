@@ -138,21 +138,36 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
   text-decoration: none;
+  transition: color 0.3s ease, letter-spacing 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), text-shadow 0.3s ease;
+}
+
+.logo:hover {
+  color: #fff;
+  letter-spacing: -0.01em;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
 }
 
 .logo-icon {
-  width: 22px; height: 22px;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  border-radius: 6px;
+  width: 26px; height: 26px;
   display: inline-block;
-  box-shadow: 0 0 12px var(--accent-primary-glow);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" fill="none"><path d="M18 3L31 10.5V25.5L18 33L5 25.5V10.5L18 3" stroke="%239b51e0" stroke-width="2.5" stroke-linejoin="round"/><path d="M12 24L18 12L24 24" stroke="%2300d2ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 19.5H21" stroke="%23f0eeff" stroke-width="2.5" stroke-linecap="round"/><circle cx="18" cy="12" r="2.5" fill="%2300d2ff"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
+  filter: drop-shadow(0 0 6px rgba(155, 81, 224, 0.35));
+}
+
+.logo:hover .logo-icon {
+  transform: rotate(30deg) scale(1.08);
+  filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.6));
 }
 
 .menu-icon { cursor: pointer; color: var(--text-secondary); }
