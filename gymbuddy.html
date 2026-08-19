@@ -14,6 +14,8 @@
         --border-color: #22203a;
       }
     
+    
+        
     /* ── BRAND LOADER ── */
     .brand-loader {
       position: fixed; inset: 0; background: #08070f; z-index: 10000;
@@ -36,6 +38,18 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body class="case-study-page">
+
+  <div class="brand-loader" id="brand-loader">
+    <div class="loader-content">
+      <div class="loader-icon-gym">
+        <div class="gym-plate"></div>
+        <div class="gym-bar"></div>
+        <div class="gym-plate"></div>
+      </div>
+      <div class="loader-text">Configuring Coach...</div>
+    </div>
+  </div>
+        
     <!-- Mesh BG -->
     <div class="mesh-bg" aria-hidden="true">
       <div class="mesh-orb mesh-orb-1" style="background: radial-gradient(circle, rgba(59,130,246,0.25) 0%, transparent 70%);"></div>
@@ -145,17 +159,21 @@
 
     <script type="module" src="./main.js"></script>
   
+  
+    
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const loader = document.getElementById("brand-loader");
-      document.body.style.overflow = "hidden";
-      setTimeout(() => {
-        if(loader) {
+      if (loader) {
+        document.body.style.overflow = "hidden";
+        setTimeout(() => {
           loader.classList.add("fade-out");
           document.body.style.overflow = "";
-        }
-      }, 1000); // 1.0s wait
-      setTimeout(() => { if(loader) loader.remove(); }, 1600);
+        }, 1000); // 1.0s wait
+        setTimeout(() => {
+          loader.remove();
+        }, 1600);
+      }
     });
   </script>
     </body>

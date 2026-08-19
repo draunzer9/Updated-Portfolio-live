@@ -210,6 +210,8 @@
     .lightbox-prev { left:16px; }
     .lightbox-next { right:16px; }
   
+    
+        
     /* ── BRAND LOADER ── */
     .brand-loader {
       position: fixed; inset: 0; background: #000; z-index: 10000;
@@ -231,6 +233,17 @@
   <link rel="stylesheet" href="./style.css"/>
 </head>
 <body class="case-study-page">
+
+  <div class="brand-loader" id="brand-loader">
+    <div class="loader-content">
+      <div class="loader-icon-x">
+        <div class="x-line-1"></div>
+        <div class="x-line-2"></div>
+      </div>
+      <div class="loader-text">Analyzing X Funnels...</div>
+    </div>
+  </div>
+        
   <div class="mesh-bg" aria-hidden="true">
     <div class="mesh-orb mesh-orb-1" style="background:radial-gradient(circle,rgba(29,155,240,0.28) 0%,transparent 70%);"></div>
     <div class="mesh-orb mesh-orb-2" style="background:radial-gradient(circle,rgba(113,201,248,0.15) 0%,transparent 70%);"></div>
@@ -405,17 +418,21 @@
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();if(e.key==='ArrowRight')navLightbox(1);if(e.key==='ArrowLeft')navLightbox(-1);});
   </script>
 
+  
+    
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const loader = document.getElementById("brand-loader");
-      document.body.style.overflow = "hidden";
-      setTimeout(() => {
-        if(loader) {
+      if (loader) {
+        document.body.style.overflow = "hidden";
+        setTimeout(() => {
           loader.classList.add("fade-out");
           document.body.style.overflow = "";
-        }
-      }, 1000); // 1.0s wait
-      setTimeout(() => { if(loader) loader.remove(); }, 1600);
+        }, 1000); // 1.0s wait
+        setTimeout(() => {
+          loader.remove();
+        }, 1600);
+      }
     });
   </script>
     </body>

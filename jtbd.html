@@ -52,6 +52,8 @@
     .lb-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.5rem;cursor:pointer;background:rgba(255,255,255,0.08);border:none;border-radius:8px;padding:8px 16px;}
     .lb-prev{left:16px;}.lb-next{right:16px;}
   
+    
+        
     /* ── BRAND LOADER ── */
     .brand-loader {
       position: fixed; inset: 0; background: #08070f; z-index: 10000;
@@ -70,6 +72,16 @@
   <link rel="stylesheet" href="./style.css"/>
 </head>
 <body class="case-study-page">
+
+  <div class="brand-loader" id="brand-loader">
+    <div class="loader-content">
+      <div class="loader-icon-jtbd">
+        <div class="jtbd-hand"></div>
+      </div>
+      <div class="loader-text">Deconstructing Motivation...</div>
+    </div>
+  </div>
+        
   <div class="mesh-bg" aria-hidden="true">
     <div class="mesh-orb mesh-orb-1" style="background:radial-gradient(circle,rgba(217,119,6,0.22) 0%,transparent 70%);"></div>
     <div class="mesh-orb mesh-orb-2" style="background:radial-gradient(circle,rgba(252,211,77,0.1) 0%,transparent 70%);"></div>
@@ -169,17 +181,21 @@
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')navLB(1);if(e.key==='ArrowLeft')navLB(-1);});
   </script>
 
+  
+    
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const loader = document.getElementById("brand-loader");
-      document.body.style.overflow = "hidden";
-      setTimeout(() => {
-        if(loader) {
+      if (loader) {
+        document.body.style.overflow = "hidden";
+        setTimeout(() => {
           loader.classList.add("fade-out");
           document.body.style.overflow = "";
-        }
-      }, 1000); // 1.0s wait
-      setTimeout(() => { if(loader) loader.remove(); }, 1600);
+        }, 1000); // 1.0s wait
+        setTimeout(() => {
+          loader.remove();
+        }, 1600);
+      }
     });
   </script>
     </body>

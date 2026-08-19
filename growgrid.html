@@ -473,6 +473,8 @@
       .flip-grid { grid-template-columns: 1fr; }
     }
   
+    
+        
     /* ── BRAND LOADER ── */
     .brand-loader {
       position: fixed; inset: 0; background: #08070f; z-index: 10000;
@@ -494,11 +496,20 @@
         </style>
 </head>
 <body>
+
   <div class="brand-loader" id="brand-loader">
     <div class="loader-content">
       <div class="loader-icon-grow">
         <div class="grow-node"></div>
         <div class="grow-node"></div>
+        <div class="grow-node"></div>
+        <div class="grow-node"></div>
+      </div>
+      <div class="loader-text">Mapping Career Grid...</div>
+    </div>
+  </div>
+        
+  <div class="grow-node"></div>
         <div class="grow-node"></div>
         <div class="grow-node"></div>
       </div>
@@ -783,17 +794,21 @@
     });
   </script>
 
+  
+    
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const loader = document.getElementById("brand-loader");
-      document.body.style.overflow = "hidden";
-      setTimeout(() => {
-        if(loader) {
+      if (loader) {
+        document.body.style.overflow = "hidden";
+        setTimeout(() => {
           loader.classList.add("fade-out");
           document.body.style.overflow = "";
-        }
-      }, 1000); // 1.0s wait
-      setTimeout(() => { if(loader) loader.remove(); }, 1600);
+        }, 1000); // 1.0s wait
+        setTimeout(() => {
+          loader.remove();
+        }, 1600);
+      }
     });
   </script>
     </body>
