@@ -1878,3 +1878,56 @@ body {
   line-height: 1.45;
   margin: 0;
 }
+
+/* ── CASE STUDY PROBLEM STATEMENT ── */
+.problem-statement-section {
+  padding: 5rem 6vw;
+  background: rgba(255, 255, 255, 0.015);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.problem-statement-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .problem-statement-container {
+    grid-template-columns: 0.3fr 0.7fr;
+    align-items: center;
+  }
+}
+.ps-label-col {
+  border-left: 3px solid var(--accent-primary);
+  padding-left: 1.5rem;
+}
+.ps-label-col h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.ps-label-col p {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent-secondary, #6ee7b7);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 6px;
+}
+.ps-text-col p {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  color: var(--text-primary, #f0eeff);
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 400;
+}
