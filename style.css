@@ -1832,46 +1832,18 @@ body {
 }
 .timeline-node {
   position: absolute;
-  left: 3px; top: calc(50% - 6px);
-  width: 12px; height: 12px;
-  background: #08070f;
-  border: 2.5px solid rgba(255, 255, 255, 0.15);
+  left: 6px; top: calc(50% - 3.5px);
+  width: 7px; height: 7px;
+  background: #10b981;
   border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
   z-index: 2;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.timeline-node::after {
-  content: '';
-  width: 3px; height: 3px;
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 50%;
-  transition: all 0.35s ease;
+  transition: all 0.3s ease;
 }
 .timeline-item:hover .timeline-node {
-  transform: scale(1.15);
-  border-color: #10b981;
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
-}
-.timeline-item:hover .timeline-node::after {
-  background: #10b981;
-  transform: scale(1.5);
-  box-shadow: 0 0 6px #10b981;
-}
-
-/* Breathing animation for current / top item */
-.timeline-item:first-child .timeline-node {
-  border-color: rgba(59, 130, 246, 0.5);
-  animation: nodePulseBlue 2s infinite alternate;
-}
-.timeline-item:first-child .timeline-node::after {
-  background: #3b82f6;
-}
-@keyframes nodePulseBlue {
-  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
-  100% { box-shadow: 0 0 0 6px rgba(59, 130, 246, 0); }
+  transform: scale(1.4);
+  background: #6ee7b7;
+  box-shadow: 0 0 12px #6ee7b7;
 }
 
 .timeline-year {
@@ -1904,13 +1876,13 @@ body {
   color: #fff;
 }
 .timeline-at {
-  color: rgba(255, 255, 255, 0.4);
-  font-weight: 500;
+  color: #6ee7b7;
+  font-weight: 600;
   margin-left: 2px;
   transition: color 0.3s ease;
 }
 .timeline-item:hover .timeline-at {
-  color: #10b981;
+  color: #fff;
 }
 
 /* ── CASE STUDY PROBLEM STATEMENT ── */
