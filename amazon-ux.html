@@ -58,17 +58,68 @@
     .brand-loader {
       position: fixed; inset: 0; background: #08070f; z-index: 10000;
       display: flex; align-items: center; justify-content: center;
-      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.85, 0, 0.15, 1);
+      transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.6s ease;
     }
-    .brand-loader.fade-out { opacity: 0; transform: scale(1.05); pointer-events: none; }
-    .loader-content { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
-    .loader-icon-amz {
-      width: 60px; height: 30px; position: relative;
+    .brand-loader.fade-out { transform: scale(1.05); opacity: 0; pointer-events: none; }
+    .loader-content { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+    .delivery-wrapper { width: 180px; height: 110px; position: relative; }
+    .delivery-svg { width: 100%; height: 100%; }
+    
+    /* Handover Animation */
+    .courier-group {
+      animation: courierLean 1.2s ease-in-out infinite alternate;
     }
-    .amz-smile { width: 44px; height: 16px; border: solid 3px transparent; border-color: transparent transparent #FF9900 transparent; border-radius: 0 0 50% 50% / 0 0 100% 100%; position: absolute; top: 0; left: 8px; transform: rotate(0deg); animation: smileStretch 0.8s ease-in-out infinite alternate; }
-    .amz-arrow { width: 0; height: 0; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 8px solid #FF9900; position: absolute; right: 5px; top: 8px; transform: rotate(-30deg); }
-    @keyframes smileStretch { 0% { transform: scaleX(0.9); } 100% { transform: scaleX(1.15); } }
-    .loader-text { font-family: 'Outfit', sans-serif; color: #fff; font-size: 0.9rem; letter-spacing: 0.05em; opacity: 0.8; }
+    @keyframes courierLean {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(2px); }
+    }
+    
+    .parcel-group {
+      animation: parcelHandover 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      transform-origin: center;
+    }
+    @keyframes parcelHandover {
+      0% { transform: translate(0, 0); }
+      50%, 80% { transform: translate(24px, 0); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    .customer-group {
+      animation: customerReceive 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes customerReceive {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-2px); }
+    }
+    
+    /* Success checkmark pop up */
+    .success-pop {
+      transform-origin: 50px 18px;
+      transform: scale(0);
+      opacity: 0;
+      animation: successAppear 1.2s ease-out infinite;
+    }
+    @keyframes successAppear {
+      0%, 45% { transform: scale(0); opacity: 0; }
+      55%, 85% { transform: scale(1.2); opacity: 1; }
+      90%, 100% { transform: scale(0); opacity: 0; }
+    }
+    
+    /* Loader Text */
+    .loader-text {
+      font-family: 'Outfit', sans-serif; color: #fff; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.05em; opacity: 0.9;
+      animation: pulseText 1.5s ease-in-out infinite;
+    }
+    @keyframes pulseText { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+    /* Exiting state */
+    .brand-loader.exiting .parcel-group {
+      animation: parcelExit 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    @keyframes parcelExit {
+      0% { transform: translate(24px, 0) scale(1); }
+      100% { transform: translate(50px, -5px) scale(0.8); opacity: 0; }
+    }
         </style>
   <link rel="stylesheet" href="./style.css"/>
 </head>
@@ -76,11 +127,41 @@
 
   <div class="brand-loader" id="brand-loader">
     <div class="loader-content">
-      <div class="loader-icon-amz">
-        <div class="amz-smile"></div>
-        <div class="amz-arrow"></div>
+      <div class="delivery-wrapper">
+        <svg class="delivery-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ground Line -->
+          <line x1="10" y1="48" x2="90" y2="48" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-dasharray="4 4"/>
+          
+          <!-- Courier Boy -->
+          <g class="courier-group">
+            <path d="M22 23 H32 L34 26 H20 Z" fill="#FF9900"/>
+            <circle cx="26" cy="28" r="5" fill="#fff" stroke="#FF9900" stroke-width="1.5"/>
+            <line x1="26" y1="33" x2="26" y2="44" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <path d="M26 36 L38 36" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          
+          <!-- The Parcel (Amazon Box) -->
+          <g class="parcel-group">
+            <rect x="36" y="31" width="12" height="10" rx="1" fill="#FF9900" stroke="#fff" stroke-width="1.5"/>
+            <path d="M40 37 Q42 39 44 37" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round"/>
+            <polygon points="44,36 45,38 43,38" fill="#000"/>
+          </g>
+
+          <!-- Customer -->
+          <g class="customer-group">
+            <circle cx="74" cy="28" r="5" fill="#fff" stroke="#FF9900" stroke-width="1.5"/>
+            <line x1="74" y1="33" x2="74" y2="44" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <path d="M74 36 L62 36" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          </g>
+
+          <!-- Success Checkmark/Heart -->
+          <g class="success-pop">
+            <circle cx="50" cy="18" r="4" fill="#6ee7b7"/>
+            <path d="M48 18 L50 20 L53 16" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
       </div>
-      <div class="loader-text">Evaluating Checkout...</div>
+      <div class="loader-text">Delivering your package...</div>
     </div>
   </div>
         
@@ -208,12 +289,15 @@
       if (loader) {
         document.body.style.overflow = "hidden";
         setTimeout(() => {
+          loader.classList.add("exiting");
+        }, 1100); // 1.1s completed
+        setTimeout(() => {
           loader.classList.add("fade-out");
           document.body.style.overflow = "";
-        }, 1000); // 1.0s wait
+        }, 1500); // 1.5s fade out
         setTimeout(() => {
           loader.remove();
-        }, 1600);
+        }, 2200);
       }
     });
   </script>
