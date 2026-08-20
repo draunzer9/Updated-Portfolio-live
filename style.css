@@ -1805,47 +1805,86 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* Reverted back to the original vertical spacing */
+  gap: 2rem; /* Kept the comfortable vertical spacing */
 }
 .timeline-line {
   position: absolute;
-  top: 5px; bottom: 5px; left: 6px;
+  top: 8px; bottom: 8px; left: 9px;
   width: 1px;
-  background: rgba(255, 255, 255, 0.08);
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.12) 15%, rgba(255, 255, 255, 0.12) 85%, transparent);
 }
 .timeline-item {
   position: relative;
   display: flex;
   gap: 1.5rem;
-  align-items: flex-start;
-  padding-left: 24px;
+  align-items: center;
+  padding: 10px 16px 10px 28px;
+  margin-left: -12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.timeline-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .timeline-node {
   position: absolute;
-  left: 3px; top: 7px;
-  width: 7px; height: 7px;
-  background: #10b981;
+  left: 3px; top: calc(50% - 6px);
+  width: 12px; height: 12px;
+  background: #08070f;
+  border: 2.5px solid rgba(255, 255, 255, 0.15);
   border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
   z-index: 2;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.timeline-node::after {
+  content: '';
+  width: 3px; height: 3px;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  transition: all 0.35s ease;
 }
 .timeline-item:hover .timeline-node {
-  transform: scale(1.4);
-  background: #6ee7b7;
-  box-shadow: 0 0 12px #6ee7b7;
+  transform: scale(1.15);
+  border-color: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
 }
+.timeline-item:hover .timeline-node::after {
+  background: #10b981;
+  transform: scale(1.5);
+  box-shadow: 0 0 6px #10b981;
+}
+
+/* Breathing animation for current / top item */
+.timeline-item:first-child .timeline-node {
+  border-color: rgba(59, 130, 246, 0.5);
+  animation: nodePulseBlue 2s infinite alternate;
+}
+.timeline-item:first-child .timeline-node::after {
+  background: #3b82f6;
+}
+@keyframes nodePulseBlue {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  100% { box-shadow: 0 0 0 6px rgba(59, 130, 246, 0); }
+}
+
 .timeline-year {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--text-tertiary);
   width: 45px;
   flex-shrink: 0;
-  line-height: 1.3;
   transition: color 0.3s ease;
 }
 .timeline-item:hover .timeline-year {
-  color: var(--text-primary);
+  color: #fff;
 }
 .timeline-content {
   display: flex;
@@ -1855,9 +1894,9 @@ body {
 .timeline-content h4 {
   font-family: var(--font-sans);
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-primary);
-  line-height: 1.3;
+  line-height: 1.4;
   margin: 0;
   transition: color 0.3s ease;
 }
@@ -1865,18 +1904,13 @@ body {
   color: #fff;
 }
 .timeline-at {
-  color: #6ee7b7;
-  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+  margin-left: 2px;
   transition: color 0.3s ease;
 }
 .timeline-item:hover .timeline-at {
-  color: #fff;
-}
-.timeline-content p {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  line-height: 1.45;
-  margin: 0;
+  color: #10b981;
 }
 
 /* ── CASE STUDY PROBLEM STATEMENT ── */
