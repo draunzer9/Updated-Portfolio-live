@@ -235,6 +235,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Certificate Modal Logic ---
+  const certModal = document.getElementById('cert-modal');
+  const openCertBtn = document.getElementById('timeline-airtribe-trigger');
+  const closeCertBtn = document.getElementById('cert-close-btn');
+  const closeCertOverlay = document.getElementById('cert-close-overlay');
+
+  if (certModal) {
+    const openModal = () => {
+      certModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+    const closeModal = () => {
+      certModal.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    if (openCertBtn) {
+      openCertBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    }
+    
+    if (closeCertBtn) closeCertBtn.addEventListener('click', closeModal);
+    if (closeCertOverlay) closeCertOverlay.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && certModal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  }
+
   // Magnetic Button Physics
   const magneticWrap = document.getElementById('magnetic-wrap');
   const magneticBtn = document.getElementById('resume-card-trigger');

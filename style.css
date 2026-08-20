@@ -1931,3 +1931,28 @@ body {
   margin: 0;
   font-weight: 400;
 }
+
+/* ── TIMELINE CERTIFICATE BADGE ── */
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 12px;
+  padding: 3px 8px;
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #3b82f6;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: all 0.3s ease;
+  vertical-align: middle;
+  font-weight: 600;
+}
+.timeline-item:hover .cert-badge {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.55);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+}
