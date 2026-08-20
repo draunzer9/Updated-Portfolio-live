@@ -1805,7 +1805,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.2rem; /* Tighter spacing between single-line items */
 }
 .timeline-line {
   position: absolute;
