@@ -58,16 +58,56 @@
     .brand-loader {
       position: fixed; inset: 0; background: #08070f; z-index: 10000;
       display: flex; align-items: center; justify-content: center;
-      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.85, 0, 0.15, 1);
+      transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.6s ease;
     }
-    .brand-loader.fade-out { opacity: 0; transform: scale(1.05); pointer-events: none; }
-    .loader-content { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
-    .loader-icon-jtbd {
-      width: 32px; height: 32px; border: 3px solid rgba(217,119,6,0.3); border-radius: 50%; position: relative;
+    .brand-loader.fade-out { transform: scale(1.05); opacity: 0; pointer-events: none; }
+    .loader-content { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+    .cloche-wrapper { width: 160px; height: 100px; position: relative; }
+    .cloche-svg { width: 100%; height: 100%; }
+    
+    /* Cloche lid lifting animation */
+    .cloche-dome {
+      animation: clocheLift 1.5s ease-in-out infinite;
+      transform-origin: bottom center;
     }
-    .jtbd-hand { width: 2px; height: 12px; background: #D97706; position: absolute; bottom: 50%; left: calc(50% - 1px); transform-origin: bottom center; animation: spinHand 1s linear infinite; }
-    @keyframes spinHand { 100% { transform: rotate(360deg); } }
-    .loader-text { font-family: 'Outfit', sans-serif; color: #fff; font-size: 0.9rem; letter-spacing: 0.05em; opacity: 0.8; }
+    @keyframes clocheLift {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      35% { transform: translateY(-10px) rotate(-6deg); }
+      70% { transform: translateY(-12px) rotate(4deg); }
+    }
+    
+    /* Steam curls rising */
+    .steam {
+      stroke-dasharray: 40;
+      stroke-dashoffset: 40;
+      animation: steamRise 1.5s linear infinite;
+      opacity: 0;
+    }
+    .steam-1 { animation-delay: 0.2s; }
+    .steam-2 { animation-delay: 0.5s; }
+    .steam-3 { animation-delay: 0.8s; }
+    @keyframes steamRise {
+      0% { stroke-dashoffset: 40; opacity: 0; }
+      40% { opacity: 0.8; }
+      80% { stroke-dashoffset: 0; opacity: 0.4; }
+      100% { opacity: 0; }
+    }
+    
+    /* Loader Text */
+    .loader-text {
+      font-family: 'Outfit', sans-serif; color: #fff; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.05em; opacity: 0.9;
+      animation: pulseText 1.5s ease-in-out infinite;
+    }
+    @keyframes pulseText { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+    /* Cloche exiting animation */
+    .brand-loader.exiting .cloche-dome {
+      animation: clocheExit 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    @keyframes clocheExit {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-30px) scale(0.9); }
+    }
         </style>
   <link rel="stylesheet" href="./style.css"/>
 </head>
@@ -75,10 +115,28 @@
 
   <div class="brand-loader" id="brand-loader">
     <div class="loader-content">
-      <div class="loader-icon-jtbd">
-        <div class="jtbd-hand"></div>
+      <div class="cloche-wrapper">
+        <svg class="cloche-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- Plate Base -->
+          <path d="M20 44 C20 44, 30 46, 50 46 C70 46, 80 44, 80 44 L82 48 H18 Z" fill="#1f1e2e" stroke="#D97706" stroke-width="2"/>
+          
+          <!-- Steam Lines -->
+          <g class="steam-group">
+            <path d="M42 34 Q39 28, 42 22 T42 12" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round" class="steam steam-1"/>
+            <path d="M50 34 Q47 28, 50 22 T50 12" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" class="steam steam-2"/>
+            <path d="M58 34 Q55 28, 58 22 T58 12" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round" class="steam steam-3"/>
+          </g>
+          
+          <!-- Cloche Dome -->
+          <g class="cloche-dome">
+            <path d="M24 42 A 26 26 0 0 1 76 42 Z" fill="#08070f" stroke="#D97706" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M30 42 A 20 20 0 0 1 70 42" fill="none" stroke="rgba(217,119,6,0.3)" stroke-width="1.5"/>
+            <path d="M46 16 A 4 4 0 0 1 54 16" fill="none" stroke="#D97706" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="50" cy="12" r="2.5" fill="#fff" stroke="#D97706" stroke-width="1.5"/>
+          </g>
+        </svg>
       </div>
-      <div class="loader-text">Deconstructing Motivation...</div>
+      <div class="loader-text">Preparing your order...</div>
     </div>
   </div>
         
@@ -189,12 +247,15 @@
       if (loader) {
         document.body.style.overflow = "hidden";
         setTimeout(() => {
+          loader.classList.add("exiting");
+        }, 1100); // 1.1s lift off
+        setTimeout(() => {
           loader.classList.add("fade-out");
           document.body.style.overflow = "";
-        }, 1000); // 1.0s wait
+        }, 1500); // 1.5s fade out
         setTimeout(() => {
           loader.remove();
-        }, 1600);
+        }, 2200);
       }
     });
   </script>
