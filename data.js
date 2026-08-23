@@ -113,4 +113,18 @@ export const caseStudies = [
     themeSecondary: "#FFB84D",
     image: "/assets/amazon.svg"
   }
+  ,{
+    id: "tinder-travel",
+    title: "Tinder Travel MVP",
+    subtitle: "Connecting Travelers Worldwide",
+    tags: ["Product Pitch", "Social", "Growth"],
+    filterCategory: "New Feature",
+    metric: "30%",
+    metricLabel: "Projected Match Lift",
+    summary: "A comprehensive product pitch to introduce travel-based matching and itinerary planning within the Tinder ecosystem.",
+    url: "/tinder.html",
+    themeColor: "#FD3A73",
+    themeSecondary: "#FF6584",
+    image: "/assets/tinder.svg"
+  }
 ];

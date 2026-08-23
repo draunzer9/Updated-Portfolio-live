@@ -14,6 +14,7 @@ export default defineConfig({
         xGrowth: resolve(__dirname, 'x-growth.html'),
         zepto: resolve(__dirname, 'zepto.html'),
         zomato: resolve(__dirname, 'zomato.html'),
+        tinder: resolve(__dirname, 'tinder.html'),
         gymbuddy: resolve(__dirname, 'gymbuddy.html')
       }
     }
