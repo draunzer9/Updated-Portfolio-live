@@ -123,6 +123,8 @@ export const caseStudies = [
     metricLabel: "Projected Match Lift",
     summary: "A comprehensive product pitch to introduce travel-based matching and itinerary planning within the Tinder ecosystem.",
     url: "/tinder.html",
+    liveUrl: "https://tinder-travel.vercel.app/",
+    liveLabel: "Live Prototype",
     themeColor: "#FD3A73",
     themeSecondary: "#FF6584",
     image: "/assets/tinder.svg"
