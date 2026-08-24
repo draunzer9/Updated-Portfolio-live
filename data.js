@@ -139,6 +139,8 @@ export const caseStudies = [
     metricLabel: "Fleet Utilisation",
     summary: "A role-enforced web platform eliminating prototype test drive conflicts, manual status reporting, and vehicle downtime across Volvo R&D teams.",
     url: "/volvo-protoschedule.html",
+    liveUrl: "https://volvo-proto-schedule.vercel.app/",
+    liveLabel: "Live Prototype",
     themeColor: "#4A90E2",
     themeSecondary: "#50E3C2",
     image: "/assets/volvo.svg"
