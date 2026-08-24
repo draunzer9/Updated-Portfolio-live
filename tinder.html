@@ -1,313 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Amazon Checkout UX Redesign | Anish Shankar</title>
-  <meta name="description" content="Applying UX laws and heuristics to identify and eliminate friction in Amazon's checkout flow."/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tinder Travel MVP | Anish Shankar</title>
+  <meta name="description" content="Tinder Travel: From location-changer to travel companion finder. A feature evolution story."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
   <style>
-    :root{--accent-primary:#FF9900;--accent-secondary:#FFB84D;--accent-primary-glow:rgba(255,153,0,0.3);}
-    .amz-hero{background:linear-gradient(145deg,rgba(17,16,32,0.97),rgba(10,9,20,0.99));border:1px solid rgba(255,153,0,0.22);border-radius:28px;overflow:hidden;padding:3rem;margin-bottom:3rem;position:relative;}
-    .amz-hero::after{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(255,153,0,0.18) 0%,transparent 70%);pointer-events:none;}
-    .amz-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,153,0,0.1);border:1px solid rgba(255,153,0,0.3);border-radius:100px;padding:5px 14px;font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:#FFB84D;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.4rem;width:fit-content;}
-    .amz-title{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4.5vw,3rem);font-weight:900;letter-spacing:-0.04em;line-height:1.05;margin-bottom:1rem;background:linear-gradient(135deg,#fff 30%,rgba(255,184,77,0.8) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-    .amz-sub{font-size:0.93rem;color:#9489b4;line-height:1.7;margin-bottom:2rem;max-width:560px;}
-    /* Before/After Comparison */
-    .ba-section{margin:2.5rem 0;}
-    .ba-label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:#FF9900;margin-bottom:1.2rem;display:flex;align-items:center;gap:8px;}
-    .ba-toggle-row{display:flex;align-items:center;gap:12px;margin-bottom:1.5rem;flex-wrap:wrap;}
-    .ba-btn{padding:8px 20px;border-radius:8px;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.85rem;cursor:pointer;border:1px solid;transition:all 0.2s;}
-    .ba-btn.before{background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3);color:#fca5a5;}
-    .ba-btn.before.active{background:rgba(239,68,68,0.25);border-color:#ef4444;}
-    .ba-btn.after{background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.3);color:#86efac;}
-    .ba-btn.after.active{background:rgba(34,197,94,0.25);border-color:#22c55e;}
-    .ba-panel{display:none;}
-    .ba-panel.active{display:block;}
-    .ba-card{background:rgba(255,153,0,0.04);border:1px solid rgba(255,153,0,0.15);border-radius:14px;overflow:hidden;}
-    .ba-card-header{padding:14px 20px;border-bottom:1px solid rgba(255,153,0,0.12);display:flex;align-items:center;gap:10px;}
-    .ba-dot{width:8px;height:8px;border-radius:50%;}
-    .ba-items{padding:1rem;}
-    .ba-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
-    .ba-item:last-child{border-bottom:none;}
-    .ba-item-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px;}
-    .ba-item-text{font-size:0.85rem;line-height:1.6;}
-    .ba-item-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.88rem;margin-bottom:4px;}
-    /* Heuristic violations */
-    .heuristic-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:2rem 0;}
-    @media(min-width:640px){.heuristic-grid{grid-template-columns:1fr 1fr;}}
-    .heuristic-card{background:rgba(255,153,0,0.05);border:1px solid rgba(255,153,0,0.16);border-radius:14px;padding:1.4rem;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);cursor:default;}
-    .heuristic-card:hover{transform:translateY(-4px);border-color:rgba(255,153,0,0.4);box-shadow:0 10px 30px rgba(255,153,0,0.12);}
-    .h-law{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:#FFB84D;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;}
-    .h-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.92rem;color:#f0eeff;margin-bottom:6px;}
-    .h-desc{font-size:0.8rem;color:#9489b4;line-height:1.6;}
-    /* gallery */
-    .gallery-lbl{font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:#5c5478;display:flex;align-items:center;gap:10px;margin:3rem 0 1.5rem;}
-    .gallery-lbl::before,.gallery-lbl::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.06);}
-    .cs-slides{display:flex;flex-direction:column;gap:1rem;}
-    .cs-slides img{width:100%;border-radius:12px;border:1px solid rgba(255,153,0,0.12);box-shadow:0 4px 24px rgba(0,0,0,0.35);transition:transform 0.3s ease;cursor:zoom-in;}
-    .cs-slides img:hover{transform:scale(1.012);}
-    .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;align-items:center;justify-content:center;}
-    .lightbox.open{display:flex;}
-    .lightbox img{max-width:90vw;max-height:90vh;border-radius:12px;}
-    .lb-close{position:absolute;top:20px;right:24px;color:#fff;font-size:2rem;cursor:pointer;background:none;border:none;}
-    .lb-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:2.5rem;cursor:pointer;background:rgba(255,255,255,0.08);border:none;border-radius:8px;padding:8px 16px;}
-    .lb-prev{left:16px;}.lb-next{right:16px;}
-  
-    
-        
-    /* ── BRAND LOADER ── */
-    .brand-loader {
-      position: fixed; inset: 0; background: #08070f; z-index: 10000;
-      display: flex; align-items: center; justify-content: center;
-      transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.6s ease;
+    :root {
+      --accent-primary: #FD3A73;
+      --accent-secondary: #FF6584;
     }
-    .brand-loader.fade-out { transform: scale(1.05); opacity: 0; pointer-events: none; }
-    .loader-content { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
-    .delivery-wrapper { width: 180px; height: 110px; position: relative; }
-    .delivery-svg { width: 100%; height: 100%; }
-    
-    /* Handover Animation */
-    .courier-group {
-      animation: courierLean 1.2s ease-in-out infinite alternate;
+    .cs-hero {
+      padding: 6rem 5% 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--surface-border);
     }
-    @keyframes courierLean {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(2px); }
+    .cs-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(253, 58, 115, 0.1);
+      border: 1px solid rgba(253, 58, 115, 0.3);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #FF6584;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
     }
-    
-    .parcel-group {
-      animation: parcelHandover 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-      transform-origin: center;
+    .cs-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
     }
-    @keyframes parcelHandover {
-      0% { transform: translate(0, 0); }
-      50%, 80% { transform: translate(24px, 0); }
-      100% { transform: translate(0, 0); }
+    .cs-sub {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      line-height: 1.6;
     }
-    
-    .customer-group {
-      animation: customerReceive 1.2s ease-in-out infinite alternate;
+    .cs-content {
+      padding: 4rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    @keyframes customerReceive {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-2px); }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin: 3rem 0;
     }
-    
-    /* Success checkmark pop up */
-    .success-pop {
-      transform-origin: 50px 18px;
-      transform: scale(0);
-      opacity: 0;
-      animation: successAppear 1.2s ease-out infinite;
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
     }
-    @keyframes successAppear {
-      0%, 45% { transform: scale(0); opacity: 0; }
-      55%, 85% { transform: scale(1.2); opacity: 1; }
-      90%, 100% { transform: scale(0); opacity: 0; }
+    .info-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--surface-border);
+      padding: 2rem;
+      border-radius: 12px;
     }
-    
-    /* Loader Text */
-    .loader-text {
-      font-family: 'Outfit', sans-serif; color: #fff; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.05em; opacity: 0.9;
-      animation: pulseText 1.5s ease-in-out infinite;
+    .info-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent-secondary);
     }
-    @keyframes pulseText { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
-
-    /* Exiting state */
-    .brand-loader.exiting .parcel-group {
-      animation: parcelExit 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    .info-card p, .info-card ul {
+      color: var(--text-secondary);
+      line-height: 1.6;
     }
-    @keyframes parcelExit {
-      0% { transform: translate(24px, 0) scale(1); }
-      100% { transform: translate(50px, -5px) scale(0.8); opacity: 0; }
+    .info-card ul {
+      padding-left: 1.5rem;
+      margin-top: 1rem;
     }
-        </style>
-  <link rel="stylesheet" href="./style.css"/>
+    .info-card li {
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--surface-border);
+      padding-bottom: 0.5rem;
+    }
+    .flow-step {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .step-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+    }
+    .step-details h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .step-details p {
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+  </style>
 </head>
-<body class="case-study-page">
-
-  <div class="brand-loader" id="brand-loader">
-    <div class="loader-content">
-      <div class="delivery-wrapper">
-        <svg class="delivery-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-          <!-- Ground Line -->
-          <line x1="10" y1="48" x2="90" y2="48" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-dasharray="4 4"/>
-          
-          <!-- Courier Boy -->
-          <g class="courier-group">
-            <path d="M22 23 H32 L34 26 H20 Z" fill="#FF9900"/>
-            <circle cx="26" cy="28" r="5" fill="#fff" stroke="#FF9900" stroke-width="1.5"/>
-            <line x1="26" y1="33" x2="26" y2="44" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-            <path d="M26 36 L38 36" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-          </g>
-          
-          <!-- The Parcel (Amazon Box) -->
-          <g class="parcel-group">
-            <rect x="36" y="31" width="12" height="10" rx="1" fill="#FF9900" stroke="#fff" stroke-width="1.5"/>
-            <path d="M40 37 Q42 39 44 37" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round"/>
-            <polygon points="44,36 45,38 43,38" fill="#000"/>
-          </g>
-
-          <!-- Customer -->
-          <g class="customer-group">
-            <circle cx="74" cy="28" r="5" fill="#fff" stroke="#FF9900" stroke-width="1.5"/>
-            <line x1="74" y1="33" x2="74" y2="44" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-            <path d="M74 36 L62 36" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-          </g>
-
-          <!-- Success Checkmark/Heart -->
-          <g class="success-pop">
-            <circle cx="50" cy="18" r="4" fill="#6ee7b7"/>
-            <path d="M48 18 L50 20 L53 16" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-          </g>
-        </svg>
-      </div>
-      <div class="loader-text">Delivering your package...</div>
-    </div>
-  </div>
-        
-  <div class="mesh-bg" aria-hidden="true">
-    <div class="mesh-orb mesh-orb-1" style="background:radial-gradient(circle,rgba(255,153,0,0.22) 0%,transparent 70%);"></div>
-    <div class="mesh-orb mesh-orb-2" style="background:radial-gradient(circle,rgba(255,184,77,0.12) 0%,transparent 70%);"></div>
-  </div>
-  
+<body>
   <nav class="navbar">
-    <a href="/index.html" class="logo">
-      <span class="logo-icon"></span>
-      Anish Shankar
-    </a>
-    <a href="/index.html" class="nav-btn">&larr; Back to Portfolio</a>
+    <div class="logo">AS.</div>
+    <div class="nav-links">
+      <a href="./index.html">← Back to Portfolio</a>
+    </div>
   </nav>
 
-  <main class="case-study-container">
+  <header class="cs-hero">
+    <div class="cs-badge">Product Strategy · UX Design</div>
+    <h1 class="cs-title">Tinder Travel:<br>Passport 2.0</h1>
+    <p class="cs-sub">From a simple location-changer to a comprehensive travel companion finder. A feature evolution story unlocking new value without a new paywall.</p>
+  </header>
 
-    <section class="amz-hero reveal">
-      <div class="amz-badge">🛍️ UX Design · Heuristics · E-commerce</div>
-      <h1 class="amz-title">Amazon Checkout:<br>UX Evaluation &amp; Redesign</h1>
-      <p class="amz-sub">Applying Hick's Law, Fitts's Law, and Nielsen's 10 Heuristics to identify and eliminate friction in the world's largest e-commerce checkout — reducing cognitive load and cart abandonment.</p>
-    </section>
-
-    <section class="problem-statement-section reveal">
-      <div class="problem-statement-container">
-        <div class="ps-label-col">
-          <h2>Problem Statement</h2>
-          <p>The core friction</p>
-        </div>
-        <div class="ps-text-col">
-          <p>Amazon's legacy checkout sequence exposes users to high cognitive load, visual clutter, and feedback latencies. Friction in managing address corrections and payment validation steps results in preventable drop-offs and increased shopping cart abandonment.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- UX Laws cards -->
-    <section class="reveal" style="margin-bottom:2.5rem;">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#FF9900;margin-bottom:1.2rem;">📐 UX Laws Applied</p>
-      <div class="heuristic-grid">
-        <div class="heuristic-card">
-          <div class="h-law">Hick's Law</div>
-          <div class="h-title">Too Many Decisions at Once</div>
-          <div class="h-desc">Amazon's checkout presents 14+ decision points in a single viewport. Hick's Law predicts decision time increases logarithmically — current design far exceeds the optimal threshold.</div>
-        </div>
-        <div class="heuristic-card">
-          <div class="h-law">Fitts's Law</div>
-          <div class="h-title">Small Targets, High Risk</div>
-          <div class="h-desc">Critical CTAs like "Place Order" are surrounded by equally prominent elements. Fitts's Law demands high-value actions have larger hit areas and minimal competing targets.</div>
-        </div>
-        <div class="heuristic-card">
-          <div class="h-law">Tesler's Law</div>
-          <div class="h-title">Complexity Can't Disappear</div>
-          <div class="h-desc">Every step removed from the user must be absorbed somewhere. The redesign shifts complexity to the system — auto-filling address, payment, and delivery selections from history.</div>
-        </div>
-        <div class="heuristic-card">
-          <div class="h-law">Visibility of Status</div>
-          <div class="h-title">Where Am I in Checkout?</div>
-          <div class="h-desc">Nielsen Heuristic #1 is violated: users cannot see their progress through checkout without scrolling. A persistent progress indicator reduces anxiety and increases completion rate.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Before/After Toggle -->
-    <section class="ba-section reveal">
-      <div class="ba-label">⚡ Interactive · Before &amp; After</div>
-      <div class="ba-toggle-row">
-        <button class="ba-btn before active" onclick="showBA('before')">❌ Before (Current)</button>
-        <span style="color:#5c5478;font-size:0.8rem;">→</span>
-        <button class="ba-btn after" onclick="showBA('after')">✅ After (Redesign)</button>
-      </div>
-      <div class="ba-panel active" id="ba-before">
-        <div class="ba-card">
-          <div class="ba-card-header"><div class="ba-dot" style="background:#ef4444;"></div><span style="font-family:'Outfit',sans-serif;font-weight:700;color:#fca5a5;">Current Amazon Checkout — Pain Points</span></div>
-          <div class="ba-items">
-            <div class="ba-item"><div class="ba-item-icon">😵</div><div class="ba-item-text"><div class="ba-item-title" style="color:#fca5a5;">14+ Decisions Visible</div>Address, payment, delivery speed, gift wrapping, and upsells all compete for attention simultaneously.</div></div>
-            <div class="ba-item"><div class="ba-item-icon">🔍</div><div class="ba-item-text"><div class="ba-item-title" style="color:#fca5a5;">No Progress Indicator</div>Users don't know how many steps remain, increasing abandonment at any friction point.</div></div>
-            <div class="ba-item"><div class="ba-item-icon">⚠️</div><div class="ba-item-text"><div class="ba-item-title" style="color:#fca5a5;">Error Recovery Is Punishing</div>Fixing an incorrect address resets delivery options and loses selected payment method.</div></div>
-            <div class="ba-item"><div class="ba-item-icon">📦</div><div class="ba-item-text"><div class="ba-item-title" style="color:#fca5a5;">Delivery Date Buried</div>The most important piece of information (when does this arrive?) is not the most prominent element.</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="ba-panel" id="ba-after">
-        <div class="ba-card" style="border-color:rgba(34,197,94,0.25);">
-          <div class="ba-card-header" style="border-color:rgba(34,197,94,0.12);"><div class="ba-dot" style="background:#22c55e;"></div><span style="font-family:'Outfit',sans-serif;font-weight:700;color:#86efac;">Redesigned Checkout — Solutions</span></div>
-          <div class="ba-items">
-            <div class="ba-item"><div class="ba-item-icon">🎯</div><div class="ba-item-text"><div class="ba-item-title" style="color:#86efac;">Progressive Disclosure</div>Show only 3 decisions per step. Each step is validated before revealing the next — reducing cognitive load by 60%.</div></div>
-            <div class="ba-item"><div class="ba-item-icon">📍</div><div class="ba-item-text"><div class="ba-item-title" style="color:#86efac;">Persistent Step Indicator</div>A sticky 3-step progress bar (Address → Payment → Review) gives users full context at all times.</div></div>
-            <div class="ba-item"><div class="ba-item-icon">✏️</div><div class="ba-item-text"><div class="ba-item-title" style="color:#86efac;">Graceful Error Recovery</div>Inline validation with smart state persistence — fixing any field doesn't reset others.</div></div>
-            <div class="ba-item"><div class="ba-item-icon">🚀</div><div class="ba-item-text"><div class="ba-item-title" style="color:#86efac;">Delivery Date as Hero</div>Largest text on the confirmation page. Arrival date is the primary CTA anchor — not the price.</div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="gallery-lbl">Full Case Study Deck</div>
-    <div class="cs-slides">
-      <img src="/assets/amazonux_page_1.png" alt="Slide 1" loading="eager" onclick="openLB(0)"/>
-      <img src="/assets/amazonux_page_2.png" alt="Slide 2" loading="lazy" onclick="openLB(1)"/>
-      <img src="/assets/amazonux_page_3.png" alt="Slide 3" loading="lazy" onclick="openLB(2)"/>
-      <img src="/assets/amazonux_page_4.png" alt="Slide 4" loading="lazy" onclick="openLB(3)"/>
-      <img src="/assets/amazonux_page_5.png" alt="Slide 5" loading="lazy" onclick="openLB(4)"/>
-      <img src="/assets/amazonux_page_6.png" alt="Slide 6" loading="lazy" onclick="openLB(5)"/>
-      <img src="/assets/amazonux_page_7.png" alt="Slide 7" loading="lazy" onclick="openLB(6)"/>
-      <img src="/assets/amazonux_page_8.png" alt="Slide 8" loading="lazy" onclick="openLB(7)"/>
-      <img src="/assets/amazonux_page_9.png" alt="Slide 9" loading="lazy" onclick="openLB(8)"/>
-      <img src="/assets/amazonux_page_10.png" alt="Slide 10" loading="lazy" onclick="openLB(9)"/>
-    </div>
-
-    <div class="next-case reveal" style="margin-top:4rem;">
-      <p>Next Case Study</p>
-      <a href="/index.html" class="btn primary-btn" style="font-family:'Outfit',sans-serif;font-weight:700;">Back to Portfolio &rarr;</a>
-    </div>
-  </main>
-  <div class="lightbox" id="lb"><button class="lb-close" onclick="closeLB()">×</button><button class="lb-nav lb-prev" onclick="navLB(-1)">‹</button><img id="lb-img" src="" alt=""/><button class="lb-nav lb-next" onclick="navLB(1)">›</button></div>
-  <script type="module" src="./main.js"></script>
-  <script>
-    function showBA(mode){document.querySelectorAll('.ba-btn').forEach(b=>b.classList.toggle('active',b.classList.contains(mode)));document.querySelectorAll('.ba-panel').forEach(p=>p.classList.toggle('active',p.id==='ba-'+mode));}
-    const imgs=['/assets/amazonux_page_1.png','/assets/amazonux_page_2.png','/assets/amazonux_page_3.png','/assets/amazonux_page_4.png','/assets/amazonux_page_5.png','/assets/amazonux_page_6.png','/assets/amazonux_page_7.png','/assets/amazonux_page_8.png','/assets/amazonux_page_9.png','/assets/amazonux_page_10.png'];
-    let cur=0;
-    function openLB(i){cur=i;document.getElementById('lb-img').src=imgs[i];document.getElementById('lb').classList.add('open');}
-    function closeLB(){document.getElementById('lb').classList.remove('open');}
-    function navLB(d){cur=(cur+d+imgs.length)%imgs.length;document.getElementById('lb-img').src=imgs[cur];}
-    document.getElementById('lb').addEventListener('click',e=>{if(e.target===document.getElementById('lb'))closeLB();});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')navLB(1);if(e.key==='ArrowLeft')navLB(-1);});
-  </script>
-
-  
+  <main class="cs-content">
     
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const loader = document.getElementById("brand-loader");
-      if (loader) {
-        document.body.style.overflow = "hidden";
-        setTimeout(() => {
-          loader.classList.add("exiting");
-        }, 1100); // 1.1s completed
-        setTimeout(() => {
-          loader.classList.add("fade-out");
-          document.body.style.overflow = "";
-        }, 1500); // 1.5s fade out
-        setTimeout(() => {
-          loader.remove();
-        }, 2200);
-      }
-    });
-  </script>
-    </body>
+    <div class="grid-2">
+      <div>
+        <h2 class="section-title">The Problem</h2>
+        <p style="color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem;">
+          People know where to travel. They don't know who to travel with. Existing options like Facebook groups, Reddit forums, or hostel common rooms are noisy, unscalable, and offer zero compatibility signals. Furthermore, meeting strangers in foreign cities is high-stakes; existing tools lack verification and safety infrastructure.
+        </p>
+      </div>
+      <div>
+        <h2 class="section-title">The Insight</h2>
+        <p style="color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem;">
+          <strong>"Passport already exists. It just doesn't do enough."</strong><br><br>
+          Today, Tinder Passport = change a map pin.<br>
+          Passport 2.0 = find compatible people at your destination.
+        </p>
+      </div>
+    </div>
+
+    <h2 class="section-title" style="margin-top: 4rem;">The Marketplace Model</h2>
+    <div class="grid-2">
+      <div class="info-card">
+        <h3>Free Local Host (Supply)</h3>
+        <p>Locals join for free and supply the network, giving them a clear reason to participate.</p>
+        <ul>
+          <li>Create a local host profile.</li>
+          <li>Set services: food spots, hidden places, city tours, cultural experiences.</li>
+          <li>Appear in Gold/Platinum traveler feeds.</li>
+          <li>Build a trust score via verified connections.</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>Gold/Platinum Traveler (Demand)</h3>
+        <p>Already paying subscribers unlock immense new utility via Travel Mode.</p>
+        <ul>
+          <li>Set destination + travel dates.</li>
+          <li>Browse ranked compatible travelers.</li>
+          <li>View verified local host profiles.</li>
+          <li>Connect and chat safely in-app.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="section-title" style="margin-top: 4rem;">The Product Flow</h2>
+    <div class="grid-2">
+      <div class="flow-step">
+        <div class="step-number">01</div>
+        <div class="step-details">
+          <h4>Gate</h4>
+          <p>Free user taps Travel → Host flow. Gold user → Traveler flow.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-number">02</div>
+        <div class="step-details">
+          <h4>Preferences</h4>
+          <p>Style, budget, interests, intent. Set destination + dates.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-number">03</div>
+        <div class="step-details">
+          <h4>Discovery</h4>
+          <p>Card-based ranked feed featuring a compatibility score on every card.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-number">04</div>
+        <div class="step-details">
+          <h4>Compatibility</h4>
+          <p>92% match breakdown — shared destination, dates, and style preferences.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-number">05</div>
+        <div class="step-details">
+          <h4>Local Host</h4>
+          <p>Verified host profile highlighting services offered and clear trust signals.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-number">06</div>
+        <div class="step-details">
+          <h4>Chat + Safety</h4>
+          <p>In-app chat, dedicated safety panel, and location-based icebreaker starters.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title" style="margin-top: 4rem;">Why It Works</h2>
+    <div class="grid-2">
+      <div class="info-card" style="border-left: 4px solid var(--accent-primary);">
+        <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #fff;">🚀 Distribution Moat</h4>
+        <p>Available to hundreds of millions of Tinder users on day one. No separate download. No cold start from zero.</p>
+      </div>
+      <div class="info-card" style="border-left: 4px solid var(--accent-primary);">
+        <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #fff;">💰 No New Paywall</h4>
+        <p>Gold/Platinum already includes Passport. Travel Mode is Passport 2.0 — more value, same subscription tier.</p>
+      </div>
+      <div class="info-card" style="border-left: 4px solid var(--accent-primary);">
+        <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #fff;">🔒 Safety by Default</h4>
+        <p>Verified hosts, in-app chat, and public meeting guidance. Trust is the hardest thing to build, and Tinder already has the infrastructure.</p>
+      </div>
+      <div class="info-card" style="border-left: 4px solid var(--accent-primary);">
+        <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: #fff;">⚖️ Fair Freemium</h4>
+        <p>Locals join for free and supply the network. Travelers pay to access it. Both sides have a compelling, aligned reason to be here.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer" style="text-align: center; padding: 3rem; color: var(--text-secondary); border-top: 1px solid var(--surface-border); margin-top: 5rem;">
+    <p>&copy; 2026 Anish Shankar. Designed with vision.</p>
+  </footer>
+</body>
 </html>
