@@ -15,13 +15,131 @@
       --accent-secondary: #50E3C2;
       --volvo-blue: #003057;
       --volvo-sky: #0077C8;
+      --volvo-gradient: linear-gradient(135deg, #4A90E2 0%, #50E3C2 100%);
     }
 
+    /* Full-screen Opening Volvo Animation Overlay */
+    .volvo-intro-overlay {
+      position: fixed;
+      inset: 0;
+      background: #000000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      pointer-events: none;
+      animation: overlayFadeOut 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+    }
+
+    .intro-volvo-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .volvo-radar-ring {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 1px solid rgba(74, 144, 226, 0.4);
+      background: radial-gradient(circle, rgba(74, 144, 226, 0.3) 0%, rgba(80, 227, 194, 0.08) 50%, transparent 70%);
+      animation: radarPulse 1.4s ease-out infinite;
+    }
+
+    .volvo-radar-ring.ring-2 {
+      animation: radarPulse 1.4s ease-out 0.4s infinite;
+    }
+
+    .intro-volvo-icon {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      animation: volvoIgnite 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      filter: drop-shadow(0 0 25px rgba(74, 144, 226, 0.9)) drop-shadow(0 0 50px rgba(80, 227, 194, 0.6));
+    }
+
+    .intro-tagline {
+      margin-top: 1.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      color: #ffffff;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: textSlideUp 0.8s ease-out 0.4s forwards;
+    }
+
+    @keyframes volvoIgnite {
+      0% {
+        transform: scale(0) rotate(-45deg);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.2) rotate(10deg);
+        opacity: 1;
+      }
+      75% {
+        transform: scale(0.95) rotate(-3deg);
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes radarPulse {
+      0% {
+        transform: scale(0.6);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scale(2.4);
+        opacity: 0;
+      }
+    }
+
+    @keyframes textSlideUp {
+      to {
+        opacity: 0.95;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes overlayFadeOut {
+      0% {
+        opacity: 1;
+        visibility: visible;
+      }
+      100% {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    /* Hero Section */
     .cs-hero {
       padding: 7rem 5% 4rem;
       max-width: 1200px;
       margin: 0 auto;
       border-bottom: 1px solid var(--surface-border);
+      position: relative;
+    }
+
+    .hero-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 320px;
     }
 
     .cs-badge {
@@ -38,11 +156,61 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
     }
 
-    .cs-badge svg {
+    .badge-volvo-icon {
       width: 18px;
       height: 18px;
+      animation: volvoPulse 2s ease-in-out infinite;
+      filter: drop-shadow(0 0 6px rgba(74, 144, 226, 0.6));
+    }
+
+    .hero-volvo-card {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, rgba(74, 144, 226, 0.15) 0%, rgba(20, 20, 20, 0.6) 70%);
+      border: 1px solid rgba(74, 144, 226, 0.3);
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(74, 144, 226, 0.2);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .hero-volvo-card:hover {
+      transform: translateY(-4px) scale(1.03);
+      border-color: rgba(74, 144, 226, 0.7);
+      box-shadow: 0 15px 50px rgba(74, 144, 226, 0.35), 0 0 40px rgba(80, 227, 194, 0.4);
+    }
+
+    .interactive-volvo {
+      width: 90px;
+      height: 90px;
+      animation: volvoFloat 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px rgba(74, 144, 226, 0.8));
+    }
+
+    @keyframes volvoFloat {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-6px) scale(1.05);
+        filter: drop-shadow(0 0 25px rgba(80, 227, 194, 0.9));
+      }
+    }
+
+    @keyframes volvoPulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.15);
+      }
     }
 
     .cs-title {
@@ -312,6 +480,27 @@
   </style>
 </head>
 <body>
+  <!-- Opening Volvo Animation Overlay -->
+  <div id="volvo-intro-overlay" class="volvo-intro-overlay">
+    <div class="intro-volvo-wrapper">
+      <div class="volvo-radar-ring"></div>
+      <div class="volvo-radar-ring ring-2"></div>
+      <div class="intro-volvo-icon">
+        <svg viewBox="0 0 24 24" width="100%" height="100%">
+          <defs>
+            <linearGradient id="volvoLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#50E3C2" />
+              <stop offset="50%" stop-color="#4A90E2" />
+              <stop offset="100%" stop-color="#0077C8" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#volvoLogoGrad)" d="M10.873 12.584h.49l-.001-1.452h-.489v-.322h1.94v.322h-.483v1.451h.449c.415 0 .687-.274.687-.646h.32v.972h-2.913v-.325zm4.313.327h1.134l.962-1.779h.482v-.322h-1.45v.322h.419l-.701 1.295-.71-1.295h.51l-.002-.322h-2.104v.322h.482l.978 1.779zM5.073 10.81H2.968v.322h.481l.98 1.779h1.133l.962-1.779h.482v-.322h-1.45v.322h.418l-.7 1.295-.71-1.295h.509v-.322zm3.707-.044c.975 0 1.498.486 1.498 1.096 0 .618-.494 1.111-1.493 1.111-.999 0-1.497-.493-1.497-1.111 0-.61.517-1.096 1.492-1.096zm.017.33c-.333-.005-.527.348-.534.753-.006.39.15.784.506.79.366.007.524-.39.53-.772.008-.405-.168-.764-.502-.77zm10.738-.33c.974 0 1.497.486 1.497 1.096 0 .618-.493 1.111-1.492 1.111-1 0-1.498-.493-1.498-1.111 0-.61.518-1.096 1.493-1.096zm-.517 1.083c-.007.39.15.784.506.79.366.007.524-.39.53-.772.008-.405-.168-.764-.502-.77-.333-.006-.527.347-.534.752zm2.857-6.667L20.656 6.4A10.26 10.26 0 0 1 22.308 12c0 5.693-4.615 10.308-10.308 10.308S1.692 17.693 1.692 12 6.307 1.692 12 1.692c2.07 0 3.996.61 5.611 1.66l1.219-1.219A11.944 11.944 0 0 0 12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12c0-2.533-.785-4.882-2.125-6.818zM18.036.472v.337c.728.394 1.413.859 2.047 1.382l-1.71 1.71a10.29 10.29 0 0 1 1.735 1.732l1.708-1.708c.524.636.989 1.322 1.384 2.038h.328V.473h-5.492z"/>
+        </svg>
+      </div>
+      <div class="intro-tagline">VOLVO PROTOSCHEDULE</div>
+    </div>
+  </div>
+
   <nav class="navbar">
     <div class="logo">AS.</div>
     <div class="nav-links">
@@ -320,14 +509,24 @@
   </nav>
 
   <header class="cs-hero">
-    <div class="cs-badge">
-      <svg viewBox="0 0 24 24">
-        <path fill="currentColor" d="M10.873 12.584h.49l-.001-1.452h-.489v-.322h1.94v.322h-.483v1.451h.449c.415 0 .687-.274.687-.646h.32v.972h-2.913v-.325zm4.313.327h1.134l.962-1.779h.482v-.322h-1.45v.322h.419l-.701 1.295-.71-1.295h.51l-.002-.322h-2.104v.322h.482l.978 1.779zM5.073 10.81H2.968v.322h.481l.98 1.779h1.133l.962-1.779h.482v-.322h-1.45v.322h.418l-.7 1.295-.71-1.295h.509v-.322zm3.707-.044c.975 0 1.498.486 1.498 1.096 0 .618-.494 1.111-1.493 1.111-.999 0-1.497-.493-1.497-1.111 0-.61.517-1.096 1.492-1.096zm.017.33c-.333-.005-.527.348-.534.753-.006.39.15.784.506.79.366.007.524-.39.53-.772.008-.405-.168-.764-.502-.77zm10.738-.33c.974 0 1.497.486 1.497 1.096 0 .618-.493 1.111-1.492 1.111-1 0-1.498-.493-1.498-1.111 0-.61.518-1.096 1.493-1.096zm-.517 1.083c-.007.39.15.784.506.79.366.007.524-.39.53-.772.008-.405-.168-.764-.502-.77-.333-.006-.527.347-.534.752zm2.857-6.667L20.656 6.4A10.26 10.26 0 0 1 22.308 12c0 5.693-4.615 10.308-10.308 10.308S1.692 17.693 1.692 12 6.307 1.692 12 1.692c2.07 0 3.996.61 5.611 1.66l1.219-1.219A11.944 11.944 0 0 0 12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12c0-2.533-.785-4.882-2.125-6.818zM18.036.472v.337c.728.394 1.413.859 2.047 1.382l-1.71 1.71a10.29 10.29 0 0 1 1.735 1.732l1.708-1.708c.524.636.989 1.322 1.384 2.038h.328V.473h-5.492z"/>
-      </svg>
-      Volvo Group · Connected Services · Prototype Validation
+    <div class="hero-flex">
+      <div class="hero-text">
+        <div class="cs-badge">
+          <svg class="badge-volvo-icon" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M10.873 12.584h.49l-.001-1.452h-.489v-.322h1.94v.322h-.483v1.451h.449c.415 0 .687-.274.687-.646h.32v.972h-2.913v-.325zm4.313.327h1.134l.962-1.779h.482v-.322h-1.45v.322h.419l-.701 1.295-.71-1.295h.51l-.002-.322h-2.104v.322h.482l.978 1.779zM5.073 10.81H2.968v.322h.481l.98 1.779h1.133l.962-1.779h.482v-.322h-1.45v.322h.418l-.7 1.295-.71-1.295h.509v-.322zm3.707-.044c.975 0 1.498.486 1.498 1.096 0 .618-.494 1.111-1.493 1.111-.999 0-1.497-.493-1.497-1.111 0-.61.517-1.096 1.492-1.096zm.017.33c-.333-.005-.527.348-.534.753-.006.39.15.784.506.79.366.007.524-.39.53-.772.008-.405-.168-.764-.502-.77zm10.738-.33c.974 0 1.497.486 1.497 1.096 0 .618-.493 1.111-1.492 1.111-1 0-1.498-.493-1.498-1.111 0-.61.518-1.096 1.493-1.096zm-.517 1.083c-.007.39.15.784.506.79.366.007.524-.39.53-.772.008-.405-.168-.764-.502-.77-.333-.006-.527.347-.534.752zm2.857-6.667L20.656 6.4A10.26 10.26 0 0 1 22.308 12c0 5.693-4.615 10.308-10.308 10.308S1.692 17.693 1.692 12 6.307 1.692 12 1.692c2.07 0 3.996.61 5.611 1.66l1.219-1.219A11.944 11.944 0 0 0 12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12c0-2.533-.785-4.882-2.125-6.818zM18.036.472v.337c.728.394 1.413.859 2.047 1.382l-1.71 1.71a10.29 10.29 0 0 1 1.735 1.732l1.708-1.708c.524.636.989 1.322 1.384 2.038h.328V.473h-5.492z"/>
+          </svg>
+          Volvo Group · Connected Services · Prototype Validation
+        </div>
+        <h1 class="cs-title">Volvo ProtoSchedule:<br><span class="highlight">Test Drive Scheduling System</span></h1>
+        <p class="cs-sub">A role-enforced internal web platform eliminating prototype test drive conflicts, manual status reporting, and fleet downtime across R&D, workshop, and test driver teams.</p>
+      </div>
+
+      <div class="hero-volvo-card" title="Volvo Connected Services Engine">
+        <svg class="interactive-volvo" viewBox="0 0 24 24">
+          <path fill="url(#volvoLogoGrad)" d="M10.873 12.584h.49l-.001-1.452h-.489v-.322h1.94v.322h-.483v1.451h.449c.415 0 .687-.274.687-.646h.32v.972h-2.913v-.325zm4.313.327h1.134l.962-1.779h.482v-.322h-1.45v.322h.419l-.701 1.295-.71-1.295h.51l-.002-.322h-2.104v.322h.482l.978 1.779zM5.073 10.81H2.968v.322h.481l.98 1.779h1.133l.962-1.779h.482v-.322h-1.45v.322h.418l-.7 1.295-.71-1.295h.509v-.322zm3.707-.044c.975 0 1.498.486 1.498 1.096 0 .618-.494 1.111-1.493 1.111-.999 0-1.497-.493-1.497-1.111 0-.61.517-1.096 1.492-1.096zm.017.33c-.333-.005-.527.348-.534.753-.006.39.15.784.506.79.366.007.524-.39.53-.772.008-.405-.168-.764-.502-.77zm10.738-.33c.974 0 1.497.486 1.497 1.096 0 .618-.493 1.111-1.492 1.111-1 0-1.498-.493-1.498-1.111 0-.61.518-1.096 1.493-1.096zm-.517 1.083c-.007.39.15.784.506.79.366.007.524-.39.53-.772.008-.405-.168-.764-.502-.77-.333-.006-.527.347-.534.752zm2.857-6.667L20.656 6.4A10.26 10.26 0 0 1 22.308 12c0 5.693-4.615 10.308-10.308 10.308S1.692 17.693 1.692 12 6.307 1.692 12 1.692c2.07 0 3.996.61 5.611 1.66l1.219-1.219A11.944 11.944 0 0 0 12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12c0-2.533-.785-4.882-2.125-6.818zM18.036.472v.337c.728.394 1.413.859 2.047 1.382l-1.71 1.71a10.29 10.29 0 0 1 1.735 1.732l1.708-1.708c.524.636.989 1.322 1.384 2.038h.328V.473h-5.492z"/>
+        </svg>
+      </div>
     </div>
-    <h1 class="cs-title">Volvo ProtoSchedule:<br><span class="highlight">Test Drive Scheduling System</span></h1>
-    <p class="cs-sub">A role-enforced internal web platform eliminating prototype test drive conflicts, manual status reporting, and fleet downtime across R&D, workshop, and test driver teams.</p>
 
     <div class="metrics-banner">
       <div class="metric-box">
