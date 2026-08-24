@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Determine filter category
       let category = study.filterCategory || 'All';
       card.setAttribute('data-category', category);
+      if (study.liveUrl) {
+        card.setAttribute('data-has-live', 'true');
+      }
 
       // Image HTML (if available)
       const imageHtml = study.image ? `
@@ -101,9 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const filter = btn.getAttribute('data-filter');
       
       cards.forEach(card => {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+        const hasLive = card.getAttribute('data-has-live') === 'true';
+        const category = card.getAttribute('data-category');
+        const matches = (filter === 'all') || 
+                        (filter === 'live' && hasLive) || 
+                        (category === filter);
+        if (matches) {
           card.style.display = 'flex';
-          // Re-trigger reveal animation manually if desired, or just let it show
           setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 10);
         } else {
           card.style.display = 'none';
@@ -111,6 +118,31 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+
+  // Direct trigger for Live Prototypes Nav Link
+  const liveNavBtn = document.getElementById('nav-live-prototypes');
+  const mobileLiveTrigger = document.getElementById('mobile-live-trigger');
+  const liveFilterBtn = document.getElementById('filter-live');
+
+  function handleLiveFilterClick(e) {
+    if (e) e.preventDefault();
+    const workSec = document.getElementById('work');
+    if (workSec) {
+      workSec.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (liveFilterBtn) {
+      liveFilterBtn.click();
+    }
+    const mobileMenu = document.getElementById('mobile-menu-overlay');
+    if (mobileMenu && mobileMenu.classList.contains('active')) {
+      const toggle = document.getElementById('mobile-menu-toggle');
+      if (toggle) toggle.click();
+    }
+  }
+
+  if (liveNavBtn) liveNavBtn.addEventListener('click', handleLiveFilterClick);
+  if (mobileLiveTrigger) mobileLiveTrigger.addEventListener('click', handleLiveFilterClick);
 
   // --- Custom Cursor ---
   const cursor = document.querySelector('.custom-cursor');
