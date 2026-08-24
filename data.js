@@ -127,4 +127,18 @@ export const caseStudies = [
     themeSecondary: "#FF6584",
     image: "/assets/tinder.svg"
   }
+  ,{
+    id: "volvo-protoschedule",
+    title: "Volvo ProtoSchedule",
+    subtitle: "Test Drive Scheduling System",
+    tags: ["B2B SaaS", "System Design", "Workflow"],
+    filterCategory: "PRD",
+    metric: "54% → 85%+",
+    metricLabel: "Fleet Utilisation",
+    summary: "A role-enforced web platform eliminating prototype test drive conflicts, manual status reporting, and vehicle downtime across Volvo R&D teams.",
+    url: "/volvo-protoschedule.html",
+    themeColor: "#4A90E2",
+    themeSecondary: "#50E3C2",
+    image: "/assets/volvo.svg"
+  }
 ];

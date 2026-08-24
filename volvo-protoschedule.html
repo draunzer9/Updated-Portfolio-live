@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Volvo ProtoSchedule | Product Case Study | Anish Shankar</title>
+  <meta name="description" content="Volvo ProtoSchedule: Transforming prototype testing from spreadsheets to a role-enforced web platform. Driving vehicle utilization from 54% to 85%+."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    :root {
+      --accent-primary: #4A90E2;
+      --accent-secondary: #50E3C2;
+      --volvo-blue: #003057;
+      --volvo-sky: #0077C8;
+    }
+
+    .cs-hero {
+      padding: 7rem 5% 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .cs-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(74, 144, 226, 0.1);
+      border: 1px solid rgba(74, 144, 226, 0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+
+    .cs-badge svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .cs-title {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .cs-title .highlight {
+      background: linear-gradient(135deg, #4A90E2 0%, #50E3C2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cs-sub {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 750px;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .metrics-banner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .metric-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--surface-border);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-left: 3px solid var(--accent-primary);
+    }
+
+    .metric-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+
+    .metric-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .cs-content {
+      padding: 4rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 4rem 0 1.5rem;
+      border-bottom: 1px solid var(--surface-border);
+      padding-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--surface-border);
+      padding: 2rem;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      border-color: rgba(74, 144, 226, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .info-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card p, .info-card ul {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .info-card ul {
+      padding-left: 1.2rem;
+      margin-top: 0.75rem;
+    }
+
+    .info-card li {
+      margin-bottom: 0.5rem;
+    }
+
+    .callout-quote {
+      background: linear-gradient(135deg, rgba(74, 144, 226, 0.08) 0%, rgba(80, 227, 194, 0.03) 100%);
+      border: 1px solid rgba(74, 144, 226, 0.3);
+      padding: 2rem;
+      border-radius: 16px;
+      margin: 2rem 0;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: #e0e0e0;
+      font-style: italic;
+    }
+
+    .callout-quote cite {
+      display: block;
+      margin-top: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent-primary);
+      font-style: normal;
+    }
+
+    .workflow-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid var(--surface-border);
+      padding: 1.5rem;
+      border-radius: 12px;
+      align-items: flex-start;
+      transition: all 0.2s;
+    }
+
+    .timeline-item:hover {
+      border-color: rgba(74, 144, 226, 0.4);
+    }
+
+    .timeline-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      min-width: 35px;
+    }
+
+    .timeline-body h4 {
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+      color: #ffffff;
+    }
+
+    .timeline-body p {
+      color: var(--text-secondary);
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    /* RICE Table */
+    .table-container {
+      overflow-x: auto;
+      margin: 2rem 0;
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 1rem 1.2rem;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.03);
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent-primary);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .prio-p0 {
+      color: #50E3C2;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .prio-p1 {
+      color: #F5A623;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .prio-p2 {
+      color: #9B9B9B;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tradeoff-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--surface-border);
+      padding: 1.75rem;
+      border-radius: 14px;
+      margin-bottom: 1.5rem;
+    }
+
+    .tradeoff-card h4 {
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .gain-loss {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .gain-loss { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .gain-box { color: #86efac; font-size: 0.9rem; line-height: 1.5; }
+    .loss-box { color: #fca5a5; font-size: 0.9rem; line-height: 1.5; }
+    .recovery-box { color: #93c5fd; font-size: 0.9rem; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">AS.</div>
+    <div class="nav-links">
+      <a href="./index.html">← Back to Portfolio</a>
+    </div>
+  </nav>
+
+  <header class="cs-hero">
+    <div class="cs-badge">
+      <svg viewBox="0 0 24 24">
+        <path fill="currentColor" d="M10.873 12.584h.49l-.001-1.452h-.489v-.322h1.94v.322h-.483v1.451h.449c.415 0 .687-.274.687-.646h.32v.972h-2.913v-.325zm4.313.327h1.134l.962-1.779h.482v-.322h-1.45v.322h.419l-.701 1.295-.71-1.295h.51l-.002-.322h-2.104v.322h.482l.978 1.779zM5.073 10.81H2.968v.322h.481l.98 1.779h1.133l.962-1.779h.482v-.322h-1.45v.322h.418l-.7 1.295-.71-1.295h.509v-.322zm3.707-.044c.975 0 1.498.486 1.498 1.096 0 .618-.494 1.111-1.493 1.111-.999 0-1.497-.493-1.497-1.111 0-.61.517-1.096 1.492-1.096zm.017.33c-.333-.005-.527.348-.534.753-.006.39.15.784.506.79.366.007.524-.39.53-.772.008-.405-.168-.764-.502-.77zm10.738-.33c.974 0 1.497.486 1.497 1.096 0 .618-.493 1.111-1.492 1.111-1 0-1.498-.493-1.498-1.111 0-.61.518-1.096 1.493-1.096zm-.517 1.083c-.007.39.15.784.506.79.366.007.524-.39.53-.772.008-.405-.168-.764-.502-.77-.333-.006-.527.347-.534.752zm2.857-6.667L20.656 6.4A10.26 10.26 0 0 1 22.308 12c0 5.693-4.615 10.308-10.308 10.308S1.692 17.693 1.692 12 6.307 1.692 12 1.692c2.07 0 3.996.61 5.611 1.66l1.219-1.219A11.944 11.944 0 0 0 12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12c0-2.533-.785-4.882-2.125-6.818zM18.036.472v.337c.728.394 1.413.859 2.047 1.382l-1.71 1.71a10.29 10.29 0 0 1 1.735 1.732l1.708-1.708c.524.636.989 1.322 1.384 2.038h.328V.473h-5.492z"/>
+      </svg>
+      Volvo Group · Connected Services · Prototype Validation
+    </div>
+    <h1 class="cs-title">Volvo ProtoSchedule:<br><span class="highlight">Test Drive Scheduling System</span></h1>
+    <p class="cs-sub">A role-enforced internal web platform eliminating prototype test drive conflicts, manual status reporting, and fleet downtime across R&D, workshop, and test driver teams.</p>
+
+    <div class="metrics-banner">
+      <div class="metric-box">
+        <div class="metric-val">54% → 85%+</div>
+        <div class="metric-desc">Vehicle Fleet Utilisation</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">4 → 0/mo</div>
+        <div class="metric-desc">Double-Booking Incidents</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">↓ 90%</div>
+        <div class="metric-desc">Wasted Driver Trips</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val">3h → 15m</div>
+        <div class="metric-desc">Weekly R&D Report Time</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="cs-content">
+    
+    <div class="grid-2">
+      <div>
+        <h2 class="section-title" style="margin-top: 0;">The Problem</h2>
+        <p style="color: var(--text-secondary); line-height: 1.6; font-size: 1.05rem;">
+          Prototype testing at Volvo previously ran on shared spreadsheets, phone calls, and manual guesswork. Drivers arrived at depots only to discover vehicles were unprepared or undergoing maintenance. Double-bookings caused critical test delays, and R&D leads lost hours every week compiling status reports.
+        </p>
+        <div class="callout-quote">
+          "The spreadsheet is always out of date. No one trusts it — so no one uses it correctly."
+          <cite>— R&D Lead (User Research Interview 2 of 12)</cite>
+        </div>
+      </div>
+      <div>
+        <h2 class="section-title" style="margin-top: 0;">Discovery & Research</h2>
+        <p style="color: var(--text-secondary); line-height: 1.6; font-size: 1.05rem;">
+          Conducted 12 in-depth user interviews, 3 shadowing cycles across testing shifts, and 6 months of historical fleet log analysis:
+        </p>
+        <ul style="color: var(--text-secondary); line-height: 1.8; margin-top: 1rem; padding-left: 1.2rem;">
+          <li><strong>67% of Test Drivers</strong> experienced ≥1 wasted trip in the past month.</li>
+          <li><strong>54% Fleet Utilisation</strong> baseline vs target threshold of 85%+.</li>
+          <li><strong>3 Hours / Week</strong> spent by R&D leads on manual spreadsheets.</li>
+          <li><strong>4 Double-bookings / quarter</strong>, each costing >1 day in project delays.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="section-title">The 3 Distinct Roles & Needs</h2>
+    <div class="grid-3">
+      <div class="info-card">
+        <h3>🧑‍🔬 R&D Lead</h3>
+        <p><strong>Owns:</strong> Test plan, vehicle assignments, and coverage sign-offs.</p>
+        <ul>
+          <li><strong>Pain:</strong> No live view of test coverage; 3 hrs/week spent compiling status.</li>
+          <li><strong>Needs:</strong> Real-time coverage dashboard, conflict alerts, and full fleet visibility.</li>
+          <li><strong>Boundary:</strong> Cannot physically prep vehicles or execute drives.</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>🔧 Workshop Technician</h3>
+        <p><strong>Owns:</strong> Vehicle preparation, servicing, maintenance, and status updates.</p>
+        <ul>
+          <li><strong>Pain:</strong> Receives prep instructions verbally or too late; surprised by unplanned arrivals.</li>
+          <li><strong>Needs:</strong> Clear advance task list directly from R&D leads with simple status toggles.</li>
+          <li><strong>Boundary:</strong> Cannot assign drivers or alter test conditions.</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>🚗 Test Driver</h3>
+        <p><strong>Owns:</strong> Executing assigned test drives and submitting session reports.</p>
+        <ul>
+          <li><strong>Pain:</strong> Arrives at depot to find vehicle unavailable or unserviced.</li>
+          <li><strong>Needs:</strong> Clear daily assignment (vehicle, route, time window, test criteria).</li>
+          <li><strong>Boundary:</strong> Cannot book own vehicles or change test criteria.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="section-title">The 7-Step Role-Enforced Workflow</h2>
+    <div class="workflow-timeline">
+      <div class="timeline-item">
+        <div class="timeline-num">01</div>
+        <div class="timeline-body">
+          <h4>R&D Lead Assigns Slot</h4>
+          <p>Creates test plan in ProtoSchedule — sets target vehicle, route, assigned driver, and test window.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">02</div>
+        <div class="timeline-body">
+          <h4>Automated Workshop Task Dispatch</h4>
+          <p>System automatically triggers a vehicle prep task directly on the Workshop Technician's queue.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">03</div>
+        <div class="timeline-body">
+          <h4>Workshop Tech Prepares & Validates</h4>
+          <p>Technician completes physical prep and marks vehicle status as <strong>'Ready'</strong> with one tap.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">04</div>
+        <div class="timeline-body">
+          <h4>Driver Confirmation & Drive Session</h4>
+          <p>Test Driver sees confirmed assignment on mobile view, arrives at depot, and starts session.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">05</div>
+        <div class="timeline-body">
+          <h4>Structured Session Report Submission</h4>
+          <p>Driver completes route and logs structured 8-field report (conditions met, mileage, faults flagged).</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">06</div>
+        <div class="timeline-body">
+          <h4>Post-Drive Inspection & Fleet Re-release</h4>
+          <p>Workshop inspects vehicle on return, addresses any flagged faults, and marks vehicle <strong>'Available'</strong>.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-num">07</div>
+        <div class="timeline-body">
+          <h4>R&D Lead Sign-off & Coverage Update</h4>
+          <p>R&D Lead reviews report and marks test condition as <em>Complete</em> or <em>Repeat</em>. Dashboard updates automatically.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Prioritisation: RICE Framework</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Reach (users/wk)</th>
+            <th>Impact</th>
+            <th>Confidence</th>
+            <th>Effort (wks)</th>
+            <th>RICE Score</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Vehicle Availability View</strong></td>
+            <td>15</td>
+            <td>3 (High)</td>
+            <td>90%</td>
+            <td>1.0</td>
+            <td><strong>40.5</strong></td>
+            <td><span class="prio-p0">P0</span></td>
+          </tr>
+          <tr>
+            <td><strong>Notifications & Escalation Alerts</strong></td>
+            <td>15</td>
+            <td>2 (Med)</td>
+            <td>90%</td>
+            <td>1.0</td>
+            <td><strong>27.0</strong></td>
+            <td><span class="prio-p0">P0</span></td>
+          </tr>
+          <tr>
+            <td><strong>Fault Flagging (Tech → Lead)</strong></td>
+            <td>8</td>
+            <td>3 (High)</td>
+            <td>80%</td>
+            <td>1.0</td>
+            <td><strong>19.2</strong></td>
+            <td><span class="prio-p0">P0</span></td>
+          </tr>
+          <tr>
+            <td><strong>Conflict Detection & Hard Blocking</strong></td>
+            <td>15</td>
+            <td>3 (High)</td>
+            <td>85%</td>
+            <td>2.0</td>
+            <td><strong>19.1</strong></td>
+            <td><span class="prio-p0">P0</span></td>
+          </tr>
+          <tr>
+            <td><strong>Session Report Submission Form</strong></td>
+            <td>10</td>
+            <td>2 (Med)</td>
+            <td>85%</td>
+            <td>2.0</td>
+            <td><strong>8.5</strong></td>
+            <td><span class="prio-p1">P1</span></td>
+          </tr>
+          <tr>
+            <td><strong>CSV & Audit Export</strong></td>
+            <td>4</td>
+            <td>1 (Low)</td>
+            <td>70%</td>
+            <td>0.5</td>
+            <td><strong>5.6</strong></td>
+            <td><span class="prio-p2">P2</span></td>
+          </tr>
+          <tr>
+            <td><strong>Slot Assignment by Lead</strong></td>
+            <td>4</td>
+            <td>3 (High)</td>
+            <td>90%</td>
+            <td>2.0</td>
+            <td><strong>5.4</strong></td>
+            <td><span class="prio-p0">P0</span></td>
+          </tr>
+          <tr>
+            <td><strong>Coverage Analytics Dashboard</strong></td>
+            <td>4</td>
+            <td>3 (High)</td>
+            <td>80%</td>
+            <td>3.0</td>
+            <td><strong>3.2</strong></td>
+            <td><span class="prio-p1">P1</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title">Strategic Trade-offs & Decisions</h2>
+    <div class="tradeoff-card">
+      <h4>01. Self-Serve vs R&D Lead Controlled Booking</h4>
+      <div class="gain-loss">
+        <div class="gain-box"><strong>✓ Gained:</strong> Tight control, test prioritisation integrity, prevents cherry-picking routes.</div>
+        <div class="loss-box"><strong>✕ Gave Up:</strong> Instant booking autonomy for senior drivers.</div>
+        <div class="recovery-box"><strong>→ Recovered:</strong> R&D Leads can bulk-assign weekly recurring slots in under 2 minutes.</div>
+      </div>
+    </div>
+
+    <div class="tradeoff-card">
+      <h4>02. Hard Block vs Soft Alert for Workshop Maintenance</h4>
+      <div class="gain-loss">
+        <div class="gain-box"><strong>✓ Gained:</strong> Human judgment stays in the loop; prevents unintended cancellations.</div>
+        <div class="loss-box"><strong>✕ Gave Up:</strong> Minor risk that conflicts slip through if Lead ignores alerts.</div>
+        <div class="recovery-box"><strong>→ Recovered:</strong> Unresolved conflict alerts auto-escalate to R&D manager after 30 mins.</div>
+      </div>
+    </div>
+
+    <div class="tradeoff-card">
+      <h4>03. Structured 8-Field Form vs Free-Text Notes</h4>
+      <div class="gain-loss">
+        <div class="gain-box"><strong>✓ Gained:</strong> Automatic coverage analytics; eliminates manual data entry.</div>
+        <div class="loss-box"><strong>✕ Gave Up:</strong> Driver speed for quick unstructured notes.</div>
+        <div class="recovery-box"><strong>→ Recovered:</strong> Pre-filled vehicle, time, and route metadata so drivers only fill 3 fields.</div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Measurement Framework</h2>
+    <div class="grid-2">
+      <div class="info-card">
+        <h3>🎯 North Star Metric</h3>
+        <p><strong>Prototype Fleet Utilisation Rate:</strong> Targeted ≥85% (from 54% baseline).</p>
+      </div>
+      <div class="info-card">
+        <h3>📈 Leading Indicators</h3>
+        <p>• Weekly Lead booking creation rate.<br>• % of Workshop tasks completed >1 hr before session.<br>• Session report submission within 2 hrs of return.</p>
+      </div>
+      <div class="info-card">
+        <h3>✅ Lagging Indicators</h3>
+        <p>• Double-booking incidents: 0 / month (from 4).<br>• Wasted driver trips: ≤1 / month (from ~8).<br>• R&D coverage report time: &lt;15 min (from 3 hrs).</p>
+      </div>
+      <div class="info-card">
+        <h3>🛡️ Guardrail Metrics</h3>
+        <p>• System uptime ≥99.9% during testing hours.<br>• Zero undetected vehicle conflicts in first 30 days.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer" style="text-align: center; padding: 3rem; color: var(--text-secondary); border-top: 1px solid var(--surface-border); margin-top: 5rem;">
+    <p>&copy; 2026 Anish Shankar. Designed with vision.</p>
+  </footer>
+</body>
+</html>

@@ -15,6 +15,7 @@ export default defineConfig({
         zepto: resolve(__dirname, 'zepto.html'),
         zomato: resolve(__dirname, 'zomato.html'),
         tinder: resolve(__dirname, 'tinder.html'),
+        volvoProtoschedule: resolve(__dirname, 'volvo-protoschedule.html'),
         gymbuddy: resolve(__dirname, 'gymbuddy.html')
       }
     }
