@@ -145,4 +145,21 @@ export const caseStudies = [
     themeSecondary: "#50E3C2",
     image: "/assets/volvo.svg"
   }
+  ,{
+    id: "gymbuddy",
+    title: "GymBuddy AI Coach",
+    subtitle: "Adaptive Fitness System",
+    tags: ["AI Product", "0 to 1", "Fitness Tech"],
+    filterCategory: "PRD",
+    metric: "4.8/5",
+    metricLabel: "User Rating",
+    summary: "An adaptive AI workout coach delivering real-time personalized plans, mid-week adaptations, and contextual guidance for gym beginners.",
+    url: "/gymbuddy.html",
+    liveUrl: "https://gym-buddy-adaptive-coach.vercel.app/",
+    liveLabel: "Live App",
+    themeColor: "#9B51E0",
+    themeSecondary: "#00D2FF",
+    image: "/assets/gymbuddy.svg",
+    liveOnly: true
+  }
 ];

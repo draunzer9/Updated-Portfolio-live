@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (study.liveUrl) {
         card.setAttribute('data-has-live', 'true');
       }
+      if (study.liveOnly) {
+        card.setAttribute('data-live-only', 'true');
+        card.style.display = 'none';
+      }
 
       // Image HTML (if available)
       const imageHtml = study.image ? `
@@ -104,11 +108,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const filter = btn.getAttribute('data-filter');
       
       cards.forEach(card => {
+        const isLiveOnly = card.getAttribute('data-live-only') === 'true';
         const hasLive = card.getAttribute('data-has-live') === 'true';
         const category = card.getAttribute('data-category');
-        const matches = (filter === 'all') || 
-                        (filter === 'live' && hasLive) || 
-                        (category === filter);
+        
+        let matches = false;
+        if (filter === 'live') {
+          // Show ALL 4 live prototypes when Live Prototypes is selected
+          matches = hasLive;
+        } else if (filter === 'all') {
+          // In All view: hide liveOnly cards to prevent duplicate with capstone
+          matches = !isLiveOnly;
+        } else {
+          // In category views: hide liveOnly cards
+          matches = !isLiveOnly && (category === filter);
+        }
+
         if (matches) {
           card.style.display = 'flex';
           setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 10);
@@ -127,9 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function handleLiveFilterClick(e) {
     if (e) e.preventDefault();
-    const targetSec = document.querySelector('.capstone-section') || document.getElementById('work');
-    if (targetSec) {
-      targetSec.scrollIntoView({ behavior: 'smooth' });
+    const workSec = document.getElementById('work');
+    if (workSec) {
+      workSec.scrollIntoView({ behavior: 'smooth' });
     }
     if (liveFilterBtn) {
       liveFilterBtn.click();
