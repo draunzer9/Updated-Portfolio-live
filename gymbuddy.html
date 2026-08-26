@@ -34,19 +34,18 @@
       100% { transform: translateY(-6px); }
     }
     .loader-text { font-family: 'Outfit', sans-serif; color: #fff; font-size: 0.9rem; letter-spacing: 0.05em; opacity: 0.8; }
-        </style>
+        @keyframes gymPulse { 0% { transform: scale(0.95); opacity: 0.8; } 100% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 30px rgba(0, 210, 255, 0.9)); } }
+</style>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body class="case-study-page">
 
   <div class="brand-loader" id="brand-loader">
     <div class="loader-content">
-      <div class="loader-icon-gym">
-        <div class="gym-plate"></div>
-        <div class="gym-bar"></div>
-        <div class="gym-plate"></div>
+      <div style="width: 80px; height: 80px; filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.8)); animation: gymPulse 1.2s ease-in-out infinite alternate;">
+        <img src="/assets/gymbuddy.svg" alt="GymBuddy" style="width: 100%; height: 100%; object-fit: contain;" />
       </div>
-      <div class="loader-text">Configuring Coach...</div>
+      <div class="loader-text" style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; letter-spacing: 0.2em; color: #C084FC;">INITIALIZING ADAPTIVE AI COACH...</div>
     </div>
   </div>
         

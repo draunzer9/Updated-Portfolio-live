@@ -1,24 +1,77 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+<svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="gymGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#3B82F6" />
-      <stop offset="100%" stop-color="#60A5FA" />
+    <!-- Background Chassis Gradient -->
+    <linearGradient id="gbBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D1024"/>
+      <stop offset="50%" stop-color="#070914"/>
+      <stop offset="100%" stop-color="#020308"/>
     </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="8" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+
+    <!-- Primary Neon AI Violet to Cyber Cyan -->
+    <linearGradient id="gbVioletCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C084FC"/>
+      <stop offset="35%" stop-color="#9333EA"/>
+      <stop offset="70%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#00D2FF"/>
+    </linearGradient>
+
+    <!-- Secondary Kinetic Emerald to Cyan -->
+    <linearGradient id="gbCyanEmerald" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F2FE"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+
+    <!-- Subtle Border Stroke -->
+    <linearGradient id="gbBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(192, 132, 252, 0.6)"/>
+      <stop offset="50%" stop-color="rgba(79, 70, 229, 0.3)"/>
+      <stop offset="100%" stop-color="rgba(0, 210, 255, 0.5)"/>
+    </linearGradient>
+
+    <!-- Radial Glow Filters -->
+    <filter id="gbGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="gbCoreGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
   </defs>
-  <rect width="500" height="500" rx="100" fill="#0F172A" />
-  
-  <!-- Dumbbell shape -->
-  <g fill="url(#gymGrad)" filter="url(#glow)">
-    <rect x="130" y="235" width="240" height="30" rx="15" />
-    <rect x="150" y="180" width="40" height="140" rx="20" />
-    <rect x="110" y="150" width="40" height="200" rx="20" />
-    <rect x="310" y="180" width="40" height="140" rx="20" />
-    <rect x="350" y="150" width="40" height="200" rx="20" />
-  </g>
-  
-  <text x="50%" y="420" font-family="'Outfit', 'Inter', sans-serif" font-weight="800" font-size="56" fill="white" text-anchor="middle" letter-spacing="2">GYMBUDDY</text>
+
+  <!-- Squircle Base Chassis -->
+  <rect x="18" y="18" width="464" height="464" rx="100" fill="url(#gbBgGrad)" stroke="url(#gbBorderGrad)" stroke-width="3"/>
+
+  <!-- Ambient Internal Radar / Grid Rings -->
+  <circle cx="250" cy="225" r="150" stroke="rgba(147, 51, 234, 0.12)" stroke-width="1.5" stroke-dasharray="8 6"/>
+  <circle cx="250" cy="225" r="110" stroke="rgba(0, 210, 255, 0.15)" stroke-width="1.5"/>
+
+  <!-- Sculpted "G" & Kinetic Barbell Chassis -->
+  <path d="M250 95C178.203 95 120 153.203 120 225C120 296.797 178.203 355 250 355C312.96 355 365.412 310.22 377.208 250H300C290.5 272 272 285 250 285C216.863 285 190 258.137 190 225C190 191.863 216.863 165 250 165C270.5 165 288.5 175.5 299 191L350 140C324.5 112 289 95 250 95Z" fill="url(#gbVioletCyan)" filter="url(#gbGlow)"/>
+
+  <!-- Barbell Axle & Right Weight Plate -->
+  <path d="M275 205H370C381.046 205 390 213.954 390 225C390 236.046 381.046 245 370 245H275V205Z" fill="url(#gbCyanEmerald)" filter="url(#gbGlow)"/>
+
+  <!-- Right Outer Plates -->
+  <rect x="365" y="155" width="26" height="140" rx="13" fill="url(#gbCyanEmerald)"/>
+  <rect x="398" y="175" width="18" height="100" rx="9" fill="url(#gbVioletCyan)"/>
+
+  <!-- Left Outer Plates -->
+  <rect x="85" y="155" width="26" height="140" rx="13" fill="url(#gbVioletCyan)"/>
+  <rect x="60" y="175" width="18" height="100" rx="9" fill="url(#gbCyanEmerald)"/>
+
+  <!-- Central AI Pulse / Adaptive Neural Core -->
+  <circle cx="250" cy="225" r="16" fill="#00F2FE" filter="url(#gbCoreGlow)"/>
+  <circle cx="250" cy="225" r="7" fill="#FFFFFF"/>
+
+  <!-- Typography -->
+  <text x="250" y="425" font-family="'Inter', 'Outfit', sans-serif" font-weight="800" font-size="34" fill="#FFFFFF" text-anchor="middle" letter-spacing="8">GYMBUDDY</text>
+  <text x="250" y="450" font-family="'JetBrains Mono', monospace" font-weight="600" font-size="12" fill="#00D2FF" text-anchor="middle" letter-spacing="4">ADAPTIVE AI COACH</text>
 </svg>
