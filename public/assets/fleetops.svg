@@ -1,24 +1,22 @@
 <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="orbitGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="deltaGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#00F2FE"/>
-      <stop offset="50%" stop-color="#38BDF8"/>
-      <stop offset="100%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
     </linearGradient>
-    <linearGradient id="orbitGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="deltaGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="50%" stop-color="#818CF8"/>
-      <stop offset="100%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#6366F1"/>
     </linearGradient>
-    <linearGradient id="orbitGradCore" x1="0%" y1="50%" x2="100%" y2="50%">
-      <stop offset="0%" stop-color="#00F2FE"/>
-      <stop offset="100%" stop-color="#10B981"/>
+    <linearGradient id="deltaGrad3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#00F2FE"/>
     </linearGradient>
-    <linearGradient id="bgGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="deltaBgGlass" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="rgba(15, 23, 42, 0.95)"/>
       <stop offset="100%" stop-color="rgba(2, 6, 23, 0.98)"/>
     </linearGradient>
-    <filter id="orbitGlow" x="-30%" y="-30%" width="160%" height="160%">
+    <filter id="deltaGlow" x="-30%" y="-30%" width="160%" height="160%">
       <feGaussianBlur stdDeviation="2.5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
@@ -27,16 +25,19 @@
     </filter>
   </defs>
 
-  <!-- Outer Rounded Tech Chassis -->
-  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#bgGlass)" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1.5"/>
+  <!-- Outer Angled Cyber Hex Badge -->
+  <polygon points="32,4 56,16 56,48 32,60 8,48 8,16" fill="url(#deltaBgGlass)" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1.5" stroke-linejoin="round"/>
 
-  <!-- Sweeping Kinetic 'F' Velocity Track -->
-  <path d="M18 48V18C18 15.7909 19.7909 14 22 14H42C45.3137 14 48 16.6863 48 20C48 23.3137 45.3137 26 42 26H22" stroke="url(#orbitGrad1)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#orbitGlow)"/>
+  <!-- Top Delta Wing: R&D Lead Node -->
+  <path d="M32 12L46 22L32 30L18 22L32 12Z" fill="url(#deltaGrad1)" filter="url(#deltaGlow)"/>
 
-  <!-- Middle Telemetry Vector (Closed loop 'O' / Fleet Loop) -->
-  <path d="M22 34H38C41.3137 34 44 36.6863 44 40C44 43.3137 41.3137 46 38 46H26C23.7909 46 22 44.2091 22 42V34Z" fill="url(#orbitGrad2)" stroke="url(#orbitGradCore)" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Right Supersonic Wing: Workshop Tech Node -->
+  <path d="M48 25L48 45L34 37L34 32L48 25Z" fill="url(#deltaGrad2)"/>
 
-  <!-- Telemetry Live Signal Pulse Dots -->
-  <circle cx="42" cy="20" r="2.5" fill="#00F2FE" filter="url(#orbitGlow)"/>
-  <circle cx="38" cy="40" r="2" fill="#10B981"/>
+  <!-- Left Supersonic Wing: Test Driver Node -->
+  <path d="M16 25L30 32L30 37L16 45L16 25Z" fill="url(#deltaGrad3)"/>
+
+  <!-- Central Telemetry Core Node -->
+  <circle cx="32" cy="34" r="3.5" fill="#00F2FE" filter="url(#deltaGlow)"/>
+  <circle cx="32" cy="34" r="1.5" fill="#FFFFFF"/>
 </svg>
