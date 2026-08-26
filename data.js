@@ -132,18 +132,18 @@ export const caseStudies = [
   ,{
     id: "volvo-protoschedule",
     title: "FleetOps",
-    subtitle: "Volvo Fleet Test Drive Scheduler",
+    subtitle: "Enterprise Fleet Scheduling Platform",
     tags: ["B2B SaaS", "System Design", "Workflow"],
     filterCategory: "PRD",
     metric: "54% → 85%+",
     metricLabel: "Fleet Utilisation",
-    summary: "A role-enforced web platform eliminating prototype test drive conflicts, manual status reporting, and vehicle downtime across Volvo R&D teams.",
+    summary: "A role-enforced web platform eliminating prototype test drive conflicts, manual status reporting, and vehicle downtime across automotive OEM R&D teams.",
     url: "/volvo-protoschedule.html",
     liveUrl: "https://volvo-proto-schedule.vercel.app/",
     liveLabel: "Live Prototype",
     themeColor: "#4A90E2",
     themeSecondary: "#50E3C2",
-    image: "/assets/volvo.svg"
+    image: "/assets/fleetops.svg"
   }
   ,{
     id: "gymbuddy",
