@@ -131,8 +131,8 @@ export const caseStudies = [
   }
   ,{
     id: "volvo-protoschedule",
-    title: "Volvo ProtoSchedule",
-    subtitle: "Test Drive Scheduling System",
+    title: "FleetOps",
+    subtitle: "Volvo Fleet Test Drive Scheduler",
     tags: ["B2B SaaS", "System Design", "Workflow"],
     filterCategory: "PRD",
     metric: "54% → 85%+",
