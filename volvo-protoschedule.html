@@ -488,27 +488,26 @@
       <div class="intro-fleet-icon">
         <svg viewBox="0 0 64 64" width="100%" height="100%" fill="none">
           <defs>
-            <linearGradient id="fleetIntroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id="orbitIntroGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#00F2FE"/>
-              <stop offset="50%" stop-color="#4FACFE"/>
-              <stop offset="100%" stop-color="#0061FF"/>
+              <stop offset="50%" stop-color="#38BDF8"/>
+              <stop offset="100%" stop-color="#2563EB"/>
             </linearGradient>
-            <linearGradient id="fleetAccentGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#00F2FE"/>
-              <stop offset="100%" stop-color="#50E3C2"/>
+            <linearGradient id="orbitIntroGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#38BDF8"/>
+              <stop offset="50%" stop-color="#818CF8"/>
+              <stop offset="100%" stop-color="#4F46E5"/>
             </linearGradient>
-            <linearGradient id="fleetBgGradIntro" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="rgba(14, 23, 42, 0.95)"/>
-              <stop offset="100%" stop-color="rgba(3, 7, 18, 0.98)"/>
+            <linearGradient id="bgGlassIntro" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(15, 23, 42, 0.95)"/>
+              <stop offset="100%" stop-color="rgba(2, 6, 23, 0.98)"/>
             </linearGradient>
           </defs>
-          <path d="M32 5L55 16.5V39.5L32 57L9 39.5V16.5L32 5Z" fill="url(#fleetBgGradIntro)" stroke="url(#fleetIntroGrad)" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M32 5V57" stroke="rgba(79, 172, 254, 0.2)" stroke-width="1.2" stroke-dasharray="3 2"/>
-          <path d="M9 28H55" stroke="rgba(79, 172, 254, 0.15)" stroke-width="1.2" stroke-dasharray="3 2"/>
-          <path d="M22 20H43.5C45.8 20 47.3 22.3 46.3 24.4L44 29H28L25.5 40H19.5L22 20Z" fill="url(#fleetIntroGrad)"/>
-          <path d="M27.5 30H41C42.9 30 44.1 31.9 43.3 33.6L40.5 39.5H25.5L27.5 30Z" fill="url(#fleetAccentGrad)"/>
-          <circle cx="48" cy="18" r="2.5" fill="#00F2FE"/>
-          <circle cx="16" cy="45" r="2" fill="#50E3C2"/>
+          <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#bgGlassIntro)" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.5"/>
+          <path d="M18 48V18C18 15.7909 19.7909 14 22 14H42C45.3137 14 48 16.6863 48 20C48 23.3137 45.3137 26 42 26H22" stroke="url(#orbitIntroGrad1)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 34H38C41.3137 34 44 36.6863 44 40C44 43.3137 41.3137 46 38 46H26C23.7909 46 22 44.2091 22 42V34Z" fill="url(#orbitIntroGrad2)" stroke="#50E3C2" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="42" cy="20" r="2.5" fill="#00F2FE"/>
+          <circle cx="38" cy="40" r="2" fill="#10B981"/>
         </svg>
       </div>
       <div class="intro-tagline">FLEETOPS · CONNECTED OPERATIONS</div>
@@ -527,9 +526,9 @@
       <div class="hero-text">
         <div class="cs-badge">
           <svg class="badge-fleet-icon" viewBox="0 0 64 64" fill="none">
-            <path d="M32 5L55 16.5V39.5L32 57L9 39.5V16.5L32 5Z" fill="rgba(14,23,42,0.8)" stroke="#4A90E2" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M22 20H43.5C45.8 20 47.3 22.3 46.3 24.4L44 29H28L25.5 40H19.5L22 20Z" fill="#4FACFE"/>
-            <path d="M27.5 30H41C42.9 30 44.1 31.9 43.3 33.6L40.5 39.5H25.5L27.5 30Z" fill="#50E3C2"/>
+            <rect x="4" y="4" width="56" height="56" rx="16" fill="rgba(15,23,42,0.85)" stroke="#38BDF8" stroke-width="2"/>
+            <path d="M18 48V18C18 15.7909 19.7909 14 22 14H42C45.3137 14 48 16.6863 48 20C48 23.3137 45.3137 26 42 26H22" stroke="#38BDF8" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M22 34H38C41.3137 34 44 36.6863 44 40C44 43.3137 41.3137 46 38 46H26C23.7909 46 22 44.2091 22 42V34Z" fill="#6366F1" stroke="#50E3C2" stroke-width="2" stroke-linejoin="round"/>
           </svg>
           Enterprise Automotive OEM · Connected Fleet Operations
         </div>
@@ -556,13 +555,11 @@
 
       <div class="hero-fleet-card" title="Connected Fleet Operations Engine">
         <svg class="interactive-fleet" viewBox="0 0 64 64" fill="none">
-          <path d="M32 5L55 16.5V39.5L32 57L9 39.5V16.5L32 5Z" fill="url(#fleetBgGradIntro)" stroke="url(#fleetIntroGrad)" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M32 5V57" stroke="rgba(79, 172, 254, 0.2)" stroke-width="1.2" stroke-dasharray="3 2"/>
-          <path d="M9 28H55" stroke="rgba(79, 172, 254, 0.15)" stroke-width="1.2" stroke-dasharray="3 2"/>
-          <path d="M22 20H43.5C45.8 20 47.3 22.3 46.3 24.4L44 29H28L25.5 40H19.5L22 20Z" fill="url(#fleetIntroGrad)"/>
-          <path d="M27.5 30H41C42.9 30 44.1 31.9 43.3 33.6L40.5 39.5H25.5L27.5 30Z" fill="url(#fleetAccentGrad)"/>
-          <circle cx="48" cy="18" r="2.5" fill="#00F2FE"/>
-          <circle cx="16" cy="45" r="2" fill="#50E3C2"/>
+          <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#bgGlassIntro)" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1.5"/>
+          <path d="M18 48V18C18 15.7909 19.7909 14 22 14H42C45.3137 14 48 16.6863 48 20C48 23.3137 45.3137 26 42 26H22" stroke="url(#orbitIntroGrad1)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 34H38C41.3137 34 44 36.6863 44 40C44 43.3137 41.3137 46 38 46H26C23.7909 46 22 44.2091 22 42V34Z" fill="url(#orbitIntroGrad2)" stroke="#50E3C2" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="42" cy="20" r="2.5" fill="#00F2FE"/>
+          <circle cx="38" cy="40" r="2" fill="#10B981"/>
         </svg>
       </div>
     </div>
