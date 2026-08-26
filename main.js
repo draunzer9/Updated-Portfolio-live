@@ -127,9 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function handleLiveFilterClick(e) {
     if (e) e.preventDefault();
-    const workSec = document.getElementById('work');
-    if (workSec) {
-      workSec.scrollIntoView({ behavior: 'smooth' });
+    const targetSec = document.querySelector('.capstone-section') || document.getElementById('work');
+    if (targetSec) {
+      targetSec.scrollIntoView({ behavior: 'smooth' });
     }
     if (liveFilterBtn) {
       liveFilterBtn.click();
