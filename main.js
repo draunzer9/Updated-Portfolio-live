@@ -1,4 +1,8 @@
+import { inject } from '@vercel/analytics';
 import { caseStudies } from './data.js';
+
+// Initialize Vercel Web Analytics
+inject();
 
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.getElementById('portfolio-grid');
