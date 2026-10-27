@@ -235,8 +235,90 @@ body {
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.75;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: 1.1rem;
   max-width: 640px;
+}
+
+.hero-bio-paragraphs .hero-desc:last-child {
+  margin-bottom: 0;
+}
+
+/* ── WHAT I OWN ── */
+.what-i-own {
+  margin: 1.6rem 0 2rem;
+  padding: 1.25rem 1.4rem;
+  background: rgba(17, 16, 32, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
+  max-width: 640px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.what-i-own::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent-secondary), var(--accent-primary));
+}
+
+.what-i-own-title {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-secondary);
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.own-title-badge {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-secondary);
+  box-shadow: 0 0 8px var(--accent-secondary);
+}
+
+.what-i-own-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.what-i-own-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.what-i-own-list .own-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  margin-top: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px var(--accent-primary);
+}
+
+.what-i-own-list strong {
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .hero-buttons {
