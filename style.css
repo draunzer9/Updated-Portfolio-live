@@ -202,8 +202,10 @@ body {
   letter-spacing: 0.12em;
   color: var(--accent-secondary);
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
+  line-height: 1.6;
   margin-bottom: 1.2rem;
 }
 
